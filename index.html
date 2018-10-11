@@ -3,8 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for BitCoins and other cryptocurrencies. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
-  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, bitcoin, litecoin, dogecoin" />
+  <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for SHNDs and other cryptocurrencies. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
+  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, SHND, Stronghands, SHMN, Masternode, BTC, litecoin, dogecoin" />
+  <link rel="shortcut icon" type="image/png" href="images/shndmn.png">
   <!--
 
 Notice of Copyrights and Licenses:
@@ -25,7 +26,7 @@ window.SecureRandom   BSD License
 window.EllipticCurve  BSD License
 window.BigInteger     BSD License
 window.QRCode         MIT License
-window.Bitcoin        MIT License
+window.SHND        MIT License
 jsqrcode              Apache License, 2.0
 
 
@@ -50,7 +51,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
   GitHub Repository: https://github.com/MichaelMure/WalletGenerator.net
   -->
-  <title>WalletGenerator.net - Universal Paper wallet generator for Bitcoin and other cryptocurrencies</title>
+  <title>WalletGenerator.net - Universal Paper wallet generator for SHND and other cryptocurrencies</title>
   <script type="text/javascript">
 // Array.prototype.map function is in the public domain.
 // Production steps of ECMA-262, Edition 5, 15.4.4.19
@@ -1387,7 +1388,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
 
   </script>
   <script type="text/javascript">
-//https://raw.github.com/bitcoinjs/bitcoinjs-lib/faa10f0f6a1fff0b9a99fffb9bc30cee33b17212/src/ecdsa.js
+//https://raw.github.com/SHNDjs/SHNDjs-lib/faa10f0f6a1fff0b9a99fffb9bc30cee33b17212/src/ecdsa.js
 /*!
  * Basic Javascript Elliptic Curve implementation
  * Ported loosely from BouncyCastle's Java EC code
@@ -1673,12 +1674,12 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
     }
     return R;
   };
-  // patched by bitaddress.org and Casascius for use with Bitcoin.ECKey
+  // patched by bitaddress.org and Casascius for use with SHND.ECKey
   // patched by coretechs to support compressed public keys
   ec.PointFp.prototype.getEncoded = function(compressed) {
     var x = this.getX().toBigInteger();
     var y = this.getY().toBigInteger();
-    var len = 32; // integerToBytes will zero pad if integer is less than 32 bytes. 32 bytes length is required by the Bitcoin protocol.
+    var len = 32; // integerToBytes will zero pad if integer is less than 32 bytes. 32 bytes length is required by the SHND protocol.
     var enc = ec.integerToBytes(x, len);
     // when compressed prepend byte depending if y point is even or odd
     if (compressed) {
@@ -1926,9 +1927,9 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
   ec.X9Parameters.prototype.getH = function() {
     return this.h;
   };
-  // secp256k1 is the Curve used by Bitcoin
+  // secp256k1 is the Curve used by SHND
   ec.secNamedCurves = {
-    // used by Bitcoin
+    // used by SHND
     "secp256k1": function() {
       // p = 2^256 - 2^32 - 2^9 - 2^8 - 2^7 - 2^6 - 2^4 - 1
       var p = ec.fromHex("FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F");
@@ -1941,7 +1942,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
       return new ec.X9Parameters(curve, G, n, h);
     }
   };
-  // secp256k1 called by Bitcoin's ECKEY
+  // secp256k1 called by SHND's ECKEY
   ec.getSECCurveByName = function(name) {
     if (ec.secNamedCurves[name] == undefined) return null;
     return ec.secNamedCurves[name]();
@@ -3093,7 +3094,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
   // long longValue()
   // static BigInteger valueOf(long val)
   // Copyright Stephan Thomas (start) --- //
-  // https://raw.github.com/bitcoinjs/bitcoinjs-lib/07f9d55ccb6abd962efb6befdd37671f85ea4ff9/src/util.js
+  // https://raw.github.com/SHNDjs/SHNDjs-lib/07f9d55ccb6abd962efb6befdd37671f85ea4ff9/src/util.js
   // BigInteger monkey patching
   BigInteger.valueOf = nbv;
   /**
@@ -4129,23 +4130,23 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
-//https://raw.github.com/bitcoinjs/bitcoinjs-lib/1a7fc9d063f864058809d06ef4542af40be3558f/src/bitcoin.js
+//https://raw.github.com/SHNDjs/SHNDjs-lib/1a7fc9d063f864058809d06ef4542af40be3558f/src/SHND.js
 (function(exports) {
-  var Bitcoin = exports;
-})('object' === typeof module ? module.exports : (window.Bitcoin = {}));
+  var SHND = exports;
+})('object' === typeof module ? module.exports : (window.SHND = {}));
 
   </script>
   <script type="text/javascript">
-//https://raw.github.com/bitcoinjs/bitcoinjs-lib/c952aaeb3ee472e3776655b8ea07299ebed702c7/src/base58.js
-(function(Bitcoin) {
-  Bitcoin.Base58 = {
+//https://raw.github.com/SHNDjs/SHNDjs-lib/c952aaeb3ee472e3776655b8ea07299ebed702c7/src/base58.js
+(function(SHND) {
+  SHND.Base58 = {
     alphabet: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz",
     validRegex: /^[1-9A-HJ-NP-Za-km-z]+$/,
     base: BigInteger.valueOf(58),
     /**
      * Convert a byte array to a base58-encoded string.
      *
-     * Written by Mike Hearn for BitcoinJ.
+     * Written by Mike Hearn for SHNDJ.
      *   Copyright (c) 2011 Google Inc.
      *
      * Ported to JavaScript by Stefan Thomas.
@@ -4170,7 +4171,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     /**
      * Convert a base58-encoded string to a byte array.
      *
-     * Written by Mike Hearn for BitcoinJ.
+     * Written by Mike Hearn for SHNDJ.
      *   Copyright (c) 2011 Google Inc.
      *
      * Ported to JavaScript by Stefan Thomas.
@@ -4194,15 +4195,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
       return bytes;
     }
   };
-  var B58 = Bitcoin.Base58;
-})('undefined' != typeof Bitcoin ? Bitcoin : module.exports);
+  var B58 = SHND.Base58;
+})('undefined' != typeof SHND ? SHND : module.exports);
 
   </script>
   <script type="text/javascript">
-//https://raw.github.com/bitcoinjs/bitcoinjs-lib/09e8c6e184d6501a0c2c59d73ca64db5c0d3eb95/src/address.js
-Bitcoin.Address = function(bytes) {
+//https://raw.github.com/SHNDjs/SHNDjs-lib/09e8c6e184d6501a0c2c59d73ca64db5c0d3eb95/src/address.js
+SHND.Address = function(bytes) {
   if ("string" == typeof bytes) {
-    bytes = Bitcoin.Address.decodeString(bytes);
+    bytes = SHND.Address.decodeString(bytes);
   }
   this.hash = bytes;
 };
@@ -4211,7 +4212,7 @@ Bitcoin.Address = function(bytes) {
  *
  * Returns the address as a base58-encoded string in the standardized format.
  */
-Bitcoin.Address.prototype.toString = function() {
+SHND.Address.prototype.toString = function() {
   // Get a copy of the hash
   var hash = this.hash.slice(0);
   // Version
@@ -4227,16 +4228,16 @@ Bitcoin.Address.prototype.toString = function() {
     asBytes: true
   });
   var bytes = hash.concat(checksum.slice(0, 4));
-  return Bitcoin.Base58.encode(bytes);
+  return SHND.Base58.encode(bytes);
 };
-Bitcoin.Address.prototype.getHashBase64 = function() {
+SHND.Address.prototype.getHashBase64 = function() {
   return Crypto.util.bytesToBase64(this.hash);
 };
 /**
- * Parse a Bitcoin address contained in a string.
+ * Parse a SHND address contained in a string.
  */
-Bitcoin.Address.decodeString = function(string) {
-  var bytes = Bitcoin.Base58.decode(string);
+SHND.Address.decodeString = function(string) {
+  var bytes = SHND.Base58.decode(string);
   var length = bytes.length;
   var hash = bytes.slice(0, length - 4);
   var checksum = Crypto.SHA256(Crypto.SHA256(hash, {
@@ -4252,8 +4253,8 @@ Bitcoin.Address.decodeString = function(string) {
 
   </script>
   <script type="text/javascript">
-//https://raw.github.com/bitcoinjs/bitcoinjs-lib/e90780d3d3b8fc0d027d2bcb38b80479902f223e/src/ecdsa.js
-Bitcoin.ECDSA = (function() {
+//https://raw.github.com/SHNDjs/SHNDjs-lib/e90780d3d3b8fc0d027d2bcb38b80479902f223e/src/ecdsa.js
+SHND.ECDSA = (function() {
   var ecparams = EllipticCurve.getSECCurveByName("secp256k1");
   var rng = new SecureRandom();
   var P_OVER_FOUR = null;
@@ -4298,7 +4299,7 @@ Bitcoin.ECDSA = (function() {
     },
     verify: function(hash, sig, pubkey) {
       var r, s;
-      if (Bitcoin.Util.isArray(sig)) {
+      if (SHND.Util.isArray(sig)) {
         var obj = ECDSA.parseSig(sig);
         r = obj.r;
         s = obj.s;
@@ -4311,7 +4312,7 @@ Bitcoin.ECDSA = (function() {
       var Q;
       if (pubkey instanceof ec.PointFp) {
         Q = pubkey;
-      } else if (Bitcoin.Util.isArray(pubkey)) {
+      } else if (SHND.Util.isArray(pubkey)) {
         Q = EllipticCurve.PointFp.decodeFrom(ecparams.getCurve(), pubkey);
       } else {
         throw "Invalid format for pubkey value, must be byte array or ec.PointFp";
@@ -4451,7 +4452,7 @@ Bitcoin.ECDSA = (function() {
       if (!ECDSA.verifyRaw(e, r, s, Q)) {
         throw "Pubkey recovery unsuccessful";
       }
-      var pubKey = new Bitcoin.ECKey();
+      var pubKey = new SHND.ECKey();
       pubKey.pub = Q;
       return pubKey;
     },
@@ -4460,7 +4461,7 @@ Bitcoin.ECDSA = (function() {
      *
      * When extracting a pubkey from a signature, we have to
      * distinguish four different cases. Rather than putting this
-     * burden on the verifier, Bitcoin includes a 2-bit value with the
+     * burden on the verifier, SHND includes a 2-bit value with the
      * signature.
      *
      * This function simply tries all four cases and returns the value
@@ -4469,8 +4470,8 @@ Bitcoin.ECDSA = (function() {
     calcPubkeyRecoveryParam: function(address, r, s, hash) {
       for (var i = 0; i < 4; i++) {
         try {
-          var pubkey = Bitcoin.ECDSA.recoverPubKey(r, s, hash, i);
-          if (pubkey.getBitcoinAddress().toString() == address) {
+          var pubkey = SHND.ECDSA.recoverPubKey(r, s, hash, i);
+          if (pubkey.getSHNDAddress().toString() == address) {
             return i;
           }
         } catch (e) {}
@@ -4483,9 +4484,9 @@ Bitcoin.ECDSA = (function() {
 
   </script>
   <script type="text/javascript">
-//https://raw.github.com/pointbiz/bitcoinjs-lib/9b2f94a028a7bc9bed94e0722563e9ff1d8e8db8/src/eckey.js
-Bitcoin.ECKey = (function() {
-  var ECDSA = Bitcoin.ECDSA;
+//https://raw.github.com/pointbiz/SHNDjs-lib/9b2f94a028a7bc9bed94e0722563e9ff1d8e8db8/src/eckey.js
+SHND.ECKey = (function() {
+  var ECDSA = SHND.ECDSA;
   var ecparams = EllipticCurve.getSECCurveByName("secp256k1");
   var rng = new SecureRandom();
   var ECKey = function(input) {
@@ -4496,7 +4497,7 @@ Bitcoin.ECKey = (function() {
     } else if (input instanceof BigInteger) {
       // Input is a private key value
       this.priv = input;
-    } else if (Bitcoin.Util.isArray(input)) {
+    } else if (SHND.Util.isArray(input)) {
       // Prepend zero byte to prevent interpretation as negative integer
       this.priv = BigInteger.fromByteArrayUnsigned(input);
     } else if ("string" == typeof input) {
@@ -4578,15 +4579,15 @@ Bitcoin.ECKey = (function() {
   ECKey.prototype.getPubKeyHash = function() {
     if (this.compressed) {
       if (this.pubKeyHashComp) return this.pubKeyHashComp;
-      return this.pubKeyHashComp = Bitcoin.Util.sha256ripe160(this.getPub());
+      return this.pubKeyHashComp = SHND.Util.sha256ripe160(this.getPub());
     } else {
       if (this.pubKeyHashUncomp) return this.pubKeyHashUncomp;
-      return this.pubKeyHashUncomp = Bitcoin.Util.sha256ripe160(this.getPub());
+      return this.pubKeyHashUncomp = SHND.Util.sha256ripe160(this.getPub());
     }
   };
-  ECKey.prototype.getBitcoinAddress = function() {
+  ECKey.prototype.getSHNDAddress = function() {
     var hash = this.getPubKeyHash();
-    var addr = new Bitcoin.Address(hash);
+    var addr = new SHND.Address(hash);
     return addr.toString();
   };
   /*
@@ -4594,7 +4595,7 @@ Bitcoin.ECKey = (function() {
    */
   ECKey.prototype.setPub = function(pub) {
     // byte array
-    if (Bitcoin.Util.isArray(pub)) {
+    if (SHND.Util.isArray(pub)) {
       pub = Crypto.util.bytesToHex(pub).toString().toUpperCase();
     }
     var ecPoint = ecparams.getCurve().decodePointHex(pub);
@@ -4603,8 +4604,8 @@ Bitcoin.ECKey = (function() {
     return this;
   };
   // Sipa Private Key Wallet Import Format
-  ECKey.prototype.getBitcoinWalletImportFormat = function() {
-    var bytes = this.getBitcoinPrivateKeyByteArray();
+  ECKey.prototype.getSHNDWalletImportFormat = function() {
+    var bytes = this.getSHNDPrivateKeyByteArray();
     bytes.unshift(janin.currency.privateKeyPrefix()); // prepend private key prefix
     if (this.compressed) bytes.push(0x01); // append 0x01 byte for compressed format
     var checksum = Crypto.SHA256(Crypto.SHA256(bytes, {
@@ -4613,18 +4614,18 @@ Bitcoin.ECKey = (function() {
       asBytes: true
     });
     bytes = bytes.concat(checksum.slice(0, 4));
-    var privWif = Bitcoin.Base58.encode(bytes);
+    var privWif = SHND.Base58.encode(bytes);
     return privWif;
   };
   // Private Key Hex Format
-  ECKey.prototype.getBitcoinHexFormat = function() {
-    return Crypto.util.bytesToHex(this.getBitcoinPrivateKeyByteArray()).toString().toUpperCase();
+  ECKey.prototype.getSHNDHexFormat = function() {
+    return Crypto.util.bytesToHex(this.getSHNDPrivateKeyByteArray()).toString().toUpperCase();
   };
   // Private Key Base64 Format
-  ECKey.prototype.getBitcoinBase64Format = function() {
-    return Crypto.util.bytesToBase64(this.getBitcoinPrivateKeyByteArray());
+  ECKey.prototype.getSHNDBase64Format = function() {
+    return Crypto.util.bytesToBase64(this.getSHNDPrivateKeyByteArray());
   };
-  ECKey.prototype.getBitcoinPrivateKeyByteArray = function() {
+  ECKey.prototype.getSHNDPrivateKeyByteArray = function() {
     // Get a copy of private key as a byte array
     var bytes = this.priv.toByteArrayUnsigned();
     // zero pad if private key is less than 32 bytes
@@ -4634,13 +4635,13 @@ Bitcoin.ECKey = (function() {
   ECKey.prototype.toString = function(format) {
     format = format || "";
     if (format.toString().toLowerCase() == "base64" || format.toString().toLowerCase() == "b64") {
-      return this.getBitcoinBase64Format();
+      return this.getSHNDBase64Format();
     }
     // Wallet Import Format
     else if (format.toString().toLowerCase() == "wif") {
-      return this.getBitcoinWalletImportFormat();
+      return this.getSHNDWalletImportFormat();
     } else {
-      return this.getBitcoinHexFormat();
+      return this.getSHNDHexFormat();
     }
   };
   ECKey.prototype.sign = function(hash) {
@@ -4653,7 +4654,7 @@ Bitcoin.ECKey = (function() {
    * Parse a wallet import format private key contained in a string.
    */
   ECKey.decodeWalletImportFormat = function(privStr) {
-    var bytes = Bitcoin.Base58.decode(privStr);
+    var bytes = SHND.Base58.decode(privStr);
     var hash = bytes.slice(0, 33);
     var checksum = Crypto.SHA256(Crypto.SHA256(hash, {
       asBytes: true
@@ -4674,7 +4675,7 @@ Bitcoin.ECKey = (function() {
    * Parse a compressed wallet import format private key contained in a string.
    */
   ECKey.decodeCompressedWalletImportFormat = function(privStr) {
-    var bytes = Bitcoin.Base58.decode(privStr);
+    var bytes = SHND.Base58.decode(privStr);
     var hash = bytes.slice(0, 34);
     var checksum = Crypto.SHA256(Crypto.SHA256(hash, {
       asBytes: true
@@ -4733,9 +4734,9 @@ Bitcoin.ECKey = (function() {
 
   </script>
   <script type="text/javascript">
-//https://raw.github.com/bitcoinjs/bitcoinjs-lib/09e8c6e184d6501a0c2c59d73ca64db5c0d3eb95/src/util.js
-// Bitcoin utility functions
-Bitcoin.Util = {
+//https://raw.github.com/SHNDjs/SHNDjs-lib/09e8c6e184d6501a0c2c59d73ca64db5c0d3eb95/src/util.js
+// SHND utility functions
+SHND.Util = {
   /**
    * Cross-browser compatibility version of Array.isArray.
    */
@@ -4756,7 +4757,7 @@ Bitcoin.Util = {
   /**
    * Turn an integer into a "var_int".
    *
-   * "var_int" is a variable length integer used by Bitcoin's binary format.
+   * "var_int" is a variable length integer used by SHND's binary format.
    *
    * Returns a byte array.
    */
@@ -4776,7 +4777,7 @@ Bitcoin.Util = {
     }
   },
   /**
-   * Parse a Bitcoin value byte array, returning a BigInteger.
+   * Parse a SHND value byte array, returning a BigInteger.
    */
   valueToBigInt: function(valueBuffer) {
     if (valueBuffer instanceof BigInteger) return valueBuffer;
@@ -4784,9 +4785,9 @@ Bitcoin.Util = {
     return BigInteger.fromByteArrayUnsigned(valueBuffer);
   },
   /**
-   * Format a Bitcoin value as a string.
+   * Format a SHND value as a string.
    *
-   * Takes a BigInteger or byte-array and returns that amount of Bitcoins in a
+   * Takes a BigInteger or byte-array and returns that amount of SHNDs in a
    * nice standard formatting.
    *
    * Examples:
@@ -4805,7 +4806,7 @@ Bitcoin.Util = {
     return integerPart + "." + decimalPart;
   },
   /**
-   * Parse a floating point string as a Bitcoin value.
+   * Parse a floating point string as a SHND value.
    *
    * Keep in mind that parsing user input is messy. You should always display
    * the parsed value back to the user to make sure we understood his input
@@ -7854,7 +7855,7 @@ function QRCodeScanner(width, height, container, success, error) {
       qrcode.callback = function(data) {
         if (data && data.indexOf('error') != 0) {
           stop();
-          if (data.indexOf('bitcoin:') == 0) data = data.substring(8);
+          if (data.indexOf('SHND:') == 0) data = data.substring(8);
           _success(data);
         }
       };
@@ -8161,7 +8162,7 @@ body {
   z-index: 20;
 }
 
-#generatelabelbitcoinaddress,
+#generatelabelSHNDaddress,
 #generatelabelmovemouse,
 #generatelabelkeypress {
   font-size: 14px;
@@ -8328,6 +8329,7 @@ h1 {
   -moz-border-radius: 10px;
   border-radius: 10px;
   text-align: left;
+  font-weight: bold;
 }
 
 .supportedCurrenciesChecklist ul {
@@ -8396,6 +8398,7 @@ h1 {
   text-align: center;
   margin: 0px auto;
   width: 1005px;
+  color: black;
 }
 
 #logo {
@@ -8925,8 +8928,8 @@ h1 {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     display: inline-block;
-    background-color: #F5F5F5;
-    border: 1px solid #BFBFBF;
+    background-color: #FFC3BB;
+    border: 2px solid #BFBFBF;
     padding: 5px;
     margin: 0 2px 0 0;
     position: relative;
@@ -8935,10 +8938,10 @@ h1 {
     cursor: pointer;
   }
   .menu .tab:hover {
-    color: #d58424;
+    color: white;
   }
   .menu .tab.selected {
-    background-color: #FFF;
+    background-color: #F5F98C;
     border-bottom: 1px solid #FFF;
     cursor: default;
   }
@@ -8984,13 +8987,14 @@ h1 {
     padding: 0 20px;
     font-size: 14px;
     margin-bottom: 35px;
+	font-weight: bold;
   }
   #culturemenu span {
     padding: 3px;
   }
   #culturemenu .selected {
     text-decoration: none;
-    color: #ff0000;
+    color: #3F8707;
   }
   #braincommands .row .label {
     width: 200px;
@@ -9031,7 +9035,7 @@ h1 {
   }
   .footer {
     font-size: 90%;
-	color: #ffffff;
+	color: black;
     clear: both;
     width: 750px;
     padding: 10px 0 10px 0;
@@ -9156,11 +9160,11 @@ h1 {
   <div id="main">
     <div id="culturemenu"> <span><a href="?culture=en" hreflang="en" id="cultureen" class="selected">English</a></span> | <span><a href="?culture=fr" hreflang="fr" id="culturefr">Français</a></span> | <span><a href="?culture=de" hreflang="de" id="culturede">German</a></span>      | <span><a href="?culture=nl" hreflang="nl" id="culturenl">Dutch</a></span> | <span><a href="?culture=pt" hreflang="pt" id="culturept">Português</a></span> | <span><a href="?culture=ru" hreflang="ru" id="cultureru">Русский</a></span> | <span><a href="?culture=es" hreflang="es" id="culturees">Spanish</a></span>      | <span><a href="?culture=it" hreflang="it" id="cultureit">Italiano</a></span> | <span><a href="?culture=ua" hreflang="ua" id="cultureua">Українська</a></span> | <span><a href="?culture=tr" hreflang="tr" id="culturetr">Türk</a></span> | <span><a href="?culture=pl" hreflang="pl" id="culturepl">Polski</a></span>      | <span><a href="?culture=zh" hreflang="zh" id="culturezh">中文</a></span> </div>
     <div class="banner">
-      <div id="coinLogo"> <img id="coinLogoImg" src="logos/bitcoin.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
+      <div id="coinLogo"> <img id="coinLogoImg" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
       <h1>
-        <img id="siteTitle" src="images/banner.png" alt="Bitcoin Paper Wallet Generator" />
+        <img id="siteTitle" src="images/banner.png" alt="SHND Paper Wallet Generator" />
       </h1> </div>
-    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:white">Choose currency</span> <span style="color:white">:</span> <select id="currency" onchange="janin.currency.useCurrency(this.selectedIndex);"></select> </div>
+    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:black"><b>Choose currency</b></span> <span style="color:black"><b>:</b></span> <select id="currency" onchange="janin.currency.useCurrency(this.selectedIndex);"></select> </div>
     <div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
     <div class="menu" id="menu">
       <div class="tab i18n selected" id="singlewallet" onclick="ninja.tabSwitch(this);">Single Wallet</div>
@@ -9170,9 +9174,9 @@ h1 {
       <div class="tab i18n" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details</div>
       <div class="tab i18n" id="donate" onclick="ninja.tabSwitch(this);">Support</div>
     </div>
-    <div id="wallets">
+    <div id="wallets" style="border:0.5px solid red">
       <div id="singlearea" class="walletarea">
-        <div id="initBanner"> <span id="generatelabelbitcoinaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
+        <div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
           <span
             id="generatelabelkeypress" class="i18n">OR type some random characters into this textbox</span> <input type="text" id="generatekeyinput" onkeypress="ninja.seeder.seedKeyPress(event);" /><br />
             <div id="seedpooldisplay"></div>
@@ -9185,12 +9189,12 @@ h1 {
               </div>
             </div>
         </div>
-        <div id="walletCommands" class="commands">
+        <div id="walletCommands" class="commands" style="background-color:#D8DCFB">
           <div id="singlecommands" class="row"> <span><input type="button" id="newaddress" value="Generate New Address" onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span> <span class="print"><input type="button" name="print" value="Print" id="singleprint" onclick="window.print();" /></span>            </div>
         </div>
         <div id="keyarea" class="keyarea">
           <div class="public">
-            <div class="pubaddress"> <span class="label i18n" id="singlelabelbitcoinaddress">Public Address</span> </div>
+            <div class="pubaddress"> <span class="label i18n" id="singlelabelSHNDaddress">Public Address</span> </div>
             <div id="qrcode_public" class="qrcode_public"></div>
             <div class="pubaddress"> <span class="output" id="btcaddress"></span> </div>
             <div id="singleshare" class="i18n">SHARE</div>
@@ -9205,7 +9209,7 @@ h1 {
         <div id="singlesafety">
           <div class="firstHalfSingleSafety">
             <h3 id="securitystep0title" class="i18n">Step 0. Follow the security checklist recommendation</h3>
-            <p id="securitystep0" class="i18n"> First step is to <strong>download</strong> this website from <a href="https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip">Github</a> and open the index.html file directly from your computer. It's just too easy to sneak some
+            <p id="securitystep0" class="i18n"> First step is to <strong>download</strong> this website from <a href="https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip"><b>Github</b></a> and open the index.html file directly from your computer. It's just too easy to sneak some
               evil code in the 6000+ lines of javascript to leak your private key, and you don't want to see your fund stolen. Code version control make it much easier to cross-check what actually run. For extra security, <strong>unplug your Internet access</strong>              while generating your wallet. </p>
             <h3 id="securitystep1title" class="i18n">Step 1. Generate new address</h3>
             <p id="securitystep1" class="i18n"> Choose your currency and click on the "Generate new address" button. </p>
@@ -9220,7 +9224,7 @@ h1 {
             <p id="securitystep5" class="i18n"> The private key is literally the keys to your coins, if someone was to obtain it, they could withdraw the funds currently in the wallet, and any funds that might be deposited in that wallet. </p>
             <p> <strong id="securitystep6" class="i18n">Please test spending a small amount before receiving any large payments.</strong><br /><br /> </p>
             <h3 id="securitystep7title" class="i18n">Consider supporting</h3>
-            <p id="securitystep7" class="i18n"> This service is free and will stay free, without advertising or tracking of any sort. Please consider <a href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));">making a donation</a> to support. </p>
+            <p id="securitystep7" class="i18n"> This service is free and will stay free, without advertising or tracking of any sort. Please consider <a href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));"><b>making a donation</b></a> to support. </p>
           </div>
           <div class="secondHalfSingleSafety"> <img class="frontPageImage" src="images/overview.png" alt="Overview image of 4 paper wallet" />
             <div class="securityChecklist"> <b id="securitychecktitle" class="i18n">Security Checklist :</b>
@@ -9280,7 +9284,7 @@ h1 {
         <div id="brainkeyarea" class="keyarea">
           <div class="public">
             <div id="brainqrcodepublic" class="qrcode_public"></div>
-            <div class="pubaddress"> <span class="label i18n" id="brainlabelbitcoinaddress">Public Address:</span> <span class="output" id="brainbtcaddress"></span> </div>
+            <div class="pubaddress"> <span class="label i18n" id="brainlabelSHNDaddress">Public Address:</span> <span class="output" id="brainbtcaddress"></span> </div>
           </div>
           <div class="private">
             <div id="brainqrcodeprivate" class="qrcode_private"></div>
@@ -9315,9 +9319,9 @@ h1 {
         <div id="detailkeyarea">
           <div class="notes"> <span id="detaillabelnote1" class="i18n">Your Private Key is a unique secret number that only you know. It can be encoded in a number of different formats. Below we show the Public Address and Public Key that corresponds to your Private Key as well as your Private Key in the most popular encoding formats (WIF, WIFC, HEX, B64).</span>            <br /><br /> </div>
           <div class="pubqr">
-            <div class="item"> <span class="label i18n" id="detaillabelbitcoinaddress">Public Address</span>
+            <div class="item"> <span class="label i18n" id="detaillabelSHNDaddress">Public Address</span>
               <div id="detailqrcodepublic" class="qrcode_public"></div> <span class="output" id="detailaddress"></span> </div>
-            <div class="item right"> <span class="label i18n" id="detaillabelbitcoinaddresscomp">Public Address Compressed</span>
+            <div class="item right"> <span class="label i18n" id="detaillabelSHNDaddresscomp">Public Address Compressed</span>
               <div id="detailqrcodepubliccomp" class="qrcode_public"></div> <span class="output" id="detailaddresscomp"></span> </div>
           </div> <br /><br />
           <div class="item clear"> <span class="label i18n" id="detaillabelpublickey">Public Key (130 characters [0-9A-F]):</span> <span class="output pubkeyhex" id="detailpubkey"></span> </div>
@@ -9357,7 +9361,7 @@ h1 {
           <h3>Release notes</h3>
           <p> 09.2018 --
             <ul>
-              <li>Add support for SHND and SHMN</li>
+              <li>Added support for SHND and SHMN</li>
 			  <li>Multi-currency support</li>
               <li>Original design for the paper wallet</li>
               <li>Improved design of the website</li>
@@ -9366,7 +9370,7 @@ h1 {
       </div>
     </div>
     <div id="footer" class="footer">
-      <div> <span class="item"><a id="footersupport" href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));" class="i18n">Support & Donations</a></span> <span class="item"><a href="https://github.com/MichaelMure/& Donations" target="_blank" id="footerlabelgithub" class="i18n">Download (GitHub Repository)</a></span>        </div>
+      <div> <span class="item"><a id="footersupport" href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));" class="i18n">Support & Donations</a></span> <span class="item"><a href="https://github.com/01Fedda/01Fedda.github.io" target="_blank" id="footerlabelgithub" class="i18n">Download (GitHub Repository)</a></span>        </div>
       <div class="copyright"> <span id="footerlabelcopyright1">Copyright WalletGenerator.net.</span> <span id="footerlabelcopyright2" class="i18n">JavaScript copyrights are included in the source.</span> <span id="footerlabelnowarranty" class="i18n">No warranty.</span> </div>
     </div>
   </div>
@@ -9503,7 +9507,7 @@ janin.currency = {
 };
 janin.currencies = [
   //                              name, networkVersion, privateKeyPrefix, WIF_Start, CWIF_Start, donate
-  janin.currency.createCurrency("Bitcoin", 0x00, 0x80, "5", "[LK]", "18kcrrfN9JXNGHqzaox5TWkpexnocHG9vM"),
+  //janin.currency.createCurrency("Bitcoin", 0x00, 0x80, "5", "[LK]", "18kcrrfN9JXNGHqzaox5TWkpexnocHG9vM"),
   janin.currency.createCurrency("SHMN", 0x32, 0xd4, "8", "Y", "MBCPbyoXPfRdgjp3QQRuCYJhNg6rEQzqyD"),
   janin.currency.createCurrency("SHND", 0x3f, 0xbf, "7", "V", "SicY4b9xX5QqrF8yRWiN5aHsKsfg1JydFT"),
 ];
@@ -9515,28 +9519,28 @@ var ninja = {
 };
 ninja.privateKey = {
   isPrivateKey: function(key) {
-    return (Bitcoin.ECKey.isWalletImportFormat(key) || Bitcoin.ECKey.isCompressedWalletImportFormat(key) || Bitcoin.ECKey.isHexFormat(key) || Bitcoin.ECKey.isBase64Format(key) || Bitcoin.ECKey.isMiniFormat(key));
+    return (SHND.ECKey.isWalletImportFormat(key) || SHND.ECKey.isCompressedWalletImportFormat(key) || SHND.ECKey.isHexFormat(key) || SHND.ECKey.isBase64Format(key) || SHND.ECKey.isMiniFormat(key));
   },
   getECKeyFromAdding: function(privKey1, privKey2) {
     var n = EllipticCurve.getSECCurveByName("secp256k1").getN();
-    var ecKey1 = new Bitcoin.ECKey(privKey1);
-    var ecKey2 = new Bitcoin.ECKey(privKey2);
+    var ecKey1 = new SHND.ECKey(privKey1);
+    var ecKey2 = new SHND.ECKey(privKey2);
     // if both keys are the same return null
-    if (ecKey1.getBitcoinHexFormat() == ecKey2.getBitcoinHexFormat()) return null;
+    if (ecKey1.getSHNDHexFormat() == ecKey2.getSHNDHexFormat()) return null;
     if (ecKey1 == null || ecKey2 == null) return null;
-    var combinedPrivateKey = new Bitcoin.ECKey(ecKey1.priv.add(ecKey2.priv).mod(n));
+    var combinedPrivateKey = new SHND.ECKey(ecKey1.priv.add(ecKey2.priv).mod(n));
     // compressed when both keys are compressed
     if (ecKey1.compressed && ecKey2.compressed) combinedPrivateKey.setCompressed(true);
     return combinedPrivateKey;
   },
   getECKeyFromMultiplying: function(privKey1, privKey2) {
     var n = EllipticCurve.getSECCurveByName("secp256k1").getN();
-    var ecKey1 = new Bitcoin.ECKey(privKey1);
-    var ecKey2 = new Bitcoin.ECKey(privKey2);
+    var ecKey1 = new SHND.ECKey(privKey1);
+    var ecKey2 = new SHND.ECKey(privKey2);
     // if both keys are the same return null
-    if (ecKey1.getBitcoinHexFormat() == ecKey2.getBitcoinHexFormat()) return null;
+    if (ecKey1.getSHNDHexFormat() == ecKey2.getSHNDHexFormat()) return null;
     if (ecKey1 == null || ecKey2 == null) return null;
-    var combinedPrivateKey = new Bitcoin.ECKey(ecKey1.priv.multiply(ecKey2.priv).mod(n));
+    var combinedPrivateKey = new SHND.ECKey(ecKey1.priv.multiply(ecKey2.priv).mod(n));
     // compressed when both keys are compressed
     if (ecKey1.compressed && ecKey2.compressed) combinedPrivateKey.setCompressed(true);
     return combinedPrivateKey;
@@ -9549,7 +9553,7 @@ ninja.privateKey = {
   BIP38EncryptedKeyToByteArrayAsync: function(base58Encrypted, passphrase, callback) {
     var hex;
     try {
-      hex = Bitcoin.Base58.decode(base58Encrypted);
+      hex = SHND.Base58.decode(base58Encrypted);
     } catch (e) {
       callback(new Error(ninja.translator.get("detailalertnotvalidprivatekey")));
       return;
@@ -9566,7 +9570,7 @@ ninja.privateKey = {
     }
     var expChecksum = hex.slice(-4);
     hex = hex.slice(0, -4);
-    var checksum = Bitcoin.Util.dsha256(hex);
+    var checksum = SHND.Util.dsha256(hex);
     if (checksum[0] != expChecksum[0] || checksum[1] != expChecksum[1] || checksum[2] != expChecksum[2] || checksum[3] != expChecksum[3]) {
       callback(new Error(ninja.translator.get("detailalertnotvalidprivatekey")));
       return;
@@ -9605,14 +9609,14 @@ ninja.privateKey = {
       asBytes: true
     };
     var verifyHashAndReturn = function() {
-      var tmpkey = new Bitcoin.ECKey(decrypted); // decrypted using closure
-      var base58AddrText = tmpkey.setCompressed(isCompPoint).getBitcoinAddress(); // isCompPoint using closure
-      checksum = Bitcoin.Util.dsha256(base58AddrText); // checksum using closure
+      var tmpkey = new SHND.ECKey(decrypted); // decrypted using closure
+      var base58AddrText = tmpkey.setCompressed(isCompPoint).getSHNDAddress(); // isCompPoint using closure
+      checksum = SHND.Util.dsha256(base58AddrText); // checksum using closure
       if (checksum[0] != hex[3] || checksum[1] != hex[4] || checksum[2] != hex[5] || checksum[3] != hex[6]) {
         callback(new Error(ninja.translator.get("bip38alertincorrectpassphrase"))); // callback using closure
         return;
       }
-      callback(tmpkey.getBitcoinPrivateKeyByteArray()); // callback using closure
+      callback(tmpkey.getSHNDPrivateKeyByteArray()); // callback using closure
     };
     if (!isECMult) {
       var addresshash = hex.slice(3, 7);
@@ -9631,9 +9635,9 @@ ninja.privateKey = {
           passfactor = prefactorA;
         } else {
           var prefactorB = prefactorA.concat(ownerentropy); // ownerentropy using closure
-          passfactor = Bitcoin.Util.dsha256(prefactorB);
+          passfactor = SHND.Util.dsha256(prefactorB);
         }
-        var kp = new Bitcoin.ECKey(passfactor);
+        var kp = new SHND.ECKey(passfactor);
         var passpoint = kp.setCompressed(true).getPub();
         var encryptedpart2 = hex.slice(23, 23 + 16);
         var addresshashplusownerentropy = hex.slice(3, 3 + 12);
@@ -9649,7 +9653,7 @@ ninja.privateKey = {
             unencryptedpart1[i] ^= derived[i];
           }
           var seedb = unencryptedpart1.slice(0, 0 + 16).concat(unencryptedpart2.slice(8, 8 + 8));
-          var factorb = Bitcoin.Util.dsha256(seedb);
+          var factorb = SHND.Util.dsha256(seedb);
           var ps = EllipticCurve.getSECCurveByName("secp256k1");
           var privateKey = BigInteger.fromByteArrayUnsigned(passfactor).multiply(BigInteger.fromByteArrayUnsigned(factorb)).remainder(ps.getN());
           decrypted = privateKey.toByteArrayUnsigned();
@@ -9659,11 +9663,11 @@ ninja.privateKey = {
     }
   },
   BIP38PrivateKeyToEncryptedKeyAsync: function(base58Key, passphrase, compressed, callback) {
-    var privKey = new Bitcoin.ECKey(base58Key);
-    var privKeyBytes = privKey.getBitcoinPrivateKeyByteArray();
-    var address = privKey.setCompressed(compressed).getBitcoinAddress();
+    var privKey = new SHND.ECKey(base58Key);
+    var privKeyBytes = privKey.getSHNDPrivateKeyByteArray();
+    var address = privKey.setCompressed(compressed).getSHNDAddress();
     // compute sha256(sha256(address)) and take first 4 bytes
-    var salt = Bitcoin.Util.dsha256(address).slice(0, 4);
+    var salt = SHND.Util.dsha256(address).slice(0, 4);
     // derive key using scrypt
     var AES_opts = {
       mode: new Crypto.mode.ECB(Crypto.pad.NoPadding),
@@ -9677,8 +9681,8 @@ ninja.privateKey = {
       var flagByte = compressed ? 0xe0 : 0xc0;
       var encryptedKey = [0x01, 0x42, flagByte].concat(salt);
       encryptedKey = encryptedKey.concat(Crypto.AES.encrypt(privKeyBytes, derivedBytes.slice(32), AES_opts));
-      encryptedKey = encryptedKey.concat(Bitcoin.Util.dsha256(encryptedKey).slice(0, 4));
-      callback(Bitcoin.Base58.encode(encryptedKey));
+      encryptedKey = encryptedKey.concat(SHND.Util.dsha256(encryptedKey).slice(0, 4));
+      callback(SHND.Base58.encode(encryptedKey));
     });
   },
   BIP38GenerateIntermediatePointAsync: function(passphrase, lotNum, sequenceNum, callback) {
@@ -9701,7 +9705,7 @@ ninja.privateKey = {
     // 4) Derive a key from the passphrase using scrypt
     Crypto_scrypt(passphrase, ownerSalt, 16384, 8, 8, 32, function(prefactor) {
       // Take SHA256(SHA256(prefactor + ownerentropy)) and call this passfactor
-      var passfactorBytes = noNumbers ? prefactor : Bitcoin.Util.dsha256(prefactor.concat(ownerEntropy));
+      var passfactorBytes = noNumbers ? prefactor : SHND.Util.dsha256(prefactor.concat(ownerEntropy));
       var passfactor = BigInteger.fromByteArrayUnsigned(passfactorBytes);
       // 5) Compute the elliptic curve point G * passfactor, and convert the result to compressed notation (33 bytes)
       var ellipticCurve = EllipticCurve.getSECCurveByName("secp256k1");
@@ -9712,14 +9716,14 @@ ninja.privateKey = {
       if (noNumbers) magicBytes[7] = 0x53;
       var intermediate = magicBytes.concat(ownerEntropy).concat(passpoint);
       // base58check encode
-      intermediate = intermediate.concat(Bitcoin.Util.dsha256(intermediate).slice(0, 4));
-      callback(Bitcoin.Base58.encode(intermediate));
+      intermediate = intermediate.concat(SHND.Util.dsha256(intermediate).slice(0, 4));
+      callback(SHND.Base58.encode(intermediate));
     });
   },
   BIP38GenerateECAddressAsync: function(intermediate, compressed, callback) {
     // decode IPS
-    var x = Bitcoin.Base58.decode(intermediate);
-    //if(x.slice(49, 4) !== Bitcoin.Util.dsha256(x.slice(0,49)).slice(0,4)) {
+    var x = SHND.Base58.decode(intermediate);
+    //if(x.slice(49, 4) !== SHND.Util.dsha256(x.slice(0,49)).slice(0,4)) {
     //	callback({error: 'Invalid intermediate passphrase string'});
     //}
     var noNumbers = (x[7] === 0x53);
@@ -9734,16 +9738,16 @@ ninja.privateKey = {
     var rng = new SecureRandom();
     rng.nextBytes(seedB);
     // Take SHA256(SHA256(seedb)) to yield 32 bytes, call this factorb.
-    var factorB = Bitcoin.Util.dsha256(seedB);
-    // 3) ECMultiply passpoint by factorb. Use the resulting EC point as a public key and hash it into a Bitcoin
+    var factorB = SHND.Util.dsha256(seedB);
+    // 3) ECMultiply passpoint by factorb. Use the resulting EC point as a public key and hash it into a SHND
     // address using either compressed or uncompressed public key methodology (specify which methodology is used
-    // inside flagbyte). This is the generated Bitcoin address, call it generatedaddress.
+    // inside flagbyte). This is the generated SHND address, call it generatedaddress.
     var ec = EllipticCurve.getSECCurveByName("secp256k1").getCurve();
     var generatedPoint = ec.decodePointHex(ninja.publicKey.getHexFromByteArray(passpoint));
     var generatedBytes = generatedPoint.multiply(BigInteger.fromByteArrayUnsigned(factorB)).getEncoded(compressed);
-    var generatedAddress = (new Bitcoin.Address(Bitcoin.Util.sha256ripe160(generatedBytes))).toString();
+    var generatedAddress = (new SHND.Address(SHND.Util.sha256ripe160(generatedBytes))).toString();
     // 4) Take the first four bytes of SHA256(SHA256(generatedaddress)) and call it addresshash.
-    var addressHash = Bitcoin.Util.dsha256(generatedAddress).slice(0, 4);
+    var addressHash = SHND.Util.dsha256(generatedAddress).slice(0, 4);
     // 5) Now we will encrypt seedb. Derive a second key from passpoint using scrypt
     Crypto_scrypt(passpoint, addressHash.concat(ownerEntropy), 1024, 1, 1, 64, function(derivedBytes) {
       // 6) Do AES256Encrypt(seedb[0...15]] xor derivedhalf1[0...15], derivedhalf2), call the 16-byte result encryptedpart1
@@ -9764,8 +9768,8 @@ ninja.privateKey = {
       // 0x01 0x43 + flagbyte + addresshash + ownerentropy + encryptedpart1[0...7] + encryptedpart2
       var encryptedKey = [0x01, 0x43, flagByte].concat(addressHash).concat(ownerEntropy).concat(encryptedPart1.slice(0, 8)).concat(encryptedSeedB);
       // base58check encode
-      encryptedKey = encryptedKey.concat(Bitcoin.Util.dsha256(encryptedKey).slice(0, 4));
-      callback(generatedAddress, Bitcoin.Base58.encode(encryptedKey));
+      encryptedKey = encryptedKey.concat(SHND.Util.dsha256(encryptedKey).slice(0, 4));
+      callback(generatedAddress, SHND.Base58.encode(encryptedKey));
     });
   }
 };
@@ -9784,9 +9788,9 @@ ninja.publicKey = {
     key = key.toString();
     return /^0[2-3][A-Fa-f0-9]{64}$/.test(key);
   },
-  getBitcoinAddressFromByteArray: function(pubKeyByteArray) {
-    var pubKeyHash = Bitcoin.Util.sha256ripe160(pubKeyByteArray);
-    var addr = new Bitcoin.Address(pubKeyHash);
+  getSHNDAddressFromByteArray: function(pubKeyByteArray) {
+    var pubKeyHash = SHND.Util.sha256ripe160(pubKeyByteArray);
+    var addr = new SHND.Address(pubKeyHash);
     return addr.toString();
   },
   getHexFromByteArray: function(pubKeyByteArray) {
@@ -10142,7 +10146,7 @@ ninja.translator = {
   ],
   translations: {﻿
     "en": {
-      "defaultTitle": "WalletGenerator.net - Universal Paper wallet generator for Bitcoin and other cryptocurrencies",
+      "defaultTitle": "WalletGenerator.net - Universal Paper wallet generator for SHND and other cryptocurrencies",
       "title": "Paper Wallet Generator",
       "bulkgeneratingaddresses": "Generating addresses... ",
       "brainalertpassphrasetooshort": "The passphrase you entered is too short.\n\n",
@@ -10166,16 +10170,16 @@ ninja.translator = {
       "brainwallet": "Porte-Monnaie Cerveau",
       "detailwallet": "Détails du Porte-Monnaie",
       "donate": "Soutien",
-      "generatelabelbitcoinaddress": "Génération d'une nouvelle adresse...",
+      "generatelabelSHNDaddress": "Génération d'une nouvelle adresse...",
       "generatelabelmovemouse": "BOUGEZ votre souris pour ajouter de l'entropie...",
       "generatelabelkeypress": "OU tapez des lettres aléatoires dans le champ texte",
       "skipMessage": "Vous pouvez passer cette étape si vous ne voulez pas générer de porte-monnaie",
-      "singlelabelbitcoinaddress": "Adresse publique",
+      "singlelabelSHNDaddress": "Adresse publique",
       "singleshare": "PUBLIQUE",
       "singlelabelprivatekey": "Clé privée (format WIF)",
       "singlesecret": "SECRET",
       "securitystep0title": "Étape 0. Suivez les recommandations de la liste de sécurité",
-      "securitystep0": "La première étape est de <strong>télécharger</strong> ce site à partir de <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a> et d'ouvrir le fichier index.html directement sur votre ordinateur. Il est beaucoup trop facile d'ajouter du code malicieux dans les 6000+ lignes de javascript pour transmettre votre clé privée, et vous ne voulez pas voir vos fonds volés, n'est-ce pas ? Le versionnage de code source rend bien plus facile la vérification par des personnes extérieures du code qui est exécuté. Pour une sécurité supplémentaire, <strong>débranchez votre accès Internet</strong> pendant la génération de votre porte-monnaie.",
+      "securitystep0": "La première étape est de <strong>télécharger</strong> ce site à partir de <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a> et d'ouvrir le fichier index.html directement sur votre ordinateur. Il est beaucoup trop facile d'ajouter du code malicieux dans les 6000+ lignes de javascript pour transmettre votre clé privée, et vous ne voulez pas voir vos fonds volés, n'est-ce pas ? Le versionnage de code source rend bien plus facile la vérification par des personnes extérieures du code qui est exécuté. Pour une sécurité supplémentaire, <strong>débranchez votre accès Internet</strong> pendant la génération de votre porte-monnaie.",
       "securitystep1title": "Étape 1. Générez une nouvelle adresse",
       "securitystep1": "Choisissez votre monnaie et cliquez sur le bouton \"Générer une nouvelle adresse\".",
       "securitystep2title": "Étape 2. Imprimez votre porte-monnaie",
@@ -10201,7 +10205,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Phrase de passe:",
       "brainlabelconfirmlbl": "Confirmer la phrase de passe:",
       "brainalgorithm": "Algorithme: SHA256(phrase de passe)",
-      "brainlabelbitcoinaddress": "Adresse publique",
+      "brainlabelSHNDaddress": "Adresse publique",
       "brainlabelprivatekey": "Clé privée (format WIF):",
       "detaillabelenterprivatekey": "Entrez votre clé privée",
       "qrcaminstructiontitle": "Scannez votre QR code avec votre webcam",
@@ -10209,8 +10213,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Permission refusée. Votre navigateur devrait afficher un message demandant l'autorisation d'accéder à votre webcam. Cliquez sur le bouton \"Autoriser\" pour activer la webcam.</p>",
       "detaillabelpassphrase": "Phrase de passe BIP38",
       "detaillabelnote1": "Votre clé privée est un nombre secret unique que seul vous connaissez. Elle peut être encodé selon différents formats. Ci-dessous s'affiche l'adresse publique et la clé publique qui correspond à votre clé privée, ainsi que votre clé privée dans les formats les plus populaires (WIF, WIFC, HEX, B64).",
-      "detaillabelbitcoinaddress": "Adresse publique",
-      "detaillabelbitcoinaddresscomp": "Adresse publique compressée",
+      "detaillabelSHNDaddress": "Adresse publique",
+      "detaillabelSHNDaddresscomp": "Adresse publique compressée",
       "detaillabelpublickey": "Clé publique (130 caractères [0-9A-F]):",
       "detaillabelpublickeycomp": "Clé publique compressée (66 caractères [0-9A-F]):",
       "detaillabelprivwif": "Clé privée WIF<br>51 caractère Base58",
@@ -10227,7 +10231,7 @@ ninja.translator = {
       "footerlabelgithub": "Télécharger (dépôt GitHub)",
       "footerlabelcopyright2": "Les licences javascript sont incluses dans le code source.",
       "footerlabelnowarranty": "Aucune garantie.",
-      "defaultTitle": "Générateur de porte-monnaie papier universel pour Bitcoin et autres monnaies cryptographiques",
+      "defaultTitle": "Générateur de porte-monnaie papier universel pour SHND et autres monnaies cryptographiques",
       "title": "Générateur de porte-monnaie papier",
       "brainalertpassphrasewarning": "Attention: choisir une passe de phrase forte est important pour éviter les attaques par bruteforce, pour deviner votre phrase de passe et voler vos fonds.",
       "brainalertpassphrasetooshort": "La phrase de passe entrée est trop courte.",
@@ -10251,16 +10255,16 @@ ninja.translator = {
       "brainwallet": "Gedächtnis Geldbörse",
       "detailwallet": "Geldbörse Details",
       "donate": "Spende!",
-      "generatelabelbitcoinaddress": "Generiere neuen Schlüssel...",
+      "generatelabelSHNDaddress": "Generiere neuen Schlüssel...",
       "generatelabelmovemouse": "BEWEGEN Sie bitte Ihre Maus für etwas Entropie...",
       "generatelabelkeypress": "ODER tippen Sie etwas zufälligen Text in diese Textbox",
       "skipMessage": "Sie können diesen Schritt überspringen, falls Sie nicht den Zufallsgenerator verwenden möchten.",
-      "singlelabelbitcoinaddress": "öffentliche Adresse",
+      "singlelabelSHNDaddress": "öffentliche Adresse",
       "singleshare": "ÖFFENTLICH",
       "singlelabelprivatekey": "Privater Schlüssel (Format: WIF)",
       "singlesecret": "GEHEIM",
       "securitystep0title": "Folgen Sie der Sicherheits Checkliste",
-      "securitystep0": "Zu Beginn <strong>downladen</strong> Sie dieses Programm von der <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a> Webseite und öffnen die Datei index.html direkt auf Ihrem Computer, Notebook oder Tablet. Angreifer könnten anderenfalls auf einer Webseite möglicherweise den mehr als 6000 Zeilen umfassenden Code verändern und Ihren privaten Schlüssel abgreifen. Für zusätzliche Sicherheit unterbrechen Sie die Verbindung zum Internet, während Sie Ihre Geldbörse(n) generieren.",
+      "securitystep0": "Zu Beginn <strong>downladen</strong> Sie dieses Programm von der <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a> Webseite und öffnen die Datei index.html direkt auf Ihrem Computer, Notebook oder Tablet. Angreifer könnten anderenfalls auf einer Webseite möglicherweise den mehr als 6000 Zeilen umfassenden Code verändern und Ihren privaten Schlüssel abgreifen. Für zusätzliche Sicherheit unterbrechen Sie die Verbindung zum Internet, während Sie Ihre Geldbörse(n) generieren.",
       "securitystep1title": "Schritt 1: Generierung eines neuen Schlüssels",
       "securitystep1": "Wählen Sie eine Kryptowährung und wählen Sie \"Generiere neuen Schlüssel\".",
       "securitystep2title": "Schritt 2: Ausdruck Ihrer Papier Geldbörse",
@@ -10284,7 +10288,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Passwort Phrase (z. B. Satz mit Minus-Zeichen verbunden):",
       "brainlabelconfirmlbl": "Passwort Phrase bestätigen:",
       "brainalgorithm": "Algorithmus: SHA256(Passwort Phrase)",
-      "brainlabelbitcoinaddress": "Öffentliche Adresse",
+      "brainlabelSHNDaddress": "Öffentliche Adresse",
       "brainlabelprivatekey": "Privater Schlüssel (WIF Format):",
       "detaillabelenterprivatekey": "Geben Sie Ihren privaten Schlüssel ein",
       "qrcaminstructiontitle": "Scannen Sie Ihren QR-Code mit Ihrer Webcam",
@@ -10292,8 +10296,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Zugriff verweigert. Ihr Browser sollte eine Warnmeldung anzeigen, die den Zugriff auf Ihre Webcam authorisiert. Klicken Sie bitte auf \"Autorisieren\", um Ihre Webcam zu aktivieren.</p>",
       "detaillabelpassphrase": "BIP38 Passwort Phrase eingeben",
       "detaillabelnote1": "Ihr privater Schlüssel ist ein weltweit einmaliger Schlüssel, den nur Sie kennen. Dieser kann in verschiedenen Format encodiert werden. Unterhalb wird die öffentliche Adresse, der dazugehörige öffentliche Schlüssel und Ihr privater Schlüssel in den häufig verwendeten Formaten (WIF, WIFC, HEX, B64) dargestellt.",
-      "detaillabelbitcoinaddress": "Öffentliche Adresse",
-      "detaillabelbitcoinaddresscomp": "Öffentliche Adresse komprimiert",
+      "detaillabelSHNDaddress": "Öffentliche Adresse",
+      "detaillabelSHNDaddresscomp": "Öffentliche Adresse komprimiert",
       "detaillabelpublickey": "Öffentliche Adresse (130 Zeichen [0-9A-F]):",
       "detaillabelpublickeycomp": "Öffentliche Adresse komprimiert (66 Zeichen [0-9A-F]):",
       "detaillabelprivwif": "Privater Schlüssel WIF<br>51 Zeichen Base58",
@@ -10310,7 +10314,7 @@ ninja.translator = {
       "footerlabelgithub": "Download (GitHub Depot)",
       "footerlabelcopyright2": "JavaScript Copyright Rechte sind im Quelltext inkludiert.",
       "footerlabelnowarranty": "Nutzung auf eigene Gefahr. Haftungsausschluss für etwaige Schäden.",
-      "defaultTitle": "WalletGenerator.Net - Universeller Papier Geldbörsen Generator für Kryptowährungen wie Bitcoin und andere",
+      "defaultTitle": "WalletGenerator.Net - Universeller Papier Geldbörsen Generator für Kryptowährungen wie SHND und andere",
       "title": "Papier Geldbörse für Kryptowährung",
       "brainalertpassphrasewarning": "Achtung: Die Verwendung einer möglichst langen und sicheren Passwort Phrase ist wichtig, weil anderenfalls Ihr Passwort erraten und damit Ihr Guthaben gestolen werden kann.",
       "brainalertpassphrasetooshort": "Die von Ihnen eingegebene Passwort Phrase ist zu kurz.",
@@ -10334,16 +10338,16 @@ ninja.translator = {
       "brainwallet": "Brein Portomonee",
       "detailwallet": "Portomonee Details",
       "donate": "Steun ons",
-      "generatelabelbitcoinaddress": "Genereren van een nieuw adres...",
+      "generatelabelSHNDaddress": "Genereren van een nieuw adres...",
       "generatelabelmovemouse": "BEWEEG je muis in de rondte om wat willekeurigheid toe te voegen...",
       "generatelabelkeypress": "OF type wat willekeurige karakters in deze textbox",
       "skipMessage": "Je kunt deze stap overslaan als je geen gebruik wilt maken van de willekeurige sleutel generator",
-      "singlelabelbitcoinaddress": "Publiek Adres",
+      "singlelabelSHNDaddress": "Publiek Adres",
       "singleshare": "DELEN",
       "singlelabelprivatekey": "Prive Sleutel (Portomonee Import Formaat)",
       "singlesecret": "GEHEIM",
       "securitystep0title": "Stap 0. Volg de veiligheids controlelijst aanbevelingen",
-      "securitystep0": "De eerste stap is om deze website te <strong>downloaden</strong> van <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a> en vervolgens het bestand index.html direct vanaf je computer te openen. Het is voor hackers gewoon te makkelijk om kwaadaardige code tussen de 6000+ regels javascript toe te voegen en om je prive sleutel uit te lezen, en je wilt natuurlijk niet zien hoe je fondsen gestolen worden. Versiebeheer maakt het makkelijk om te controleren wat er daadwerkelijk gerunt wordt. Om er extra zeker van te zijn dat je veilig bezig bent kun je het beste connectie met het internet verbreken.",
+      "securitystep0": "De eerste stap is om deze website te <strong>downloaden</strong> van <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a> en vervolgens het bestand index.html direct vanaf je computer te openen. Het is voor hackers gewoon te makkelijk om kwaadaardige code tussen de 6000+ regels javascript toe te voegen en om je prive sleutel uit te lezen, en je wilt natuurlijk niet zien hoe je fondsen gestolen worden. Versiebeheer maakt het makkelijk om te controleren wat er daadwerkelijk gerunt wordt. Om er extra zeker van te zijn dat je veilig bezig bent kun je het beste connectie met het internet verbreken.",
       "securitystep1title": "Stap 1. Geneer een nieuw adres",
       "securitystep1": "Kies een valuta en klik op de \"Generate new address\" knop.",
       "securitystep2title": "Stap 2. Print de Papieren Portomonee",
@@ -10367,7 +10371,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Voer wachtwoordzin in:",
       "brainlabelconfirmlbl": "Bevestig wachtwoordzin:",
       "brainalgorithm": "Algorithm: SHA256(wachtwoordzin)",
-      "brainlabelbitcoinaddress": "Publiek Adres:",
+      "brainlabelSHNDaddress": "Publiek Adres:",
       "brainlabelprivatekey": "Prive sleutel (Portomonee Import Formaat):",
       "detaillabelenterprivatekey": "Voeg prive sleutel toe",
       "qrcaminstructiontitle": "Scan QR code in door gebruik te maken van je webcam",
@@ -10375,8 +10379,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Toegang afgewezen. Je browser zou een bericht moeten tonen waarbij toegang tot je webcam wordt gevraagd. Klik alsjeblief op de \"Allow\" knop om je webcam toegang te geven.</p>",
       "detaillabelpassphrase": "Voeg een BIP38 wachtwoordzin toe",
       "detaillabelnote1": "Je prive sleutel is een unieke geheime nummer waarvan alleen jij op de hoogte bent. Het kan encoded worden in een aantal verschillende formaten. Hieronder laten we de Publiek adres en Publieke sleutel zien dat correspondeerd met je prive sleutel zowel als je prive sleutel in de meest populaire encoding formaten (WIF, WIFC, HEX, B64).",
-      "detaillabelbitcoinaddress": "Publiek Adres",
-      "detaillabelbitcoinaddresscomp": "Publiek Adres gecomprimeerd",
+      "detaillabelSHNDaddress": "Publiek Adres",
+      "detaillabelSHNDaddresscomp": "Publiek Adres gecomprimeerd",
       "detaillabelpublickey": "Publieke Sleutel (130 karakters [0-9A-F]):",
       "detaillabelpublickeycomp": "Publieke Sleutel (gecomprimeerd, 66 karakters [0-9A-F]):",
       "detaillabelprivwif": "Prive Sleutel WIF<br>51 karakters Base58",
@@ -10393,7 +10397,7 @@ ninja.translator = {
       "footerlabelgithub": "Download (GitHub Repository)",
       "footerlabelcopyright2": "JavaScript copyrights zijn toegevoegd in de code.",
       "footerlabelnowarranty": "Geen garantie.",
-      "defaultTitle": "WalletGenerator.net - Universeel Papieren portomonee generator voor Bitcoin en andere cyrptocurrencies",
+      "defaultTitle": "WalletGenerator.net - Universeel Papieren portomonee generator voor SHND en andere cyrptocurrencies",
       "title": "Papieren Portomonee Generator",
       "brainalertpassphrasewarning": "Waarschuwing: Het kiezen van een sterk wachtwoordzin is belangrijk om geforceerde inbraak pogingen om je wachtwoordzin te raden en het stelen van je munten te voorkomen.",
       "brainalertpassphrasetooshort": "De wachtwoordzin die je ingevuld hebt is te kort.",
@@ -10417,16 +10421,16 @@ ninja.translator = {
       "brainwallet": "Carteira Brain",
       "detailwallet": "Detalhes da Carteira",
       "donate": "Apoie",
-      "generatelabelbitcoinaddress": "Gerando novo endereço...",
+      "generatelabelSHNDaddress": "Gerando novo endereço...",
       "generatelabelmovemouse": "MOVA seu mouse por aí para aumentar um pouco a aleatoriedade...",
       "generatelabelkeypress": "OU digite alguns caracteres aleatórios nessa caixa de texto",
       "skipMessage": "Você pode pular esse passo caso você não planeje usar o gerador de chave aleatória.",
-      "singlelabelbitcoinaddress": "Endereço público",
+      "singlelabelSHNDaddress": "Endereço público",
       "singleshare": "COMPARTILHE",
       "singlelabelprivatekey": "Chave Privada (Formato de Importação da Carteira)",
       "singlesecret": "SEGREDO",
       "securitystep0title": "Passo 0. Siga a lista de recomendações de segurança",
-      "securitystep0": "O primeiro passo é <strong>baixar</strong> esse website do <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a> e abrir o arquivo index.html diretamente de seu computador. É simplesmente muito fácil de esconder algum código malicioso em mais de 6000 linhas de JavaScript para vazar sua chave privada, e você não quer ver seus fundos serem roubados. O controle de versão de código torna muito mais fácil verificar de forma intercalada o que realmente executa. Para segurança extra, <strong>desconecte seu acesso a internet</strong> enquanto gerando sua carteira.",
+      "securitystep0": "O primeiro passo é <strong>baixar</strong> esse website do <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a> e abrir o arquivo index.html diretamente de seu computador. É simplesmente muito fácil de esconder algum código malicioso em mais de 6000 linhas de JavaScript para vazar sua chave privada, e você não quer ver seus fundos serem roubados. O controle de versão de código torna muito mais fácil verificar de forma intercalada o que realmente executa. Para segurança extra, <strong>desconecte seu acesso a internet</strong> enquanto gerando sua carteira.",
       "securitystep1title": "Passo 1. Gere um endereço novo",
       "securitystep1": "Escolha sua moeda e clique no botão \"Generate new address\" (gerar novo endereço).",
       "securitystep2title": "Passo 2. Imprima a Carteira de Papel",
@@ -10452,7 +10456,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Insira a Senha:",
       "brainlabelconfirmlbl": "Confirme a Senha:",
       "brainalgorithm": "Algoritmo: SHA256(senha)",
-      "brainlabelbitcoinaddress": "Endereço público:",
+      "brainlabelSHNDaddress": "Endereço público:",
       "brainlabelprivatekey": "Chave privada (Formato de Importação da Carteira):",
       "detaillabelenterprivatekey": "Insira a Chave Privada:",
       "qrcaminstructiontitle": "Escaneie o Código QR usando a sua câmera.",
@@ -10460,8 +10464,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Permissão negada. Seu navegador deve mostrar uma mensagem requisitando o acesso a sua câmera. Por favor, clique no botão \"Permitir\" para habilitar a câmera.</p>",
       "detaillabelpassphrase": "Insira a Senha BIP38",
       "detaillabelnote1": "Sua Chave Privada é um segredo único que só você sabe. Ela pode ser codificada em diferentes formatos. A baixo está o Endereço Público e a Chave Pública que correspondem a sua Chave Privada, assim como sua Chave Privada na maioria dos formatos populares (WIF, WIFC, HEX, B64).",
-      "detaillabelbitcoinaddress": "Endereço Público",
-      "detaillabelbitcoinaddresscomp": "Endereço Público Comprimido",
+      "detaillabelSHNDaddress": "Endereço Público",
+      "detaillabelSHNDaddresscomp": "Endereço Público Comprimido",
       "detaillabelpublickey": "Chave Pública (130 caracteres [0-9A-F]):",
       "detaillabelpublickeycomp": "Chave Pública (comprimida, 66 caracteres [0-9A-F]):",
       "detaillabelprivwif": "Chave Privada WIF<br>51 caracteres em Base58",
@@ -10478,7 +10482,7 @@ ninja.translator = {
       "footerlabelgithub": "Download (GitHub Repository)",
       "footerlabelcopyright2": "Avisos de Copyright do JavaScript estão incluídos no código-fonte.",
       "footerlabelnowarranty": "Sem garantias.",
-      "defaultTitle": "WalletGenerator.net - Gerador Universal de Carteira de Papel para Bitcoin e outras Cripto-moedas.",
+      "defaultTitle": "WalletGenerator.net - Gerador Universal de Carteira de Papel para SHND e outras Cripto-moedas.",
       "title": "Gerador de Carteira de Papel",
       "brainalertpassphrasewarning": "Aviso: Escolher uma senha forte é importante para evitar ataques de bruteforce para advinhar sua senha e roubar seus fundos.",
       "brainalertpassphrasetooshort": "A senha que você inseriu é pequena de mais.",
@@ -10502,16 +10506,16 @@ ninja.translator = {
       "brainwallet": "\"Умственный\" кошелек",
       "detailwallet": "Подробности о кошельке",
       "donate": "Поддержка",
-      "generatelabelbitcoinaddress": "Создается новый адрес...",
+      "generatelabelSHNDaddress": "Создается новый адрес...",
       "generatelabelmovemouse": "ПОДВИГАЙТЕ мышкой, чтобы сделать генерацию немного более случайной...",
       "generatelabelkeypress": "ИЛИ введите случайные символы в это поле для текста",
       "skipMessage": "Этот шаг можно пропустить, если вы не планируете использовать генератор случайных ключей",
-      "singlelabelbitcoinaddress": "Открытый адрес",
+      "singlelabelSHNDaddress": "Открытый адрес",
       "singleshare": "ОТКРЫТЫЙ",
       "singlelabelprivatekey": "Закрытый ключ (в формате импорта в кошелек - WIF)",
       "singlesecret": "СЕКРЕТНЫЙ",
       "securitystep0title": "Шаг 0. Следуйте рекомендациям в \"Перечне безопасности\"",
-      "securitystep0": "Первым делом <strong>скачайте</strong> этот веб-сайт с <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a>, распакуйте и откройте файл index.html непосредственно с Вашего компьютера. Cпрятать вредоносный код в 6000+ строках javascript, чтобы украсть Ваш закрытый ключ, довольно просто, а Вам вряд ли этого хочется. Система контроля версий позволяет значительно упростить взаимную проверку исполняемого кода. Для большей безопасности <strong>отключитесь от Интернета</strong> на время создания кошелька.",
+      "securitystep0": "Первым делом <strong>скачайте</strong> этот веб-сайт с <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a>, распакуйте и откройте файл index.html непосредственно с Вашего компьютера. Cпрятать вредоносный код в 6000+ строках javascript, чтобы украсть Ваш закрытый ключ, довольно просто, а Вам вряд ли этого хочется. Система контроля версий позволяет значительно упростить взаимную проверку исполняемого кода. Для большей безопасности <strong>отключитесь от Интернета</strong> на время создания кошелька.",
       "securitystep1title": "Шаг 1. Создайте новый адрес",
       "securitystep1": "Выберите Вашу валюту и нажмите на кнопку \"Создать новый адрес\"",
       "securitystep2title": "Шаг 2. Распечатайте бумажный кошелек",
@@ -10535,7 +10539,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Введите кодовую фразу:",
       "brainlabelconfirmlbl": "Подтвердите кодовую фразу:",
       "brainalgorithm": "Алгоритм: SHA256(кодовая фраза)",
-      "brainlabelbitcoinaddress": "Открытый адрес:",
+      "brainlabelSHNDaddress": "Открытый адрес:",
       "brainlabelprivatekey": "Закрытый ключ (в формате импорта в кошелек - WIF):",
       "detaillabelenterprivatekey": "Введите закрытый ключ",
       "qrcaminstructiontitle": "Сосканируйте QR-код с помощью Вашей камеры",
@@ -10543,8 +10547,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Доступ запрещен. Ваш браюзер должен отобразить сообщение с запросом доступа к Вашей камере. Пожалуйста, нажмите кнопку \"Разрешить\", чтобы предоставить доступ к Вашей камере.</p>",
       "detaillabelpassphrase": "Введите кодовую фразу BIP38",
       "detaillabelnote1": "Ваш закрытый ключ - это уникальный секретный номер, который знаете только Вы. Он может быть представлен в различных форматах. Ниже показаны открытый адрес и открытый ключ, соответствующие Вашему закрытому ключу, а также Ваш закрытый ключ в наиболее популярных форматах (WIF, WIFC, HEX, B64).",
-      "detaillabelbitcoinaddress": "Открытый адрес",
-      "detaillabelbitcoinaddresscomp": "Сжатый открытый адрес",
+      "detaillabelSHNDaddress": "Открытый адрес",
+      "detaillabelSHNDaddresscomp": "Сжатый открытый адрес",
       "detaillabelpublickey": "Открытый ключ (130 символов [0-9A-F]):",
       "detaillabelpublickeycomp": "Открытый ключ (сжатый, 66 символов [0-9A-F]):",
       "detaillabelprivwif": "Закрытый ключ WIF<br>51 символ Base58",
@@ -10561,7 +10565,7 @@ ninja.translator = {
       "footerlabelgithub": "Скачать (репозиторий на GitHub)",
       "footerlabelcopyright2": "Копирайты на JavaScript включены в исходники.",
       "footerlabelnowarranty": "Гарантии не предоставляются.",
-      "defaultTitle": "WalletGenerator.net - Универсальный генератор бумажных кошельков для Bitcoin и других криптовалют",
+      "defaultTitle": "WalletGenerator.net - Универсальный генератор бумажных кошельков для SHND и других криптовалют",
       "title": "Генератор бумажных кошельков",
       "brainalertpassphrasewarning": "Внимание: Выбор сильной кодовой фразы очень важен для предотвращения взлома путем прямого перебора, совершаемого злоумышленниками с целью похитить Ваши деньги.",
       "brainalertpassphrasetooshort": "Введенная Вами кодовая слишком короткая.",
@@ -10585,16 +10589,16 @@ ninja.translator = {
       "brainwallet": "Cartera mnemotécnica",
       "detailwallet": "Detalles de la cartera",
       "donate": "Ayúdanos",
-      "generatelabelbitcoinaddress": "Generando nueva dirección...",
+      "generatelabelSHNDaddress": "Generando nueva dirección...",
       "generatelabelmovemouse": "MUEVE el ratón para añadir aleatoriedad extra...",
       "generatelabelkeypress": "O escribe caracteres aleatorios en el cuadro de texto",
       "skipMessage": "Puedes saltar este paso si no planeas usar el generador aleatorio de claves.",
-      "singlelabelbitcoinaddress": "Dirección Pública",
+      "singlelabelSHNDaddress": "Dirección Pública",
       "singleshare": "COMPARTIR",
       "singlelabelprivatekey": "Clave Privada (formato de importación de cartera, WIF)",
       "singlesecret": "SECRETO",
       "securitystep0title": "Paso 0. Sigue las recomendaciones de la lista de verificación de seguridad",
-      "securitystep0": "El primer paso es <strong>descargar</strong> este website de <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a> y abrir el archivo index.html directamente desde tu ordenador. Simplemente, es muy sencillo colar algo de código maligno en el javascript de 6000+ líneas para filtrar tu clave privada, y no querrás ver tus fondos siendo robados. El código de control de versiones facilita mucho saber qué ha funcionado realmente hasta la fecha. Para mayor seguridad, <strong>desconecta tu acceso a internet</strong> mientras estás generando tu cartera.",
+      "securitystep0": "El primer paso es <strong>descargar</strong> este website de <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a> y abrir el archivo index.html directamente desde tu ordenador. Simplemente, es muy sencillo colar algo de código maligno en el javascript de 6000+ líneas para filtrar tu clave privada, y no querrás ver tus fondos siendo robados. El código de control de versiones facilita mucho saber qué ha funcionado realmente hasta la fecha. Para mayor seguridad, <strong>desconecta tu acceso a internet</strong> mientras estás generando tu cartera.",
       "securitystep1title": "Paso 1. Genera una nueva dirección",
       "securitystep1": "Elige tu criptodivisa y haz click en el botón \"Generar nueva dirección\".",
       "securitystep2title": "Paso 2. Imprime la cartera de papel",
@@ -10618,7 +10622,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Introduce contraseña:",
       "brainlabelconfirmlbl": "Confirma la contraseña:",
       "brainalgorithm": "Algoritmo: SHA256(contraseña)",
-      "brainlabelbitcoinaddress": "Dirección pública:",
+      "brainlabelSHNDaddress": "Dirección pública:",
       "brainlabelprivatekey": "Clave privada (formato de importación de cartera, WIF):",
       "detaillabelenterprivatekey": "Introduce la clave privada",
       "qrcaminstructiontitle": "Escanear código QR usando la cámara",
@@ -10626,8 +10630,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Permiso denegado. Tu navegador debería mostrarte un mensaje solicitándote acceso a la cámara. Por favor, haz click en el botón \"Permitir\" para habilitar la cámara.</p>",
       "detaillabelpassphrase": "Introduzca la contraseña BIP38",
       "detaillabelnote1": "Tu clave privada es un número secreto único que sólo tú sabes. Puede codificarse en varios formatos. A continuación mostramos la dirección pública y la clave pública que corresponden a tu clave privada así como tu clave privada en los formatos de codificación más populares (WIF, WIFC, HEX, B64).",
-      "detaillabelbitcoinaddress": "Dirección pública",
-      "detaillabelbitcoinaddresscomp": "Dirección pública comprimida",
+      "detaillabelSHNDaddress": "Dirección pública",
+      "detaillabelSHNDaddresscomp": "Dirección pública comprimida",
       "detaillabelpublickey": "Clave pública (130 caracteres [0-9A-F]):",
       "detaillabelpublickeycomp": "Clave pública (comprimida, 66 caracteres [0-9A-F]):",
       "detaillabelprivwif": "Clave privada WIF<br>51 caracteres Base58",
@@ -10644,7 +10648,7 @@ ninja.translator = {
       "footerlabelgithub": "Descargar (Repositorio GitHub)",
       "footerlabelcopyright2": "Los copyrights del JavaScript se incluyen en el código fuente.",
       "footerlabelnowarranty": "Sin garantía.",
-      "defaultTitle": "WalletGenerator.net - Generador universal de carteras de papel para Bitcoin y otras criptodivisas",
+      "defaultTitle": "WalletGenerator.net - Generador universal de carteras de papel para SHND y otras criptodivisas",
       "title": "Generador de carteras de papel",
       "brainalertpassphrasewarning": "Atención: Elegir una contraseña robusta es importante para evitar los intentos de adivinarla mediante la fuerza bruta y que te roben tus monedas.",
       "brainalertpassphrasetooshort": "La contraseña introducida es demasiado corta.",
@@ -10668,23 +10672,23 @@ ninja.translator = {
       "brainwallet": "Brain Wallet",
       "vanitywallet": "Vanity Wallet",
       "detailwallet": "Dettagli portafogli",
-      "singletip1": "<b>Un portafogli bitcoin</b> è composto semplicemente da una coppia di valori: l'indirizzo e la sua chiave privata. Un portafogli è stato appena generato sul tuo browser e mostrato sopra.",
-      "singletip2": "<b>Per mettere in sicurezza questo portafogli</b> devi stampare o quantomeno salvare l'indirizzo bitcoin e la Chiave privata. È molto importante fare una copia di backup della chiave privata e conservarla in un posto sicuro. Questo sito non conosce la tua chiave privata. Se hai familiarità con PGP, puoi scaricare per intero questa pagina HTML e controllare la sua autentiticità. Puoi confrontare il codice SHA1 della pagina scaricata con il codice firmato dall'autore che trovi nella cronologia delle versioni (in fondo alla pagina). Se abbandoni/aggiorni la pagina web oppure premi il tasto Genera, un nuovo indirizzo sostituirà quello vecchio che non potrà più essere recuperato. La chiave privata dovrebbe essere tenuta segreta, chiunque conosca la chiave privata può avere accesso e spendere i tuoi bitcoin. Se stampi il tuo portafogli conservalo in una busta di plastica sigillata per tenerla al riparo dall'acqua. Tratta quanto stampato alla stregua di una banconota.",
-      "singletip3": "<b>Ricevi fondi</b> su questo portafogli mostrando l'indirizzo bitcoin per il versamento.",
-      "singletip4": "<b>Controlla il saldo</b> visitando blockchain.info o blockexplorer.com cercando il tuo indirizzo bitcoin.",
-      "singletip5": "<b>Spendi i tuoi bitcoin</b> aprendo un account su blockchain.info o mtgox.com usando la chiave privata. Puoi anche spendere i tuoi bitcoin scaricando il popolare client p2p ed importando in esso il portafogli. Tieni presente che quando importi una chiave nel client p2p, nel momento in cui spendi le monete, la chiave viene raggruppata insieme alle altre presenti nel programma con i restanti bitcoin. Quando esegui una transazione gli spiccioli verranno invitati verso un altro indirizzo all'interno del tuo portafogli gestito dal client p2p. Quindi dovresti tenere un backup del portafogli contenuto nel client p2p e tenere questo in un posto sicuro fin tanto terrai dei bitcoin lì. Satoshi consiglia di non cancellare mai un portafogli. ",
+      "singletip1": "<b>Un portafogli SHND</b> è composto semplicemente da una coppia di valori: l'indirizzo e la sua chiave privata. Un portafogli è stato appena generato sul tuo browser e mostrato sopra.",
+      "singletip2": "<b>Per mettere in sicurezza questo portafogli</b> devi stampare o quantomeno salvare l'indirizzo SHND e la Chiave privata. È molto importante fare una copia di backup della chiave privata e conservarla in un posto sicuro. Questo sito non conosce la tua chiave privata. Se hai familiarità con PGP, puoi scaricare per intero questa pagina HTML e controllare la sua autentiticità. Puoi confrontare il codice SHA1 della pagina scaricata con il codice firmato dall'autore che trovi nella cronologia delle versioni (in fondo alla pagina). Se abbandoni/aggiorni la pagina web oppure premi il tasto Genera, un nuovo indirizzo sostituirà quello vecchio che non potrà più essere recuperato. La chiave privata dovrebbe essere tenuta segreta, chiunque conosca la chiave privata può avere accesso e spendere i tuoi SHND. Se stampi il tuo portafogli conservalo in una busta di plastica sigillata per tenerla al riparo dall'acqua. Tratta quanto stampato alla stregua di una banconota.",
+      "singletip3": "<b>Ricevi fondi</b> su questo portafogli mostrando l'indirizzo SHND per il versamento.",
+      "singletip4": "<b>Controlla il saldo</b> visitando blockchain.info o blockexplorer.com cercando il tuo indirizzo SHND.",
+      "singletip5": "<b>Spendi i tuoi SHND</b> aprendo un account su blockchain.info o mtgox.com usando la chiave privata. Puoi anche spendere i tuoi SHND scaricando il popolare client p2p ed importando in esso il portafogli. Tieni presente che quando importi una chiave nel client p2p, nel momento in cui spendi le monete, la chiave viene raggruppata insieme alle altre presenti nel programma con i restanti SHND. Quando esegui una transazione gli spiccioli verranno invitati verso un altro indirizzo all'interno del tuo portafogli gestito dal client p2p. Quindi dovresti tenere un backup del portafogli contenuto nel client p2p e tenere questo in un posto sicuro fin tanto terrai dei SHND lì. Satoshi consiglia di non cancellare mai un portafogli. ",
       "tagline": "Open Source JavaScript Client-Side Multi Coin Wallet Generator",
       "donate": "Supporto",
-      "generatelabelbitcoinaddress": "Generazione Indirizzo Bitcoin...",
+      "generatelabelSHNDaddress": "Generazione Indirizzo SHND...",
       "generatelabelmovemouse": "MUOVI il tuo mouse per contribuire alla generazione dei numeri casuali...",
       "generatelabelkeypress": "OPPURE digitare lettere casuali nel campo di testo",
       "skipMessage": "È possibile saltare questo passaggio se non si desidera generare portafogli",
-      "singlelabelbitcoinaddress": "Indirizzo Pubblico",
+      "singlelabelSHNDaddress": "Indirizzo Pubblico",
       "singleshare": "PUBBLICO",
       "singlelabelprivatekey": "Chiave Privata (formato WIF)",
       "singlesecret": "SEGRETO",
       "securitystep0title": "Passo 0. Seguire le raccomandazioni dell'elenco di sicurezza",
-      "securitystep0": "Il primo passo è quello di <strong> scaricare </ strong> questo sito da <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a> ed aprire il file index.html direttamente nel computer.È troppo facile aggiungere codice dannoso alle oltre 6000 linee di script Java per intercettare la vostra chiave privata, e non vuoi vedere i tuoi fondi rubati, non è vero? La versione del codice sorgente rende molto più semplice verificare da parte di persone esterne il codice che viene eseguito. Per una maggiore sicurezza, <strong> scollegare l'accesso a Internet </ strong> durante la generazione del portafogli.",
+      "securitystep0": "Il primo passo è quello di <strong> scaricare </ strong> questo sito da <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a> ed aprire il file index.html direttamente nel computer.È troppo facile aggiungere codice dannoso alle oltre 6000 linee di script Java per intercettare la vostra chiave privata, e non vuoi vedere i tuoi fondi rubati, non è vero? La versione del codice sorgente rende molto più semplice verificare da parte di persone esterne il codice che viene eseguito. Per una maggiore sicurezza, <strong> scollegare l'accesso a Internet </ strong> durante la generazione del portafogli.",
       "securitystep1title": "Passo 1. Generare un nuovo indirizzo",
       "securitystep1": "Scegli la tua valuta e fai clic sul pulsante \"Generazione nuovo indirizzo\".",
       "securitystep2title": "Passo 2. Stampare il Vostro portafogli",
@@ -10710,16 +10714,16 @@ ninja.translator = {
       "brainlabelenterPassphraselbl": "Frase d'accesso:",
       "brainlabelconfirmlbl": "Conferma Frase d'accesso:",
       "brainalgorithm": "Algoritmo: SHA256(Frase d'accesso)",
-      "brainlabelbitcoinaddress": "Indirizzo pubblico",
+      "brainlabelSHNDaddress": "Indirizzo pubblico",
       "brainlabelprivatekey": "Chiave privata (formato WIF):",
       "detaillabelenterprivatekey": "Inserisci la Chiave Privata",
       "qrcaminstructiontitle": "Scansiona il tuo codice QR con la tua webcam",
       "paperqrnotsupported": "Spiacenti, ma il tuo browser non supporta i controlli della webcam HTML5. Provare con una versione recente di Firefox (consigliata), Chrome o Opera",
       "paperqrpermissiondenied": "<p>Permesso negato. Il tuo browser dovrebbe visualizzare un messaggio che richiede l'autorizzazione per accedere alla tua webcam. Fare clic sul pulsante \"Permetti\" per attivare la webcam.</p>",
       "detaillabelPassphrase": "Inserisci Passphrase BIP38",
-      "detaillabelnote1": "La tua Chiave privata Bitcoin è rappresentata da un numero segreto, unico al mondo, che dovresti conoscere soltanto tu. Può essere codificato in molti formati differenti. Di seguito verrà mostrato l'indirizzo e la chiave pubblica, con la corrispondente chiave privata, nei più diffusi formati di codifica (WIF, WIFC, HEX, B64, MINI).",
-      "detaillabelbitcoinaddress": "Indirizzo pubblico",
-      "detaillabelbitcoinaddresscomp": "Indirizzo pubblico compresso",
+      "detaillabelnote1": "La tua Chiave privata SHND è rappresentata da un numero segreto, unico al mondo, che dovresti conoscere soltanto tu. Può essere codificato in molti formati differenti. Di seguito verrà mostrato l'indirizzo e la chiave pubblica, con la corrispondente chiave privata, nei più diffusi formati di codifica (WIF, WIFC, HEX, B64, MINI).",
+      "detaillabelSHNDaddress": "Indirizzo pubblico",
+      "detaillabelSHNDaddresscomp": "Indirizzo pubblico compresso",
       "detaillabelpublickey": "Chiave pubblica (130 caratteri [0-9A-F]):",
       "detaillabelpublickeycomp": "Chiave pubblica compressa (66 caratteri [0-9A-F]):",
       "detaillabelprivwif": "Chiave privata WIF<br>51 caratteri base58, inizia per a",
@@ -10742,7 +10746,7 @@ ninja.translator = {
       "footerlabelcopyright1": "Copyright bitaddress.org.",
       "footerlabelcopyright2": "Le note di copyright dei file JavaScript sono inclusi nei sorgenti stessi.",
       "footerlabelnowarranty": "Nessuna garanzia.",
-      "defaultTitle": "Generatore universale di portafogli per Bitcoin e altre valute crittografiche",
+      "defaultTitle": "Generatore universale di portafogli per SHND e altre valute crittografiche",
       "title": "Generatore di PaperWallet",
       "brainalertPassphrasewarning": "Attenzione: La scelta di una Passphrase robusta è importante per evitare attacchi brute force in grado di indovinare la tua Passphrase e rubare i tuoi fondi",
       "brainalertPassphrasetooshort": "La Passphrase inserita è troppo corta.\n\n",
@@ -10757,12 +10761,12 @@ ninja.translator = {
       "securitychecklistofflineNOK": "Sembra che utilizzi questo generatore direttamente dal sito web, che non è raccomandato per la generazione di portafogli. Utilizza invece il link di download in fondo a questa pagina per scaricare un archivio ZIP da Github e eseguire questo generatore offline come file HTML locale.",
       "securitychecklistofflineOK": "Esegui questo generatore dal tuo download.",
       "paperwalletback": "<ul><li>Per trasferire i fondi a questo portafogli, inviare i fondi all' indirizzo pubblico in qualsiasi momento.</li><li>Verificare il vostro saldo cercando l'Indirizzo pubblico in un Blockchain explorer.</li><li><b>NON RIVELARE LA CHIAVE PRIVATA</b> fino a quando non si desidera importare proprio saldo in un portafoglio software.</li></ul><b>Quantità :</b> ___________       <b>Data :</b> ________________<br /><b>Note :</b> ______________________________________",
-      "paperlabelbitcoinaddress": "Indirizzo Bitcoin:",
+      "paperlabelSHNDaddress": "Indirizzo SHND:",
       "paperlabelprivatekey": "Chiave privata (Wallet Import Format):",
       "paperlabelencryptedkey": "Chiave privata criptata (password richiesta)",
       "vanityinvalidinputcouldnotcombinekeys": "Dati inseriti non validi. Le chiavi non possono essere combinate.",
       "vanityalertinvalidinputpublickeysmatch": "Dati inseriti non validi. Entrambe le chiavi pubbliche combaciano. Devi inserire due chiavi differenti.",
-      "vanityalertinvalidinputcannotmultiple": "Dati inseriti non validi. Impossibile moltiplicare due chiavi pubbliche. Seleziona 'Aggiungi' per inserire due chiavi pubbliche ed ottenere l'indirizzo Bitcoin.",
+      "vanityalertinvalidinputcannotmultiple": "Dati inseriti non validi. Impossibile moltiplicare due chiavi pubbliche. Seleziona 'Aggiungi' per inserire due chiavi pubbliche ed ottenere l'indirizzo SHND.",
       "vanityprivatekeyonlyavailable": "Non disponibile quando vengono combinate due chiavi private",
       "vanityalertinvalidinputprivatekeysmatch": "Dati inseriti non validi. Entrambe le chiavi private combaciano. Devi inserire due chiavi differenti.",
     },
@@ -10774,16 +10778,16 @@ ninja.translator = {
       "brainwallet": "Розумний гаманець",
       "detailwallet": "Детальніше про гаманець",
       "donate": "Пожертвувати",
-      "generatelabelbitcoinaddress": "Створюється нова адреса...",
+      "generatelabelSHNDaddress": "Створюється нова адреса...",
       "generatelabelmovemouse": "РУХАЙТЕ мишкою, щоб збільшити випадковість...",
       "generatelabelkeypress": "АБО введіть будь-які випадкові символи у це текстове поле",
       "skipMessage": "Ви можете пропустити цей крок, якщо ви не плануєте використовувати генератор випадкових ключів",
-      "singlelabelbitcoinaddress": "Публічна адреса",
+      "singlelabelSHNDaddress": "Публічна адреса",
       "singleshare": "ДЛЯ ПОШИРЕННЯ",
       "singlelabelprivatekey": "Приватний ключ (формат імпорту гаманця - WIF)",
       "singlesecret": "СЕКРЕТНИЙ (ЗАХОВАТИ)",
       "securitystep0title": "Крок 0. Дотримуйтесь рекомендацій \"Пам'ятки безпеки\"",
-      "securitystep0": "Насамперед <strong>завантажте</strong> цей сайт з <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a>, розархівуйте його і безпосередньо з вашого комп'ютера відкрийте файл index.html. Це достатньо просто сховати деякий шкідливий код у 6000+ рядків javascript, щоб поцупити ваш приватний ключ, але ви ж не хочете довідатися, що ваші кошти вкрадено. Контроль версії кода дозволяє набагато простіше перевіряти діючу програму. Для забезпечення додаткової безпеки, <strong>відключіть доступ до Інтернету</strong> під час створення вашого гаманця.",
+      "securitystep0": "Насамперед <strong>завантажте</strong> цей сайт з <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a>, розархівуйте його і безпосередньо з вашого комп'ютера відкрийте файл index.html. Це достатньо просто сховати деякий шкідливий код у 6000+ рядків javascript, щоб поцупити ваш приватний ключ, але ви ж не хочете довідатися, що ваші кошти вкрадено. Контроль версії кода дозволяє набагато простіше перевіряти діючу програму. Для забезпечення додаткової безпеки, <strong>відключіть доступ до Інтернету</strong> під час створення вашого гаманця.",
       "securitystep1title": "Крок 1. Створіть нову адресу",
       "securitystep1": "Оберіть вашу валюту й клацніть на кнопку \"Створити нову адресу\".",
       "securitystep2title": "Крок 2. Роздрукуйте паперовий гаманець",
@@ -10807,7 +10811,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Введіть парольну фразу:",
       "brainlabelconfirmlbl": "Повторіть парольну фразу:",
       "brainalgorithm": "Алгоритм: SHA256(парольна фраза)",
-      "brainlabelbitcoinaddress": "Публічна адреса:",
+      "brainlabelSHNDaddress": "Публічна адреса:",
       "brainlabelprivatekey": "Приватний ключ (формат імпорту гаманця - WIF):",
       "detaillabelenterprivatekey": "Введіть приватний ключ",
       "qrcaminstructiontitle": "Скануйте QR код, використовуючи вашу камеру",
@@ -10815,8 +10819,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Не дозволено. Ваш браузер повинен відобразити повідомлення із запитом на доступ до вашої камери. Будь ласка, клацніть на кнопку \"Дозволити\", щоб включити вашу камеру.</p>",
       "detaillabelpassphrase": "Введіть парольну фразу BIP38",
       "detaillabelnote1": "Ваш приватний ключ - це унікальний секретний номер, який знаєте лише ви. Він може бути закодований у кількох різних форматах. Нижче показано публічну адресу та публічний ключ, які відповідають вашому приватному ключу. Також показано ваш приватний ключ у найпопулярніших форматах кодування (WIF, WIFC, HEX, B64).",
-      "detaillabelbitcoinaddress": "Публічна адреса",
-      "detaillabelbitcoinaddresscomp": "Публічна адреса (стиснута)",
+      "detaillabelSHNDaddress": "Публічна адреса",
+      "detaillabelSHNDaddresscomp": "Публічна адреса (стиснута)",
       "detaillabelpublickey": "Публічний ключ (130 знаків [0-9A-F]):",
       "detaillabelpublickeycomp": "Публічний ключ (стиснутий, 66 знаків [0-9A-F]):",
       "detaillabelprivwif": "Приватний ключ WIF<br>51 знак Base58",
@@ -10850,7 +10854,7 @@ ninja.translator = {
       "paperwalletback": "<ul><li>Внести гроші на паперовий гаманець: відправте кошти на публічну адресу.</li><li>Перевірити стан рахунку: введіть публічну адресу гаманця в оглядач блокчейна (для біткойна це blockchain.info).</li><li><b>НІКОЛИ НІКОМУ НЕ ПОКАЗУЙТЕ ПРИВАТНИЙ КЛЮЧ</b>, аж поки ви не зберетесь імпортувати кошти з цього гаманця на інший будь-який гаманець.</li></ul><b>Кількість :</b> ___________      <b>Дата :</b> ____________<br /><b>Нотатки :</b> _______________________________",
     },
     "tr": {
-      "defaultTitle": "WalletGenerator.net - Bitcoin ve diger kripto para birimleri için Evrensel Kagit cüzdan üreticisi",
+      "defaultTitle": "WalletGenerator.net - SHND ve diger kripto para birimleri için Evrensel Kagit cüzdan üreticisi",
       "title": "Kagit Cüzdan Üreticisi",
       "bulkgeneratingaddresses": "Cüzdan Yaratiliyor... ",
       "brainalertpassphrasetooshort": "Girmis oldugunuz parola çok kisa.\n\n",
@@ -10874,16 +10878,16 @@ ninja.translator = {
       "brainwallet": "Brain Wallet",
       "detailwallet": "Szczegóły portfela",
       "donate": "Wsparcie",
-      "generatelabelbitcoinaddress": "Generowanie nowego adresu...",
+      "generatelabelSHNDaddress": "Generowanie nowego adresu...",
       "generatelabelmovemouse": "Losowo ruszaj myszką, aby zaszyfrować portfel...",
       "generatelabelkeypress": "lub wpisz losowe znaki w to pole",
       "skipMessage": "Możesz pominąć ten krok, jeżeli nie planujesz używać losowego generatora kluczy.",
-      "singlelabelbitcoinaddress": "Adres publiczny",
+      "singlelabelSHNDaddress": "Adres publiczny",
       "singleshare": "UDOSTĘPNIJ",
       "singlelabelprivatekey": "Klucz prywatny (format WIF)",
       "singlesecret": "TAJNE",
       "securitystep0title": "Krok 0. Sprawdź listę zaleceń bezpieczeństwa.",
-      "securitystep0": "Po pierwsze - <strong>pobierz</strong> tę stronę z <a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Githuba</a> i otwórz plik index.html bezpośrednio ze swojego komputera. Wprowadzenie złośliwego kodu do strony, która zawiera ponad 6000 linijek kodu javascript jest dość proste i może skutkować wyciekiem Twojego klucza prywatnego, a co za tym idzie, utratą wszystkich środków z portfela. Aby zapewnić dodatkowe bezpieczeństwo, należy <strong>odłączyć się od Internetu</strong> podczas generowania portfela dla bezpieczeństwa.",
+      "securitystep0": "Po pierwsze - <strong>pobierz</strong> tę stronę z <a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Githuba</a> i otwórz plik index.html bezpośrednio ze swojego komputera. Wprowadzenie złośliwego kodu do strony, która zawiera ponad 6000 linijek kodu javascript jest dość proste i może skutkować wyciekiem Twojego klucza prywatnego, a co za tym idzie, utratą wszystkich środków z portfela. Aby zapewnić dodatkowe bezpieczeństwo, należy <strong>odłączyć się od Internetu</strong> podczas generowania portfela dla bezpieczeństwa.",
       "securitystep1title": "Krok 1. Wygeneruj nowy adres",
       "securitystep1": "Wybierz swoją walutę i naciśnij przycisk \"Generate new address\".",
       "securitystep2title": "Krok 2. Wydrukuj papierowy portfel.",
@@ -10909,7 +10913,7 @@ ninja.translator = {
       "brainlabelenterpassphraselbl": "Podaj hasło:",
       "brainlabelconfirmlbl": "Potwierdź hasło:",
       "brainalgorithm": "Algorytm: SHA256(hasło)",
-      "brainlabelbitcoinaddress": "Adres publiczny:",
+      "brainlabelSHNDaddress": "Adres publiczny:",
       "brainlabelprivatekey": "Klucz prywatny (format WIF):",
       "detaillabelenterprivatekey": "Wprowadź klucz prywatny",
       "qrcaminstructiontitle": "Zeskanuj kod QR, używając kamerki",
@@ -10917,8 +10921,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>Odmowa dostępu. Twoja przeglądarka powinna wyświetlić komunikat z prośbą o dostęp do kamerki. Naciśnij przycisk \”Zezwól\”, aby aktywować kamerkę.</p>",
       "detaillabelpassphrase": "Wprowadź hasło BIP38",
       "detaillabelnote1": "Twój klucz prywatny jest unikalnym tajnym numerem, który znasz tylko Ty. Może on zostać zaszyfrowany w różnych formatach. Poniżej przedstawiamy adres publiczny i klucz publiczny, odpowiadający Twojemu kluczowi prywatnemu, oraz Twój klucz prywatny w najpopularniejszych metodach szyfrowania (WIF, WIFC, HEX, B64).",
-      "detaillabelbitcoinaddress": "Adres publiczny",
-      "detaillabelbitcoinaddresscomp": "Skompresowany adres publiczny",
+      "detaillabelSHNDaddress": "Adres publiczny",
+      "detaillabelSHNDaddresscomp": "Skompresowany adres publiczny",
       "detaillabelpublickey": "Klucz publiczny (130 znaków [0-9A-F]):",
       "detaillabelpublickeycomp": "Klucz publiczny (skompresowany, 66 znaków [0-9A-F]):",
       "detaillabelprivwif": "Klucz prywatny WIF<br>51 znaków Base58",
@@ -10935,7 +10939,7 @@ ninja.translator = {
       "footerlabelgithub": "Pobierz (GitHub Repository)",
       "footerlabelcopyright2": "Prawa autorskie JavaScript są umieszczone w źródle",
       "footerlabelnowarranty": "Bez gwarancji.",
-      "defaultTitle": "WalletGenerator.net – uniwersalny generator portfeli papierowych dla Bitcoina i innych kryptowalut",
+      "defaultTitle": "WalletGenerator.net – uniwersalny generator portfeli papierowych dla SHNDa i innych kryptowalut",
       "title": "Generator portfeli papierowych",
       "brainalertpassphrasewarning": "Uwaga: użycie mocnego hasła jest istotne, aby zapobiec próbom odgadnięcia hasła poprzez metodę brute force, a co za tym idzie kradzieży Twoich środków.",
       "brainalertpassphrasetooshort": "Hasło, które wpisałeś jest zbyt krótkie.",
@@ -10949,7 +10953,7 @@ ninja.translator = {
       "securitychecklistrandomNOK": "Twoja przeglądarka NIE wspiera window.crypto.getRandomValues(). Jest to istotne dla generowania możliwie najbezpieczniejszych losowych liczb. Prosimy o użycie nowoczesnej przeglądarki.",
       "securitychecklistofflineNOK": "Wygląda na to, że używasz tego generatora, łącząc się z nim przez internet, czego nie rekomendujemy przy tworzeniu wartościowych portfeli. Zamiast tego, użyj linka na dole strony, aby pobrać plik ZIP z GitHuba i uruchomić ten generator offline jako “lokalny” plik HTML.",
       "securitychecklistofflineOK": "Używasz tego generatora w wersji offline.",
-      "paperwalletback": "<ul><li> Aby wpłacić dodatkowe fundusze do tego portfela, wyślij bitcoiny na publiczny adres.</li><li> Sprawdź dostępne środki szukając publicznego adresu w usługach takich jak blockchain.info.</li><li><b>NIE ODSŁANIAJ KLUCZA PRYWATNEGO</b> dopóki nie jesteś gotowy na wydanie wszystkich środków, znajdujących się w tym portfelu.</li></ul><b>Wpłacona kwota :</b> ___________       <b>Data :</b> ________________<br /><b>Uwagi :</b> ______________________________________",
+      "paperwalletback": "<ul><li> Aby wpłacić dodatkowe fundusze do tego portfela, wyślij SHNDy na publiczny adres.</li><li> Sprawdź dostępne środki szukając publicznego adresu w usługach takich jak blockchain.info.</li><li><b>NIE ODSŁANIAJ KLUCZA PRYWATNEGO</b> dopóki nie jesteś gotowy na wydanie wszystkich środków, znajdujących się w tym portfelu.</li></ul><b>Wpłacona kwota :</b> ___________       <b>Data :</b> ________________<br /><b>Uwagi :</b> ______________________________________",
     },
     "zh": {
       "choosecurrency": "選擇幣別",
@@ -10959,16 +10963,16 @@ ninja.translator = {
       "brainwallet": "腦錢包",
       "detailwallet": "錢包細節",
       "donate": "捐款支持",
-      "generatelabelbitcoinaddress": "新錢包地址產生中......",
+      "generatelabelSHNDaddress": "新錢包地址產生中......",
       "generatelabelmovemouse": "請四處移動滑鼠產生亂數",
       "generatelabelkeypress": "或在後方空格填寫隨機字符",
       "skipMessage": "若您不想產生隨機亂碼，您可以跳過此步驟。",
-      "singlelabelbitcoinaddress": "公鑰",
+      "singlelabelSHNDaddress": "公鑰",
       "singleshare": "地址",
       "singlelabelprivatekey": "私鑰(可導入電子錢包客戶端)",
       "singlesecret": "私鑰",
       "securitystep0title": "首先：安全檢查清單建議的步驟",
-      "securitystep0": "請先自<a href=\"https://github.com/NewYorkCoin-NYC/paperwallet/archive/master.zip\">Github</a>處<strong>下載</strong>這個網站，接著直接在您的電腦開啟index.html檔案。為了提高安全性，在生成錢包地址時，請<strong>斷開網路連結</strong>(例如拔除網路線或關閉wifi)。駭客很輕易能在6000多行javascript中找到你的私鑰，透過原始碼版本控制。可以交叉確認是否運行順利。",
+      "securitystep0": "請先自<a href=\"https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip\">Github</a>處<strong>下載</strong>這個網站，接著直接在您的電腦開啟index.html檔案。為了提高安全性，在生成錢包地址時，請<strong>斷開網路連結</strong>(例如拔除網路線或關閉wifi)。駭客很輕易能在6000多行javascript中找到你的私鑰，透過原始碼版本控制。可以交叉確認是否運行順利。",
       "securitystep1title": "第一步：產生新的地址",
       "securitystep1": "選擇欲產生的幣種，接著按下「產生新的地址」按鈕",
       "securitystep2title": "第二步：列印出紙錢包",
@@ -10993,7 +10997,7 @@ ninja.translator = {
       "bulklabelcsv": "以逗號分割為：編號、公鑰地址、私鑰 (WIF格式)",
       "brainlabelenterpassphraselbl": "輸入密碼口令(Passphrase)：",
       "brainlabelconfirmlbl": "再次確認密碼口令(Passphrase)：",
-      "brainlabelbitcoinaddress": "公鑰：",
+      "brainlabelSHNDaddress": "公鑰：",
       "brainlabelprivatekey": "私鑰(可導入電子錢包客戶端)：",
       "detaillabelenterprivatekey": "輸入私鑰",
       "qrcaminstructiontitle": "使用鏡頭掃描QR code",
@@ -11001,8 +11005,8 @@ ninja.translator = {
       "paperqrpermissiondenied": "<p>要求被拒，請在您瀏覽器跳出的視窗中選擇\"允許\"來開啟相機鏡頭。</p>",
       "detaillabelpassphrase": "輸入BIP38 Passphrase",
       "detaillabelnote1": "你的私鑰是唯一你知道的秘密號碼。它可以用許多不同的格式編碼。下面我們將展示與您的私鑰對應的公共地址和公鑰，以及常見的的編碼格式（WIF，WIFC，HEX，B64）。",
-      "detaillabelbitcoinaddress": "公鑰地址",
-      "detaillabelbitcoinaddresscomp": "經壓縮的公鑰地址",
+      "detaillabelSHNDaddress": "公鑰地址",
+      "detaillabelSHNDaddresscomp": "經壓縮的公鑰地址",
       "detaillabelpublickey": "公鑰(130字節，使用 [0-9A-F]):",
       "detaillabelpublickeycomp": "公鑰地址(以壓縮為66字節 [0-9A-F]):",
       "detaillabelprivwif": "WIF格式私鑰<br>51字節，Base58",
@@ -11047,21 +11051,21 @@ ninja.wallets.singlewallet = {
   close: function() {
     document.getElementById("singlearea").style.display = "none";
   },
-  // generate bitcoin address and private key and update information in the HTML
+  // generate SHND address and private key and update information in the HTML
   generateNewAddressAndKey: function() {
     try {
-      var key = new Bitcoin.ECKey(false);
-      var bitcoinAddress = key.getBitcoinAddress();
-      var privateKeyWif = key.getBitcoinWalletImportFormat();
-      document.getElementById("btcaddress").innerHTML = bitcoinAddress;
+      var key = new SHND.ECKey(false);
+      var SHNDAddress = key.getSHNDAddress();
+      var privateKeyWif = key.getSHNDWalletImportFormat();
+      document.getElementById("btcaddress").innerHTML = SHNDAddress;
       document.getElementById("btcprivwif").innerHTML = privateKeyWif;
       var keyValuePair = {
-        "qrcode_public": bitcoinAddress,
+        "qrcode_public": SHNDAddress,
         "qrcode_private": privateKeyWif
       };
       ninja.qrCode.showQrCode(keyValuePair, 4);
     } catch (e) {
-      // browser does not have sufficient JavaScript support to generate a bitcoin address
+      // browser does not have sufficient JavaScript support to generate a SHND address
       alert(e);
       document.getElementById("btcaddress").innerHTML = "error";
       document.getElementById("btcprivwif").innerHTML = "error";
@@ -11142,7 +11146,7 @@ ninja.wallets.paperwallet = {
       setTimeout(ninja.wallets.paperwallet.batch, 0);
     }
   },
-  // generate bitcoin address, private key, QR Code and update information in the HTML
+  // generate SHND address, private key, QR Code and update information in the HTML
   // idPostFix: 1, 2, 3, etc.
   generateNewWallet: function(idPostFix) {
     if (ninja.wallets.paperwallet.encrypt) {
@@ -11150,10 +11154,10 @@ ninja.wallets.paperwallet = {
         ninja.wallets.paperwallet.showArtisticWallet(idPostFix, address, encryptedKey);
       });
     } else {
-      var key = new Bitcoin.ECKey(false);
-      var bitcoinAddress = key.getBitcoinAddress();
-      var privateKeyWif = key.getBitcoinWalletImportFormat();
-      ninja.wallets.paperwallet.showArtisticWallet(idPostFix, bitcoinAddress, privateKeyWif);
+      var key = new SHND.ECKey(false);
+      var SHNDAddress = key.getSHNDAddress();
+      var privateKeyWif = key.getSHNDWalletImportFormat();
+      ninja.wallets.paperwallet.showArtisticWallet(idPostFix, SHNDAddress, privateKeyWif);
     }
   },
   // Verify that a self-entered key is valid, and compute the corresponding
@@ -11165,7 +11169,7 @@ ninja.wallets.paperwallet = {
     if (!ninja.privateKey.isPrivateKey(suppliedKey)) {
       alert(ninja.translator.get("detailalertnotvalidprivatekey"));
     } else {
-      var computedPublicAddress = new Bitcoin.ECKey(suppliedKey).getBitcoinAddress();
+      var computedPublicAddress = new SHND.ECKey(suppliedKey).getSHNDAddress();
       if (ninja.wallets.paperwallet.encrypt) {
         document.getElementById("busyblock").className = "busy";
         ninja.privateKey.BIP38PrivateKeyToEncryptedKeyAsync(suppliedKey, document.getElementById('paperpassphrase').value, false, function(encodedKey) {
@@ -11186,14 +11190,14 @@ ninja.wallets.paperwallet = {
       "' id='" + keyelement + i + "'></div>" + "<div class='paperWalletText'><img class='backLogo' src='" + coinImgUrl + "' alt='currency_logo' />" + ninja.translator.get("paperwalletback") + "</div>" + "</div>";
     return walletHtml;
   },
-  showArtisticWallet: function(idPostFix, bitcoinAddress, privateKey) {
+  showArtisticWallet: function(idPostFix, SHNDAddress, privateKey) {
     var keyValuePair = {};
-    keyValuePair["qrcode_public" + idPostFix] = bitcoinAddress;
+    keyValuePair["qrcode_public" + idPostFix] = SHNDAddress;
     ninja.qrCode.showQrCode(keyValuePair, 3.5);
     var keyValuePair = {};
     keyValuePair["qrcode_private" + idPostFix] = privateKey;
     ninja.qrCode.showQrCode(keyValuePair, 2.8);
-    document.getElementById("btcaddress" + idPostFix).innerHTML = bitcoinAddress;
+    document.getElementById("btcaddress" + idPostFix).innerHTML = SHNDAddress;
     document.getElementById("btcprivwif" + idPostFix).innerHTML = privateKey;
   },
   toggleEncrypt: function(element) {
@@ -11229,10 +11233,10 @@ ninja.wallets.bulkwallet = {
     document.getElementById("bulkarea").style.display = "none";
   },
   // use this function to bulk generate addresses
-  // rowLimit: number of Bitcoin Addresses to generate
+  // rowLimit: number of SHND Addresses to generate
   // startIndex: add this number to the row index for output purposes
   // returns:
-  // index,bitcoinAddress,privateKeyWif
+  // index,SHNDAddress,privateKeyWif
   buildCSV: function(rowLimit, startIndex, compressedAddrs) {
     var bulkWallet = ninja.wallets.bulkwallet;
     document.getElementById("bulktextarea").value = ninja.translator.get("bulkgeneratingaddresses") + rowLimit;
@@ -11251,11 +11255,11 @@ ninja.wallets.bulkwallet = {
     var bulkWallet = ninja.wallets.bulkwallet;
     if (bulkWallet.csvRowsRemaining > 0) {
       bulkWallet.csvRowsRemaining--;
-      var key = new Bitcoin.ECKey(false);
+      var key = new SHND.ECKey(false);
       key.setCompressed(bulkWallet.compressedAddrs);
-      bulkWallet.csv.push((bulkWallet.csvRowLimit - bulkWallet.csvRowsRemaining + bulkWallet.csvStartIndex) + ",\"" + key.getBitcoinAddress() + "\",\"" + key.toString("wif")
+      bulkWallet.csv.push((bulkWallet.csvRowLimit - bulkWallet.csvRowsRemaining + bulkWallet.csvStartIndex) + ",\"" + key.getSHNDAddress() + "\",\"" + key.toString("wif")
         //+	"\",\"" + key.toString("wifcomp")    // uncomment these lines to add different private key formats to the CSV
-        //+ "\",\"" + key.getBitcoinHexFormat()
+        //+ "\",\"" + key.getSHNDHexFormat()
         //+ "\",\"" + key.toString("base64")
         + "\"");
       document.getElementById("bulktextarea").value = ninja.translator.get("bulkgeneratingaddresses") + bulkWallet.csvRowsRemaining;
@@ -11305,13 +11309,13 @@ ninja.wallets.brainwallet = {
         var bytes = Crypto.SHA256(key, {
           asBytes: true
         });
-        var btcKey = new Bitcoin.ECKey(bytes);
-        var bitcoinAddress = btcKey.getBitcoinAddress();
-        var privWif = btcKey.getBitcoinWalletImportFormat();
-        document.getElementById("brainbtcaddress").innerHTML = bitcoinAddress;
+        var btcKey = new SHND.ECKey(bytes);
+        var SHNDAddress = btcKey.getSHNDAddress();
+        var privWif = btcKey.getSHNDWalletImportFormat();
+        document.getElementById("brainbtcaddress").innerHTML = SHNDAddress;
         document.getElementById("brainbtcprivwif").innerHTML = privWif;
         ninja.qrCode.showQrCode({
-          "brainqrcodepublic": bitcoinAddress,
+          "brainqrcodepublic": SHNDAddress,
           "brainqrcodeprivate": privWif
         });
         document.getElementById("brainkeyarea").style.visibility = "visible";
@@ -11433,20 +11437,20 @@ ninja.wallets.detailwallet = {
           alert(btcKeyOrError.message);
           ninja.wallets.detailwallet.clear();
         } else {
-          ninja.wallets.detailwallet.populateKeyDetails(new Bitcoin.ECKey(btcKeyOrError));
+          ninja.wallets.detailwallet.populateKeyDetails(new SHND.ECKey(btcKeyOrError));
         }
       });
     } else {
-      if (Bitcoin.ECKey.isMiniFormat(key)) {
+      if (SHND.ECKey.isMiniFormat(key)) {
         // show Private Key Mini Format
         document.getElementById("detailprivmini").innerHTML = key;
         document.getElementById("detailmini").style.display = "block";
-      } else if (Bitcoin.ECKey.isBase6Format(key)) {
+      } else if (SHND.ECKey.isBase6Format(key)) {
         // show Private Key Base6 Format
         document.getElementById("detailprivb6").innerHTML = key;
         document.getElementById("detailb6").style.display = "block";
       }
-      var btcKey = new Bitcoin.ECKey(key);
+      var btcKey = new SHND.ECKey(key);
       if (btcKey.priv == null) {
         // enforce a minimum passphrase length
         if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
@@ -11456,7 +11460,7 @@ ninja.wallets.detailwallet = {
             var bytes = Crypto.SHA256(key, {
               asBytes: true
             });
-            var btcKey = new Bitcoin.ECKey(bytes);
+            var btcKey = new SHND.ECKey(bytes);
           } else {
             ninja.wallets.detailwallet.clear();
           }
@@ -11473,20 +11477,20 @@ ninja.wallets.detailwallet = {
       btcKey.setCompressed(false);
       document.getElementById("detailprivhex").innerHTML = btcKey.toString().toUpperCase();
       document.getElementById("detailprivb64").innerHTML = btcKey.toString("base64");
-      var bitcoinAddress = btcKey.getBitcoinAddress();
-      var wif = btcKey.getBitcoinWalletImportFormat();
+      var SHNDAddress = btcKey.getSHNDAddress();
+      var wif = btcKey.getSHNDWalletImportFormat();
       document.getElementById("detailpubkey").innerHTML = btcKey.getPubKeyHex();
-      document.getElementById("detailaddress").innerHTML = bitcoinAddress;
+      document.getElementById("detailaddress").innerHTML = SHNDAddress;
       document.getElementById("detailprivwif").innerHTML = wif;
       btcKey.setCompressed(true);
-      var bitcoinAddressComp = btcKey.getBitcoinAddress();
-      var wifComp = btcKey.getBitcoinWalletImportFormat();
+      var SHNDAddressComp = btcKey.getSHNDAddress();
+      var wifComp = btcKey.getSHNDWalletImportFormat();
       document.getElementById("detailpubkeycomp").innerHTML = btcKey.getPubKeyHex();
-      document.getElementById("detailaddresscomp").innerHTML = bitcoinAddressComp;
+      document.getElementById("detailaddresscomp").innerHTML = SHNDAddressComp;
       document.getElementById("detailprivwifcomp").innerHTML = wifComp;
       ninja.qrCode.showQrCode({
-        "detailqrcodepublic": bitcoinAddress,
-        "detailqrcodepubliccomp": bitcoinAddressComp,
+        "detailqrcodepublic": SHNDAddress,
+        "detailqrcodepubliccomp": SHNDAddressComp,
         "detailqrcodeprivate": wif,
         "detailqrcodeprivatecomp": wifComp
       }, 4);
@@ -11616,11 +11620,11 @@ ninja.wallets.donate = {
         }
         return true;
       },
-      testGetBitcoinAddressFromByteArray: function() {
+      testGetSHNDAddressFromByteArray: function() {
         var bytes = [4, 120, 152, 47, 64, 250, 12, 11, 122, 85, 113, 117, 131, 175, 201, 154, 78, 223, 211, 1, 162, 114, 157, 197, 155, 11, 142, 185, 225, 134, 146, 188, 181, 33, 240, 84, 250, 217, 130, 175, 76, 193, 147, 58, 253, 31, 27, 86,
           62, 167, 121, 166, 170, 108, 206, 54, 163, 11, 148, 125, 214, 83, 230, 62, 68
         ];
-        var address = ninja.publicKey.getBitcoinAddressFromByteArray(bytes);
+        var address = ninja.publicKey.getSHNDAddressFromByteArray(bytes);
         if (address != "1Cnz9ULjzBPYhDw1J8bpczDWCEXnC9HuU1") {
           return false;
         }
@@ -11677,7 +11681,7 @@ ninja.wallets.donate = {
       testGetByteArrayFromMultiplying: function() {
         var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
         var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
+        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new SHND.ECKey(key2));
         if (bytes.toString() !=
           "4,102,230,163,180,107,9,21,17,48,35,245,227,110,199,119,144,57,41,112,64,245,182,40,224,41,230,41,5,26,206,138,57,115,35,54,105,7,180,5,106,217,57,229,127,174,145,215,79,121,163,191,211,143,215,50,48,156,211,178,72,226,68,150,52") {
           return false;
@@ -11687,7 +11691,7 @@ ninja.wallets.donate = {
       testGetByteArrayFromMultiplyingCompressedOutputsUncompressed: function() {
         var key1 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
         var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
+        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new SHND.ECKey(key2));
         if (bytes.toString() !=
           "4,102,230,163,180,107,9,21,17,48,35,245,227,110,199,119,144,57,41,112,64,245,182,40,224,41,230,41,5,26,206,138,57,115,35,54,105,7,180,5,106,217,57,229,127,174,145,215,79,121,163,191,211,143,215,50,48,156,211,178,72,226,68,150,52") {
           return false;
@@ -11697,7 +11701,7 @@ ninja.wallets.donate = {
       testGetByteArrayFromMultiplyingCompressedOutputsCompressed: function() {
         var key1 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
         var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
-        var ecKey = new Bitcoin.ECKey(key2);
+        var ecKey = new SHND.ECKey(key2);
         var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, ecKey);
         if (bytes.toString() != "2,102,230,163,180,107,9,21,17,48,35,245,227,110,199,119,144,57,41,112,64,245,182,40,224,41,230,41,5,26,206,138,57") {
           return false;
@@ -11707,7 +11711,7 @@ ninja.wallets.donate = {
       testGetByteArrayFromMultiplyingShouldReturnNullWhenSameKey1: function() {
         var key1 = "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44";
         var key2 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
+        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new SHND.ECKey(key2));
         if (bytes != null) {
           return false;
         }
@@ -11716,7 +11720,7 @@ ninja.wallets.donate = {
       testGetByteArrayFromMultiplyingShouldReturnNullWhenSameKey2: function() {
         var key1 = "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5";
         var key2 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new Bitcoin.ECKey(key2));
+        var bytes = ninja.publicKey.getByteArrayFromMultiplying(key1, new SHND.ECKey(key2));
         if (bytes != null) {
           return false;
         }
@@ -11726,7 +11730,7 @@ ninja.wallets.donate = {
       testGetPubHexFromMultiplyingPrivAPubB: function() {
         var keyPub = "04F04BF260DCCC46061B5868F60FE962C77B5379698658C98A93C3129F5F98938020F36EBBDE6F1BEAF98E5BD0E425747E68B0F2FB7A2A59EDE93F43C0D78156FF";
         var keyPriv = "B1202A137E917536B3B4C5010C3FF5DDD4784917B3EEF21D3A3BF21B2E03310C";
-        var bytes = ninja.publicKey.getByteArrayFromMultiplying(keyPub, new Bitcoin.ECKey(keyPriv));
+        var bytes = ninja.publicKey.getByteArrayFromMultiplying(keyPub, new SHND.ECKey(keyPriv));
         var pubHex = ninja.publicKey.getHexFromByteArray(bytes);
         if (pubHex != "04C6732006AF4AE571C7758DF7A7FB9E3689DFCF8B53D8724D3A15517D8AB1B4DBBE0CB8BB1C4525F8A3001771FC7E801D3C5986A555E2E9441F1AD6D181356076") {
           return false;
@@ -11737,7 +11741,7 @@ ninja.wallets.donate = {
       testGetPubHexFromMultiplyingPrivBPubA: function() {
         var keyPub = "0429BF26C0AF7D31D608474CEBD49DA6E7C541B8FAD95404B897643476CE621CFD05E24F7AE8DE8033AADE5857DB837E0B704A31FDDFE574F6ECA879643A0D3709";
         var keyPriv = "7DE52819F1553C2BFEDE6A2628B6FDDF03C2A07EB21CF77ACA6C2C3D252E1FD9";
-        var bytes = ninja.publicKey.getByteArrayFromMultiplying(keyPub, new Bitcoin.ECKey(keyPriv));
+        var bytes = ninja.publicKey.getByteArrayFromMultiplying(keyPub, new SHND.ECKey(keyPriv));
         var pubHex = ninja.publicKey.getHexFromByteArray(bytes);
         if (pubHex != "04C6732006AF4AE571C7758DF7A7FB9E3689DFCF8B53D8724D3A15517D8AB1B4DBBE0CB8BB1C4525F8A3001771FC7E801D3C5986A555E2E9441F1AD6D181356076") {
           return false;
@@ -11746,33 +11750,33 @@ ninja.wallets.donate = {
       },
       // Private Key tests
       testBadKeyIsNotWif: function() {
-        return !(Bitcoin.ECKey.isWalletImportFormat("bad key"));
+        return !(SHND.ECKey.isWalletImportFormat("bad key"));
       },
       testBadKeyIsNotWifCompressed: function() {
-        return !(Bitcoin.ECKey.isCompressedWalletImportFormat("bad key"));
+        return !(SHND.ECKey.isCompressedWalletImportFormat("bad key"));
       },
       testBadKeyIsNotHex: function() {
-        return !(Bitcoin.ECKey.isHexFormat("bad key"));
+        return !(SHND.ECKey.isHexFormat("bad key"));
       },
       testBadKeyIsNotBase64: function() {
-        return !(Bitcoin.ECKey.isBase64Format("bad key"));
+        return !(SHND.ECKey.isBase64Format("bad key"));
       },
       testBadKeyIsNotMini: function() {
-        return !(Bitcoin.ECKey.isMiniFormat("bad key"));
+        return !(SHND.ECKey.isMiniFormat("bad key"));
       },
       testBadKeyReturnsNullPrivFromECKey: function() {
         var key = "bad key";
-        var ecKey = new Bitcoin.ECKey(key);
+        var ecKey = new SHND.ECKey(key);
         if (ecKey.priv != null) {
           return false;
         }
         return true;
       },
-      testGetBitcoinPrivateKeyByteArray: function() {
+      testGetSHNDPrivateKeyByteArray: function() {
         var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
         var bytes = [41, 38, 101, 195, 135, 36, 24, 173, 241, 218, 127, 250, 58, 100, 111, 47, 6, 2, 36, 109, 166, 9, 138, 145, 210, 41, 195, 33, 80, 242, 113, 139];
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinPrivateKeyByteArray().toString() != bytes.toString()) {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDPrivateKeyByteArray().toString() != bytes.toString()) {
           return false;
         }
         return true;
@@ -11780,7 +11784,7 @@ ninja.wallets.donate = {
       testECKeyDecodeWalletImportFormat: function() {
         var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
         var bytes1 = [41, 38, 101, 195, 135, 36, 24, 173, 241, 218, 127, 250, 58, 100, 111, 47, 6, 2, 36, 109, 166, 9, 138, 145, 210, 41, 195, 33, 80, 242, 113, 139];
-        var bytes2 = Bitcoin.ECKey.decodeWalletImportFormat(key);
+        var bytes2 = SHND.ECKey.decodeWalletImportFormat(key);
         if (bytes1.toString() != bytes2.toString()) {
           return false;
         }
@@ -11789,7 +11793,7 @@ ninja.wallets.donate = {
       testECKeyDecodeCompressedWalletImportFormat: function() {
         var key = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
         var bytes1 = [41, 38, 101, 195, 135, 36, 24, 173, 241, 218, 127, 250, 58, 100, 111, 47, 6, 2, 36, 109, 166, 9, 138, 145, 210, 41, 195, 33, 80, 242, 113, 139];
-        var bytes2 = Bitcoin.ECKey.decodeCompressedWalletImportFormat(key);
+        var bytes2 = SHND.ECKey.decodeCompressedWalletImportFormat(key);
         if (bytes1.toString() != bytes2.toString()) {
           return false;
         }
@@ -11797,7 +11801,7 @@ ninja.wallets.donate = {
       },
       testWifToPubKeyHex: function() {
         var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-        var btcKey = new Bitcoin.ECKey(key);
+        var btcKey = new SHND.ECKey(key);
         if (btcKey.getPubKeyHex() != "0478982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB521F054FAD982AF4CC1933AFD1F1B563EA779A6AA6CCE36A30B947DD653E63E44" || btcKey.getPubPoint().compressed != false) {
           return false;
         }
@@ -11805,7 +11809,7 @@ ninja.wallets.donate = {
       },
       testWifToPubKeyHexCompressed: function() {
         var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-        var btcKey = new Bitcoin.ECKey(key);
+        var btcKey = new SHND.ECKey(key);
         btcKey.setCompressed(true);
         if (btcKey.getPubKeyHex() != "0278982F40FA0C0B7A55717583AFC99A4EDFD301A2729DC59B0B8EB9E18692BCB5" || btcKey.getPubPoint().compressed != true) {
           return false;
@@ -11814,32 +11818,32 @@ ninja.wallets.donate = {
       },
       testBase64ToECKey: function() {
         var key = "KSZlw4ckGK3x2n/6OmRvLwYCJG2mCYqR0inDIVDycYs=";
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinBase64Format() != "KSZlw4ckGK3x2n/6OmRvLwYCJG2mCYqR0inDIVDycYs=") {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDBase64Format() != "KSZlw4ckGK3x2n/6OmRvLwYCJG2mCYqR0inDIVDycYs=") {
           return false;
         }
         return true;
       },
       testHexToECKey: function() {
         var key = "292665C3872418ADF1DA7FFA3A646F2F0602246DA6098A91D229C32150F2718B";
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinHexFormat() != "292665C3872418ADF1DA7FFA3A646F2F0602246DA6098A91D229C32150F2718B") {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDHexFormat() != "292665C3872418ADF1DA7FFA3A646F2F0602246DA6098A91D229C32150F2718B") {
           return false;
         }
         return true;
       },
       testCompressedWifToECKey: function() {
         var key = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinWalletImportFormat() != "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S" || btcKey.getPubPoint().compressed != true) {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDWalletImportFormat() != "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S" || btcKey.getPubPoint().compressed != true) {
           return false;
         }
         return true;
       },
       testWifToECKey: function() {
         var key = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinWalletImportFormat() != "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb") {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDWalletImportFormat() != "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb") {
           return false;
         }
         return true;
@@ -11849,16 +11853,16 @@ ninja.wallets.donate = {
         var bytes = Crypto.SHA256(key, {
           asBytes: true
         });
-        var btcKey = new Bitcoin.ECKey(bytes);
-        if (btcKey.getBitcoinWalletImportFormat() != "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb") {
+        var btcKey = new SHND.ECKey(bytes);
+        if (btcKey.getSHNDWalletImportFormat() != "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb") {
           return false;
         }
         return true;
       },
       testMini30CharsToECKey: function() {
         var key = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinWalletImportFormat() != "5JrBLQseeZdYw4jWEAHmNxGMr5fxh9NJU3fUwnv4khfKcg2rJVh") {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDWalletImportFormat() != "5JrBLQseeZdYw4jWEAHmNxGMr5fxh9NJU3fUwnv4khfKcg2rJVh") {
           return false;
         }
         return true;
@@ -11867,7 +11871,7 @@ ninja.wallets.donate = {
         var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
         var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
         var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-        if (ecKey.getBitcoinWalletImportFormat() != "5KAJTSqSjpsZ11KyEE3qu5PrJVjR4ZCbNxK3Nb1F637oe41m1c2") {
+        if (ecKey.getSHNDWalletImportFormat() != "5KAJTSqSjpsZ11KyEE3qu5PrJVjR4ZCbNxK3Nb1F637oe41m1c2") {
           return false;
         }
         return true;
@@ -11876,7 +11880,7 @@ ninja.wallets.donate = {
         var key1 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
         var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
         var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-        if (ecKey.getBitcoinWalletImportFormat() != "L3A43j2pc2J8F2SjBNbYprPrcDpDCh8Aju8dUH65BEM2r7RFSLv4") {
+        if (ecKey.getSHNDWalletImportFormat() != "L3A43j2pc2J8F2SjBNbYprPrcDpDCh8Aju8dUH65BEM2r7RFSLv4") {
           return false;
         }
         return true;
@@ -11885,7 +11889,7 @@ ninja.wallets.donate = {
         var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
         var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
         var ecKey = ninja.privateKey.getECKeyFromAdding(key1, key2);
-        if (ecKey.getBitcoinWalletImportFormat() != "5KAJTSqSjpsZ11KyEE3qu5PrJVjR4ZCbNxK3Nb1F637oe41m1c2") {
+        if (ecKey.getSHNDWalletImportFormat() != "5KAJTSqSjpsZ11KyEE3qu5PrJVjR4ZCbNxK3Nb1F637oe41m1c2") {
           return false;
         }
         return true;
@@ -11912,7 +11916,7 @@ ninja.wallets.donate = {
         var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
         var key2 = "SQE6yipP5oW8RBaStWoB47xsRQ8pat";
         var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-        if (ecKey.getBitcoinWalletImportFormat() != "5KetpZ5mCGagCeJnMmvo18n4iVrtPSqrpnW5RP92Gv2BQy7GPCk") {
+        if (ecKey.getSHNDWalletImportFormat() != "5KetpZ5mCGagCeJnMmvo18n4iVrtPSqrpnW5RP92Gv2BQy7GPCk") {
           return false;
         }
         return true;
@@ -11921,7 +11925,7 @@ ninja.wallets.donate = {
         var key1 = "KxbhchnQquYQ2dfSxz7rrEaQTCukF4uCV57TkamyTbLzjFWcdi3S";
         var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
         var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-        if (ecKey.getBitcoinWalletImportFormat() != "L5LFitc24jme2PfVChJS3bKuQAPBp54euuqLWciQdF2CxnaU3M8t") {
+        if (ecKey.getSHNDWalletImportFormat() != "L5LFitc24jme2PfVChJS3bKuQAPBp54euuqLWciQdF2CxnaU3M8t") {
           return false;
         }
         return true;
@@ -11930,7 +11934,7 @@ ninja.wallets.donate = {
         var key1 = "5J8QhiQtAiozKwyk3GCycAscg1tNaYhNdiiLey8vaDK8Bzm4znb";
         var key2 = "L1n4cgNZAo2KwdUc15zzstvo1dcxpBw26NkrLqfDZtU9AEbPkLWu";
         var ecKey = ninja.privateKey.getECKeyFromMultiplying(key1, key2);
-        if (ecKey.getBitcoinWalletImportFormat() != "5KetpZ5mCGagCeJnMmvo18n4iVrtPSqrpnW5RP92Gv2BQy7GPCk") {
+        if (ecKey.getSHNDWalletImportFormat() != "5KetpZ5mCGagCeJnMmvo18n4iVrtPSqrpnW5RP92Gv2BQy7GPCk") {
           return false;
         }
         return true;
@@ -11956,8 +11960,8 @@ ninja.wallets.donate = {
       testGetECKeyFromBase6Key: function() {
         var baseKey = "100531114202410255230521444145414341221420541210522412225005202300434134213212540304311321323051431";
         var hexKey = "292665C3872418ADF1DA7FFA3A646F2F0602246DA6098A91D229C32150F2718B";
-        var ecKey = new Bitcoin.ECKey(baseKey);
-        if (ecKey.getBitcoinHexFormat() != hexKey) {
+        var ecKey = new SHND.ECKey(baseKey);
+        if (ecKey.getSHNDHexFormat() != hexKey) {
           return false;
         }
         return true;
@@ -11984,23 +11988,23 @@ ninja.wallets.donate = {
       // old bugs
       testBugWithLeadingZeroBytePublicKey: function() {
         var key = "5Je7CkWTzgdo1RpwjYhwnVKxQXt8EPRq17WZFtWcq5umQdsDtTP";
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinAddress() != "1M6dsMZUjFxjdwsyVk8nJytWcfr9tfUa9E") {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDAddress() != "1M6dsMZUjFxjdwsyVk8nJytWcfr9tfUa9E") {
           return false;
         }
         return true;
       },
       testBugWithLeadingZeroBytePrivateKey: function() {
         var key = "0004d30da67214fa65a41a6493576944c7ea86713b14db437446c7a8df8e13da";
-        var btcKey = new Bitcoin.ECKey(key);
-        if (btcKey.getBitcoinAddress() != "1NAjZjF81YGfiJ3rTKc7jf1nmZ26KN7Gkn") {
+        var btcKey = new SHND.ECKey(key);
+        if (btcKey.getSHNDAddress() != "1NAjZjF81YGfiJ3rTKc7jf1nmZ26KN7Gkn") {
           return false;
         }
         return true;
       }
     },
     asynchronousTests: {
-      //https://en.bitcoin.it/wiki/BIP_0038
+      //https://en.SHND.it/wiki/BIP_0038
       testBip38: function(done) {
         var tests = [
           //No compression, no EC multiply
@@ -12030,8 +12034,8 @@ ninja.wallets.donate = {
             if (privBytes.constructor == Error) {
               document.getElementById("asyncunittestresults").innerHTML += "fail testDecryptBip38 #" + i + ", error: " + privBytes.message + "<br/>";
             } else {
-              var btcKey = new Bitcoin.ECKey(privBytes);
-              var wif = !test[2].substr(0, 1).match(/[LK]/) ? btcKey.setCompressed(false).getBitcoinWalletImportFormat() : btcKey.setCompressed(true).getBitcoinWalletImportFormat();
+              var btcKey = new SHND.ECKey(privBytes);
+              var wif = !test[2].substr(0, 1).match(/V/) ? btcKey.setCompressed(false).getSHNDWalletImportFormat() : btcKey.setCompressed(true).getSHNDWalletImportFormat();
               if (wif != test[2]) {
                 document.getElementById("asyncunittestresults").innerHTML += "fail testDecryptBip38 #" + i + "<br/>";
               } else {
@@ -12055,12 +12059,12 @@ ninja.wallets.donate = {
         // test randomly generated encryption-decryption cycle
         var cycleTest = function(i, compress, onComplete) {
           // create new private key
-          var privKey = (new Bitcoin.ECKey(false)).getBitcoinWalletImportFormat();
+          var privKey = (new SHND.ECKey(false)).getSHNDWalletImportFormat();
           // encrypt private key
           ninja.privateKey.BIP38PrivateKeyToEncryptedKeyAsync(privKey, 'testing', compress, function(encryptedKey) {
             // decrypt encryptedKey
             ninja.privateKey.BIP38EncryptedKeyToByteArrayAsync(encryptedKey, 'testing', function(decryptedBytes) {
-              var decryptedKey = (new Bitcoin.ECKey(decryptedBytes)).getBitcoinWalletImportFormat();
+              var decryptedKey = (new SHND.ECKey(decryptedBytes)).getSHNDWalletImportFormat();
               if (decryptedKey === privKey) {
                 document.getElementById("asyncunittestresults").innerHTML += "pass cycleBip38 test #" + i + "<br/>";
               } else {
@@ -12081,9 +12085,9 @@ ninja.wallets.donate = {
                 if (privBytes.constructor == Error) {
                   document.getElementById("asyncunittestresults").innerHTML += "fail testBip38Intermediate #" + i + ", error: " + privBytes.message + "<br/>";
                 } else {
-                  var btcKey = new Bitcoin.ECKey(privBytes);
-                  var btcAddress = btcKey.getBitcoinAddress();
-                  if (address !== btcKey.getBitcoinAddress()) {
+                  var btcKey = new SHND.ECKey(privBytes);
+                  var btcAddress = btcKey.getSHNDAddress();
+                  if (address !== btcKey.getSHNDAddress()) {
                     document.getElementById("asyncunittestresults").innerHTML += "fail testBip38Intermediate #" + i + "<br/>";
                   } else {
                     document.getElementById("asyncunittestresults").innerHTML += "pass testBip38Intermediate #" + i + "<br/>";
@@ -12139,7 +12143,7 @@ if (ninja.getQueryString()["showseedpool"] == "true" || ninja.getQueryString()["
   document.getElementById("seedpoolarea").style.display = "block";
 }
 // change currency
-var currency = ninja.getQueryString()["currency"] || "bitcoin";
+var currency = ninja.getQueryString()["currency"] || "SHND";
 currency = currency.toLowerCase();
 for (i = 0; i < janin.currencies.length; i++) {
   if (janin.currencies[i].name.toLowerCase() == currency) janin.currency.useCurrency(i);
