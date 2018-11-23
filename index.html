@@ -9159,6 +9159,7 @@ h1 {
   <div id="busyblock"></div>
   <div id="main">
     <div id="culturemenu"> <span><a href="?culture=en" hreflang="en" id="cultureen" class="selected">English</a></span> | <span><a href="?culture=fr" hreflang="fr" id="culturefr">Français</a></span> | <span><a href="?culture=de" hreflang="de" id="culturede">German</a></span>      | <span><a href="?culture=nl" hreflang="nl" id="culturenl">Dutch</a></span> | <span><a href="?culture=pt" hreflang="pt" id="culturept">Português</a></span> | <span><a href="?culture=ru" hreflang="ru" id="cultureru">Русский</a></span> | <span><a href="?culture=es" hreflang="es" id="culturees">Spanish</a></span>      | <span><a href="?culture=it" hreflang="it" id="cultureit">Italiano</a></span> | <span><a href="?culture=ua" hreflang="ua" id="cultureua">Українська</a></span> | <span><a href="?culture=tr" hreflang="tr" id="culturetr">Türk</a></span> | <span><a href="?culture=pl" hreflang="pl" id="culturepl">Polski</a></span>      | <span><a href="?culture=zh" hreflang="zh" id="culturezh">中文</a></span> </div>
+	
     <div class="banner">
       <div id="coinLogo"> <img id="coinLogoImg" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
       <h1>
@@ -9174,7 +9175,7 @@ h1 {
       <div class="tab i18n" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details</div>
       <div class="tab i18n" id="donate" onclick="ninja.tabSwitch(this);">Support</div>
     </div>
-    <div id="wallets" style="border:0.5px solid red">
+    <div id="wallets" style="border:0.1px solid">
       <div id="singlearea" class="walletarea">
         <div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
           <span
@@ -9239,6 +9240,7 @@ h1 {
             </div>
           </div>
         </div>
+		
         <div id="faqZone">
           <h2>Frequently asked questions :</h2>
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion1');ninja.toggleFaqQuestion('faqQuestion1.1')">&#8226; Is using a paper wallet safe ?</a></h3>
@@ -9259,6 +9261,7 @@ h1 {
           <p class="faqAnswer" id="faqQuestion11"> Donations are always welcome, and thanks for the support ! </p>
         </div>
       </div>
+	 
       <div id="paperarea">
         <div class="commands">
           <div id="papercommands" class="row"> <span><label id="paperlabelencrypt" for="paperencrypt" class="i18n">BIP38 Encrypt?</label> <input type="checkbox" id="paperencrypt" onchange="ninja.wallets.paperwallet.toggleEncrypt(this);" /></span> <span><label id="paperlabelBIPpassphrase" for="paperpassphrase" class="i18n">Passphrase:</label> <input type="text" id="paperpassphrase" /></span>            <br/> <input type="button" id="papergenerate" value="Randomly generate" onclick="ninja.wallets.paperwallet.build(document.getElementById('paperpassphrase').value);" /> <span>OR</span> <input placeholder="Enter your own WIF private key" id="suppliedPrivateKey"
@@ -9359,13 +9362,18 @@ h1 {
         <div id="changelog">
           <hr/>
           <h3>Release notes</h3>
-          <p> 09.2018 --
+		  <p> 11.2018 -- </p>
+			<ul>
+			  <li>Import instructions for SHND and SHMN</li>
+			</ul>
+          <p> 09.2018 -- </p>
             <ul>
               <li>Added support for SHND and SHMN</li>
 			  <li>Multi-currency support</li>
               <li>Original design for the paper wallet</li>
               <li>Improved design of the website</li>
               <li>Security checklist and more user-friendly explanations</li>
+			</ul>
         </div>
       </div>
     </div>
@@ -9374,6 +9382,7 @@ h1 {
       <div class="copyright"> <span id="footerlabelcopyright1">Copyright WalletGenerator.net.</span> <span id="footerlabelcopyright2" class="i18n">JavaScript copyrights are included in the source.</span> <span id="footerlabelnowarranty" class="i18n">No warranty.</span> </div>
     </div>
   </div>
+  
   <script type="text/javascript">
 (function(window) {
   var muchIndex = 0;
