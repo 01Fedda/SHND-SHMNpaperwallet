@@ -8555,6 +8555,8 @@ h1 {
 #papergenerate {
   margin-left: 10px;
   margin-right: 0px;
+  position: absolute;
+  left: 3px;
 }
 
 .displayNone {
@@ -9171,7 +9173,6 @@ h1 {
       <div class="tab i18n selected" id="singlewallet" onclick="ninja.tabSwitch(this);">Single Wallet</div>
       <div class="tab i18n" id="paperwallet" onclick="ninja.tabSwitch(this);">Paper Wallet</div>
       <div class="tab i18n" id="bulkwallet" onclick="ninja.tabSwitch(this);">Bulk Wallet</div>
-      <div class="tab i18n" id="brainwallet" onclick="ninja.tabSwitch(this);">Brain Wallet</div>
       <div class="tab i18n" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details</div>
       <div class="tab i18n" id="donate" onclick="ninja.tabSwitch(this);">Support</div>
     </div>
@@ -9264,8 +9265,7 @@ h1 {
 	 
       <div id="paperarea">
         <div class="commands">
-          <div id="papercommands" class="row"> <span><label id="paperlabelencrypt" for="paperencrypt" class="i18n">BIP38 Encrypt?</label> <input type="checkbox" id="paperencrypt" onchange="ninja.wallets.paperwallet.toggleEncrypt(this);" /></span> <span><label id="paperlabelBIPpassphrase" for="paperpassphrase" class="i18n">Passphrase:</label> <input type="text" id="paperpassphrase" /></span>            <br/> <input type="button" id="papergenerate" value="Randomly generate" onclick="ninja.wallets.paperwallet.build(document.getElementById('paperpassphrase').value);" /> <span>OR</span> <input placeholder="Enter your own WIF private key" id="suppliedPrivateKey"
-              name="suppliedPrivateKey" spellcheck="false" />&nbsp; <input type="button" id="papergenerate" value="Apply &raquo;" onClick="ninja.wallets.paperwallet.testAndApplyVanityKey();" /> <span class="print"><input type="button" name="print" value="Print" id="paperprint" onclick="window.print();" /></span>            </div>
+          <div id="papercommands" class="row"> <span><label id="paperlabelencrypt" for="paperencrypt" class="i18n"></label> <span id="paperencrypt" onchange="ninja.wallets.paperwallet.toggleEncrypt(this);"> </span></span> <span><label id="paperlabelBIPpassphrase" for="paperpassphrase" class="i18n"></label> <span id="paperpassphrase"> </span></span>            <input type="button" id="papergenerate" value="Randomly Generate" onclick="ninja.wallets.paperwallet.build(document.getElementById('paperpassphrase').value);" /> <span id="suppliedPrivateKey"></span> <span id="papergenerate" value="Apply &raquo;" onClick="ninja.wallets.paperwallet.testAndApplyVanityKey();"> </span> <span class="print"><input type="button" name="print" value="Print" id="paperprint" onclick="window.print();" /></span>            </div>
         </div>
         <div id="paperkeyarea"></div>
       </div>
@@ -9342,17 +9342,6 @@ h1 {
           <div class="item displayNone" id="detailb6"> <span class="label i18n" id="detaillabelprivb6">Private Key Base6 Format (99 characters [0-5]):</span> <span class="output" id="detailprivb6"></span> </div>
           <div class="item displayNone" id="detailbip38"> <span class="label i18n" id="detaillabelprivbip38">Private Key BIP38 Format (58 characters Base58):</span> <span class="output" id="detailprivbip38"></span> </div>
         </div>
-        <div class="faqs">
-          <div id="detailfaq1" class="faq">
-            <div id="detailq1" class="question" onclick="ninja.wallets.detailwallet.openCloseFaq(1);"> <span id="detaillabelq1" class="i18n">How do I make a wallet using dice? What is B6?</span>
-              <div id="detaile1" class="more"></div>
-            </div>
-            <div id="detaila1" class="answer i18n">An important part of creating a crypto-currency wallet is ensuring the random numbers used to create the wallet are truly random. Physical randomness is better than computer generated pseudo-randomness. The easiest way to generate physical
-              randomness is with dice. To create a crypto-currency private key you only need one six sided die which you roll 99 times. Stopping each time to record the value of the die. When recording the values follow these rules: 1=1, 2=2, 3=3, 4=4,
-              5=5, 6=0. By doing this you are recording the big random number, your private key, in B6 or base 6 format. You can then enter the 99 character base 6 private key into the text field above and click View Details. You will then see the public
-              address associated with your private key. You should also make note of your private key in WIF format since it is more widely used.</div>
-          </div>
-        </div>
       </div>
       <div id="donatearea" class="walletarea">
         <div id="donatetextfooter" class="i18n">To support, you can donate to the following addresses. When the support for a currency has been added by an external contributor, the donation is received directly. </div>
@@ -9364,6 +9353,7 @@ h1 {
           <h3>Release notes</h3>
 		  <p> 12.2018 -- </p>
 			<ul>
+			  <li>Deleted unnecessary objects</li>
 			  <li>Updated Import instructions with more info</li>
 			</ul>
 		  <p> 11.2018 -- </p>
@@ -10209,8 +10199,6 @@ ninja.translator = {
       "securitychecktitle": "Liste de sécurité :",
       "securitychecklivecd": "Utilisez vous un système d'exploitation garanti sans malware ou virus, comme par exemple un live-CD Ubuntu ?",
       "supportedcurrencylbl": "monnaies supportées !",
-      "paperlabelencrypt": "Chiffrer en BIP38 ?",
-      "paperlabelBIPpassphrase": "Phrase de passe:",
       "bulklabelstartindex": "Index de départ:",
       "bulklabelrowstogenerate": "Quantité à générer:",
       "bulklabelcompressed": "Compresser les adresses ?",
@@ -10292,8 +10280,6 @@ ninja.translator = {
       "securitychecktitle": "Sicherheits Checkliste :",
       "securitychecklivecd": "Verwenden Sie nur ein Betriebssystem, dass garantiert frei von Spyware und Viren ist, beispielsweise eine sichere Ubuntu LiveCD.",
       "supportedcurrencylbl": "unterstützte Crypto-Währungen !",
-      "paperlabelencrypt": "Verschlüsselung mit BIP38 ?",
-      "paperlabelBIPpassphrase": "BIP38 Kennwort:",
       "bulklabelstartindex": "Start Index:",
       "bulklabelrowstogenerate": "zu generierende Zeilen:",
       "bulklabelcompressed": "Komprimierte Schlüssel ?",
@@ -10375,8 +10361,6 @@ ninja.translator = {
       "securitychecktitle": "Beveiligings controlelijst :",
       "securitychecklivecd": "Gebruik je een beveiligd besturingssysteem die gegarandeerd vrij is van spyware en virussen, bijvoorbeeld een Ubuntu LiveCD?",
       "supportedcurrencylbl": "Ondersteunde munten !",
-      "paperlabelencrypt": "BIP38 Encrypt?",
-      "paperlabelBIPpassphrase": "Wachtwoordzin:",
       "bulklabelstartindex": "Start index:",
       "bulklabelrowstogenerate": "Rijen om te genereren:",
       "bulklabelcompressed": "Gecomprimeerde addressen?",
@@ -10460,8 +10444,6 @@ ninja.translator = {
       "securitychecktitle": "Checklist de Segurança:",
       "securitychecklivecd": "Você está usando um sistema operacional seguro, garantido de estar livre de spyware e vírus, como por exemplo, um Ubuntu LiveCD?",
       "supportedcurrencylbl": "Moedas suportadas!",
-      "paperlabelencrypt": "Criptografar com BIP38?",
-      "paperlabelBIPpassphrase": "Senha:",
       "bulklabelstartindex": "Índice inicial:",
       "bulklabelrowstogenerate": "Quantas linhas gerar:",
       "bulklabelcompressed": "Endereços comprimidos?",
@@ -10543,8 +10525,6 @@ ninja.translator = {
       "securitychecktitle": "Перечень безопасности :",
       "securitychecklivecd": "Используете ли Вы безопасную операционную систему, гарантированно чистую от различного рода шпионских программ и вирусов, например, такую как Ubuntu LiveCD?",
       "supportedcurrencylbl": "валют доступно !",
-      "paperlabelencrypt": "Зашифровать с помощью BIP38?",
-      "paperlabelBIPpassphrase": "Кодовая фраза:",
       "bulklabelstartindex": "Начальный индекс:",
       "bulklabelrowstogenerate": "Количество генерируемых строк:",
       "bulklabelcompressed": "Создавать сжатые адреса?",
@@ -10626,8 +10606,6 @@ ninja.translator = {
       "securitychecktitle": "Lista de verificación de seguridad:",
       "securitychecklivecd": "Estás usando un sistema operativo seguro, garantizado de estar libre de spyware y virus, por ejemplo, un LiveCD de Ubuntu?",
       "supportedcurrencylbl": "criptodivisas soportadas!",
-      "paperlabelencrypt": "Encriptación BIP38?",
-      "paperlabelBIPpassphrase": "Contraseña:",
       "bulklabelstartindex": "Iniciar índice en:",
       "bulklabelrowstogenerate": "Líneas a generar:",
       "bulklabelcompressed": "Direcciones comprimidas?",
@@ -10716,8 +10694,6 @@ ninja.translator = {
       "securitychecktitle": "Controllo di sicurezza :",
       "securitychecklivecd": "Utilizzi un sistema operativo garantito senza malware o virus, ad esempio un CD live-Ubuntu?",
       "supportedcurrencylbl": "valute supportate !",
-      "paperlabelencrypt": "Crittografare in BIP38?",
-      "paperlabelBIPPassphrase": "Frase d'accesso:",
       "bulklabelstartindex": "Indice iniziale:",
       "bulklabelrowstogenerate": "Righe da generare:",
       "bulklabelcompressed": "Indirizzo compresso?",
@@ -10815,8 +10791,6 @@ ninja.translator = {
       "securitychecktitle": "Пам'ятка безпеки :",
       "securitychecklivecd": "Чи використовуєте ви безпечну операційну систему, яка гарантує захист від шпигунських програм і вірусів, наприклад, таку як Ubuntu LiveCD?",
       "supportedcurrencylbl": "доступних валют !",
-      "paperlabelencrypt": "Зашифрувати за допомогою BIP38?",
-      "paperlabelBIPpassphrase": "Парольна фраза:",
       "bulklabelstartindex": "Початковий індекс:",
       "bulklabelrowstogenerate": "Кількість рядків, що буде створено:",
       "bulklabelcompressed": "Чи створювати стиснуті адреси?",
@@ -10917,8 +10891,6 @@ ninja.translator = {
       "securitychecktitle": "Lista zaleceń bezpieczeństwa :",
       "securitychecklivecd": "Czy korzystasz z bezpiecznego systemu operacyjnego, który jest wolny od oprogramowania szpiegującego i wirusów, na przykład Ubuntu LiveCD?",
       "supportedcurrencylbl": "Wspierane waluty !",
-      "paperlabelencrypt": "Szyfrowanie BIP38?",
-      "paperlabelBIPpassphrase": "Hasło:",
       "bulklabelstartindex": "Zacznij od numeru indeksu:",
       "bulklabelrowstogenerate": "Ilość rzędów:",
       "bulklabelcompressed": "Skompresowane adresy?",
@@ -11002,8 +10974,6 @@ ninja.translator = {
       "securitychecktitle": "安全檢查清單",
       "securitychecklivecd": "您是否使用安全、沒有電腦病毒及間諜軟體的的作業系統呢？(例如Ubuntu LiveCD)",
       "supportedcurrencylbl": "種加密貨幣都可以在本網站使用！",
-      "paperlabelencrypt": "以BIP38加密？",
-      "paperlabelBIPpassphrase": "密碼口令(Passphrase)：",
       "bulklabelstartindex": "起始編號：",
       "bulklabelrowstogenerate": "產生行數：",
       "bulklabelcompressed": "是否壓縮地址？",
@@ -11299,65 +11269,7 @@ ninja.wallets.bulkwallet = {
 };
 
   </script>
-  <script type="text/javascript">
-ninja.wallets.brainwallet = {
-  open: function() {
-    document.getElementById("brainarea").style.display = "block";
-    document.getElementById("brainpassphrase").focus();
-    document.getElementById("brainwarning").innerHTML = ninja.translator.get("brainalertpassphrasewarning");
-  },
-  close: function() {
-    document.getElementById("brainarea").style.display = "none";
-  },
-  minPassphraseLength: 15,
-  view: function() {
-    document.getElementById("brainerror").innerHTML = "";
-    var key = document.getElementById("brainpassphrase").value.toString().replace(/^\s+|\s+$/g, ""); // trim white space
-    document.getElementById("brainpassphrase").value = key;
-    var keyConfirm = document.getElementById("brainpassphraseconfirm").value.toString().replace(/^\s+|\s+$/g, ""); // trim white space
-    document.getElementById("brainpassphraseconfirm").value = keyConfirm;
-    if (key == keyConfirm || document.getElementById("brainpassphraseshow").checked) {
-      // enforce a minimum passphrase length
-      if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
-        var bytes = Crypto.SHA256(key, {
-          asBytes: true
-        });
-        var btcKey = new SHND.ECKey(bytes);
-        var SHNDAddress = btcKey.getSHNDAddress();
-        var privWif = btcKey.getSHNDWalletImportFormat();
-        document.getElementById("brainbtcaddress").innerHTML = SHNDAddress;
-        document.getElementById("brainbtcprivwif").innerHTML = privWif;
-        ninja.qrCode.showQrCode({
-          "brainqrcodepublic": SHNDAddress,
-          "brainqrcodeprivate": privWif
-        });
-        document.getElementById("brainkeyarea").style.visibility = "visible";
-      } else {
-        document.getElementById("brainerror").innerHTML = ninja.translator.get("brainalertpassphrasetooshort");
-        ninja.wallets.brainwallet.clear();
-      }
-    } else {
-      document.getElementById("brainerror").innerHTML = ninja.translator.get("brainalertpassphrasedoesnotmatch");
-      ninja.wallets.brainwallet.clear();
-    }
-  },
-  clear: function() {
-    document.getElementById("brainkeyarea").style.visibility = "hidden";
-  },
-  showToggle: function(element) {
-    if (element.checked) {
-      document.getElementById("brainpassphrase").setAttribute("type", "text");
-      document.getElementById("brainpassphraseconfirm").style.visibility = "hidden";
-      document.getElementById("brainlabelconfirm").style.visibility = "hidden";
-    } else {
-      document.getElementById("brainpassphrase").setAttribute("type", "password");
-      document.getElementById("brainpassphraseconfirm").style.visibility = "visible";
-      document.getElementById("brainlabelconfirm").style.visibility = "visible";
-    }
-  }
-};
-
-  </script>
+  
   <script type="text/javascript">
 ninja.wallets.detailwallet = {
   qrscanner: {
