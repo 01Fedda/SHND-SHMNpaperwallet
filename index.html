@@ -48,8 +48,6 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-
-  GitHub Repository: https://github.com/MichaelMure/WalletGenerator.net
   -->
   <title>WalletGenerator.net - Universal Paper wallet generator for SHND and SHMN cryptocurrencies</title>
   <script type="text/javascript">
@@ -8648,7 +8646,7 @@ h1 {
 }
 
 #detailarea span.qrinput #detailprivkey {
-  width: 420px;
+  width: 450px;
   height: 20px;
 }
 
@@ -8669,6 +8667,10 @@ h1 {
 
 #detailarea .pubqr .item .label {
   text-decoration: none;
+}
+
+#detailarea .label {
+  margin-right: 300px;
 }
 
 #detailarea .pubqr .item {
@@ -8719,6 +8721,7 @@ h1 {
   display: block;
   font-family: monospace;
   font-size: 1.25em;
+  margin-right: 13px;
 }
 
 #detailarea #detailqrcodepublic {
@@ -8854,9 +8857,7 @@ h1 {
 
 .banner {
   font-size: 46px;
-  text-shadow: 1px 1px 3px #000;
   color: #FF9547;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   text-align: left;
   position: relative;
 }
@@ -9152,6 +9153,11 @@ h1 {
   .dogeTag {
     display: none;
   }
+  
+  #detaillabelprivwif {
+	margin-left: 1900px;
+  }
+  
 }
 
   </style>
@@ -9160,7 +9166,7 @@ h1 {
 <body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);">
   <div id="busyblock"></div>
   <div id="main">
-    <div id="culturemenu"> <span><a href="?culture=en" hreflang="en" id="cultureen" class="selected">English</a></span> | <span><a href="?culture=fr" hreflang="fr" id="culturefr">Français</a></span> | <span><a href="?culture=de" hreflang="de" id="culturede">German</a></span>      | <span><a href="?culture=nl" hreflang="nl" id="culturenl">Dutch</a></span> | <span><a href="?culture=pt" hreflang="pt" id="culturept">Português</a></span> | <span><a href="?culture=ru" hreflang="ru" id="cultureru">Русский</a></span> | <span><a href="?culture=es" hreflang="es" id="culturees">Spanish</a></span>      | <span><a href="?culture=it" hreflang="it" id="cultureit">Italiano</a></span> | <span><a href="?culture=ua" hreflang="ua" id="cultureua">Українська</a></span> | <span><a href="?culture=tr" hreflang="tr" id="culturetr">Türk</a></span> | <span><a href="?culture=pl" hreflang="pl" id="culturepl">Polski</a></span>      | <span><a href="?culture=zh" hreflang="zh" id="culturezh">中文</a></span> </div>
+    <div id="culturemenu"> <span><a href="?culture=en" hreflang="en" id="cultureen" class="selected"></a></span><span><a href="?culture=fr" hreflang="fr" id="culturefr"></a></span><span><a href="?culture=de" hreflang="de" id="culturede"></a></span>      <span><a href="?culture=nl" hreflang="nl" id="culturenl"></a></span> <span><a href="?culture=pt" hreflang="pt" id="culturept"></a></span> <span><a href="?culture=ru" hreflang="ru" id="cultureru"></a></span> <span><a href="?culture=es" hreflang="es" id="culturees"></a></span>      <span><a href="?culture=it" hreflang="it" id="cultureit"></a></span>  <span><a href="?culture=ua" hreflang="ua" id="cultureua"></a></span> <span><a href="?culture=tr" hreflang="tr" id="culturetr"></a></span> <span><a href="?culture=pl" hreflang="pl" id="culturepl"></a></span>      <span><a href="?culture=zh" hreflang="zh" id="culturezh"></a></span> </div>
 	
     <div class="banner">
       <div id="coinLogo"> <img id="coinLogoImg" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
@@ -9176,7 +9182,7 @@ h1 {
       <div class="tab i18n" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details</div>
       <div class="tab i18n" id="donate" onclick="ninja.tabSwitch(this);">Support</div>
     </div>
-    <div id="wallets" style="border:0.1px solid">
+    <div id="wallets" style="border:darkgray solid 1px">
       <div id="singlearea" class="walletarea">
         <div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
           <span
@@ -9191,7 +9197,7 @@ h1 {
               </div>
             </div>
         </div>
-        <div id="walletCommands" class="commands" style="background-color:#D8DCFB">
+        <div id="walletCommands" class="commands">
           <div id="singlecommands" class="row"> <span><input type="button" id="newaddress" value="Generate New Address" onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span> <span class="print"><input type="button" name="print" value="Print" id="singleprint" onclick="window.print();" /></span>            </div>
         </div>
         <div id="keyarea" class="keyarea">
@@ -9211,12 +9217,11 @@ h1 {
         <div id="singlesafety">
           <div class="firstHalfSingleSafety">
             <h3 id="securitystep0title" class="i18n">Step 0. Follow the security checklist recommendation</h3>
-            <p id="securitystep0" class="i18n"> First step is to <strong>download</strong> this website from <a href="https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip"><b>Github</b></a> and open the index.html file directly from your computer. It's just too easy to sneak some
-              evil code in the 6000+ lines of javascript to leak your private key, and you don't want to see your fund stolen. Code version control make it much easier to cross-check what actually run. For extra security, <strong>unplug your Internet access</strong>              while generating your wallet. </p>
+            <p id="securitystep0" class="i18n"> First step is to <strong>download</strong> this website from <a href="https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip"><b>Github</b></a> and open the index.html file directly from your computer. For extra security, you can <strong>unplug your Internet access</strong>              while generating your wallet. </p>
             <h3 id="securitystep1title" class="i18n">Step 1. Generate new address</h3>
             <p id="securitystep1" class="i18n"> Choose your currency and click on the "Generate new address" button. </p>
             <h3 id="securitystep2title" class="i18n">Step 2. Print the Paper Wallet</h3>
-            <p id="securitystep2" class="i18n"> Click the Paper Wallet tab and print the page on high quality setting. <strong>Never save the page as a PDF file to print it later since a file is more likely to be hacked than a piece of paper.</strong> </p>
+            <p id="securitystep2" class="i18n"> Click the Paper Wallet tab and print the page on high quality setting. <strong>Be careful when saving the page as a PDF file to print it later since a file is more likely to be hacked than a piece of paper.</strong> </p>
             <h3 id="securitystep3title" class="i18n">Step 3. Fold the Paper Wallet</h3>
             <p id="securitystep3" class="i18n"> Fold your new Paper wallet following the lines. <img src="images/foldinginstructions.png" alt="Fold in half lengthwise, and then in three widthwise." /><br /> You can insert one side inside the other to lock the wallet. </p>
             <h3 id="securitystep4title"
@@ -9270,9 +9275,9 @@ h1 {
       </div>
       <div id="bulkarea" class="walletarea">
         <div class="commands">
-          <div id="bulkcommands" class="row"> <span><label id="bulklabelstartindex" for="bulkstartindex" class="i18n">Start index:</label> <input type="text" id="bulkstartindex" value="1" /></span> <span><label id="bulklabelrowstogenerate" for="bulklimit" class="i18n">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>            <span><label id="bulklabelcompressed" for="bulkcompressed" class="i18n">Compressed addresses?</label> <input type="checkbox" id="bulkcompressed" /></span> <span><input type="button" id="bulkgenerate" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);" /> </span>            <span class="print"><input type="button" name="print" id="bulkprint" value="Print" onclick="window.print();" /></span> </div>
+          <div id="bulkcommands" class="row"> <span><label id="bulklabelstartindex" for="bulkstartindex" class="i18n">Starting index:</label> <input readonly type="text" id="bulkstartindex" value="1" /></span> <span><label id="bulklabelrowstogenerate" for="bulklimit" class="i18n">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>            <span><label id="bulklabelcompressed" for="bulkcompressed" class="i18n"></label> <span id="bulkcompressed"></span></span> <span><input type="button" id="bulkgenerate" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);" /> </span>            <span class="print"><input type="button" name="print" id="bulkprint" value="Print" onclick="window.print();" /></span> </div>
         </div>
-        <div class="body"> <span class="label i18n" id="bulklabelcsv">Comma Separated Values: Index,Address,Private Key (WIF)</span> <textarea rows="20" cols="88" id="bulktextarea"></textarea> </div>
+        <div class="body"> <span class="label i18n" id="bulklabelcsv">Comma Separated Values: Index,Address,Private Key (WIF)</span> <textarea readonly rows="20" cols="88" id="bulktextarea"></textarea> </div>
       </div>
       <div id="brainarea" class="walletarea">
         <div id="braincommands" class="commands">
@@ -9319,27 +9324,30 @@ h1 {
           <div id="detailbip38commands"> <span><label id="detaillabelpassphrase" class="i18n">Enter BIP38 Passphrase</label> <input type="text" id="detailprivkeypassphrase" value="" onfocus="this.select();" onkeypress="if (event.keyCode == 13) ninja.wallets.detailwallet.viewDetails();" /></span>            <span><input type="button" id="detaildecrypt" value="Decrypt BIP38" onclick="ninja.wallets.detailwallet.viewDetails();" /></span> </div>
         </div>
         <div id="detailkeyarea">
-          <div class="notes"> <span id="detaillabelnote1" class="i18n">Your Private Key is a unique secret number that only you know. It can be encoded in a number of different formats. Below we show the Public Address and Public Key that corresponds to your Private Key as well as your Private Key in the most popular encoding formats (WIF, WIFC, HEX, B64).</span>            <br /><br /> </div>
+          <div class="notes"> <span id="detaillabelnote1" class="i18n">Your Private Key is a unique secret number that only you know. <b><span style="color:red">It should always be kept secretly</span></b>.  Below will show the Public Address that corresponds to your Private Key after you've entered a private key, or clicked the QR icon to scan.</span>            <br /><br /> </div>
+		  <hr/>
           <div class="pubqr">
             <div class="item"> <span class="label i18n" id="detaillabelSHNDaddress">Public Address</span>
               <div id="detailqrcodepublic" class="qrcode_public"></div> <span class="output" id="detailaddress"></span> </div>
-            <div class="item right"> <span class="label i18n" id="detaillabelSHNDaddresscomp">Public Address Compressed</span>
-              <div id="detailqrcodepubliccomp" class="qrcode_public"></div> <span class="output" id="detailaddresscomp"></span> </div>
-          </div> <br /><br />
-          <div class="item clear"> <span class="label i18n" id="detaillabelpublickey">Public Key (130 characters [0-9A-F]):</span> <span class="output pubkeyhex" id="detailpubkey"></span> </div>
-          <div class="item"> <span class="label i18n" id="detaillabelpublickeycomp">Public Key (compressed, 66 characters [0-9A-F]):</span> <span class="output" id="detailpubkeycomp"></span> </div>
-          <hr />
-          <div class="privqr">
-            <div class="item"> <span class="label"><span id="detaillabelprivwif" class="i18n">Private Key WIF<br />51 characters Base58</span></span>
+			  <div class="item right"> <span class="label"><span id="detaillabelprivwif" class="i18n">Private Key (WIF)<br /></span></span>
               <div id="detailqrcodeprivate" class="qrcode_private"></div> <span class="output" id="detailprivwif"></span> </div>
-            <div class="item right"> <span class="label"><span id="detaillabelprivwifcomp" class="i18n">Private Key WIF Compressed<br />52 characters Base58</span></span>
+            <div class="item right"> <span class="label i18n" id="detaillabelSHNDaddresscomp"></span>
+              <div id="detailqrcodepubliccomp" class="qrcode_public"></div> <span class="output" id="detailaddresscomp"></span> </div>
+          </div>
+          <div class="item clear"> <span class="label i18n" id="detaillabelpublickey"></span> <span class="output pubkeyhex" id="detailpubkey"></span> </div>
+          <div class="item"> <span class="label i18n" id="detaillabelpublickeycomp"></span> <span class="output" id="detailpubkeycomp"></span> </div>
+          <hr/>
+           <div class="privqr">
+            <div class="item right"> <span class="label"><span id="detaillabelprivwif" class="i18n"></span></span>
+              <div id="detailqrcodeprivate" class="qrcode_private"></div> <span class="output" id="detailprivwif"></span> </div>
+            <div class="item right"> <span class="label"><span id="detaillabelprivwifcomp" class="i18n"></span></span>
               <div id="detailqrcodeprivatecomp" class="qrcode_private"></div> <span class="output" id="detailprivwifcomp"></span> </div>
-          </div> <br /><br />
-          <div class="item clear"> <span class="label i18n" id="detaillabelprivhex">Private Key Hexadecimal Format (64 characters [0-9A-F]):</span> <span class="output" id="detailprivhex"></span> </div>
-          <div class="item"> <span class="label i18n" id="detaillabelprivb64">Private Key Base64 (44 characters):</span> <span class="output" id="detailprivb64"></span> </div>
-          <div class="item displayNone" id="detailmini"> <span class="label i18n" id="detaillabelprivmini">Private Key Mini Format (22, 26 or 30 characters):</span> <span class="output" id="detailprivmini"></span> </div>
-          <div class="item displayNone" id="detailb6"> <span class="label i18n" id="detaillabelprivb6">Private Key Base6 Format (99 characters [0-5]):</span> <span class="output" id="detailprivb6"></span> </div>
-          <div class="item displayNone" id="detailbip38"> <span class="label i18n" id="detaillabelprivbip38">Private Key BIP38 Format (58 characters Base58):</span> <span class="output" id="detailprivbip38"></span> </div>
+          </div>
+          <div class="item clear"> <span class="label i18n" id="detaillabelprivhex"></span> <span class="output" id="detailprivhex"></span> </div>
+          <div class="item"> <span class="label i18n" id="detaillabelprivb64"></span> <span class="output" id="detailprivb64"></span> </div>
+          <div class="item displayNone" id="detailmini"> <span class="label i18n" id="detaillabelprivmini"></span> <span class="output" id="detailprivmini"></span> </div>
+          <div class="item displayNone" id="detailb6"> <span class="label i18n" id="detaillabelprivb6"></span> <span class="output" id="detailprivb6"></span> </div>
+          <div class="item displayNone" id="detailbip38"> <span class="label i18n" id="detaillabelprivbip38"></span> <span class="output" id="detailprivbip38"></span> </div>
         </div>
       </div>
       <div id="donatearea" class="walletarea">
@@ -9352,7 +9360,7 @@ h1 {
           <h3>Release notes</h3>
 		  <p> 12.2018 -- </p>
 			<ul>
-			  <li>Changed some info</li>
+			  <li>Changed numerous info</li>
 			  <li>Deleted unnecessary objects</li>
 			  <li>Updated Import instructions with more info</li>
 			</ul>
@@ -9373,7 +9381,7 @@ h1 {
     </div>
     <div id="footer" class="footer">
       <div> <span class="item"><a id="footersupport" href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));" class="i18n">Support & Donations</a></span> <span class="item"><a href="https://github.com/01Fedda/SHND-SHMNpaperwallet" target="_blank" id="footerlabelgithub" class="i18n">Download (GitHub Repository)</a></span>        </div>
-      <div class="copyright"> <span id="footerlabelcopyright1">Copyright WalletGenerator.net.</span> <span id="footerlabelcopyright2" class="i18n">JavaScript copyrights are included in the source.</span> <span id="footerlabelnowarranty" class="i18n">No warranty.</span> </div>
+      <div class="copyright"> <span id="footerlabelcopyright1">Copyright StrongHandsWalletGenerator.</span> <span id="footerlabelcopyright2" class="i18n">JavaScript copyrights are included in the source.</span> <span id="footerlabelnowarranty" class="i18n">No warranty.</span> </div>
     </div>
   </div>
   
@@ -10296,16 +10304,16 @@ ninja.translator = {
       "detaillabelpassphrase": "BIP38 Passwort Phrase eingeben",
       "detaillabelnote1": "Ihr privater Schlüssel ist ein weltweit einmaliger Schlüssel, den nur Sie kennen. Dieser kann in verschiedenen Format encodiert werden. Unterhalb wird die öffentliche Adresse, der dazugehörige öffentliche Schlüssel und Ihr privater Schlüssel in den häufig verwendeten Formaten (WIF, WIFC, HEX, B64) dargestellt.",
       "detaillabelSHNDaddress": "Öffentliche Adresse",
-      "detaillabelSHNDaddresscomp": "Öffentliche Adresse komprimiert",
-      "detaillabelpublickey": "Öffentliche Adresse (130 Zeichen [0-9A-F]):",
-      "detaillabelpublickeycomp": "Öffentliche Adresse komprimiert (66 Zeichen [0-9A-F]):",
-      "detaillabelprivwif": "Privater Schlüssel WIF<br>51 Zeichen Base58",
-      "detaillabelprivwifcomp": "Privater Schlüssel WIF komprimiert<br>52 Zeichen Base58",
-      "detaillabelprivhex": "Privater Schlüssel hexadezimal (64 Zeichen [0-9A-F]):",
-      "detaillabelprivb64": "Privater Schlüssel Base64 (44 Zeichen):",
-      "detaillabelprivmini": "Privater Schlüssel MINI Format (22, 26 oder 30 Zeichen):",
-      "detaillabelprivb6": "Privater Schlüssel Base6 (99 Zeichen [0-5]):",
-      "detaillabelprivbip38": "Privater Schlüssel BIP38 Format (58 Zeichen Base58):",
+      //"detaillabelSHNDaddresscomp": "Öffentliche Adresse komprimiert",
+      //"detaillabelpublickey": "Öffentliche Adresse (130 Zeichen [0-9A-F]):",
+      //"detaillabelpublickeycomp": "Öffentliche Adresse komprimiert (66 Zeichen [0-9A-F]):",
+      "detaillabelprivwif": "Privater Schlüssel WIF<br>",
+      //"detaillabelprivwifcomp": "Privater Schlüssel WIF komprimiert<br>52 Zeichen Base58",
+      //"detaillabelprivhex": "Privater Schlüssel hexadezimal (64 Zeichen [0-9A-F]):",
+      //"detaillabelprivb64": "Privater Schlüssel Base64 (44 Zeichen):",
+      //"detaillabelprivmini": "Privater Schlüssel MINI Format (22, 26 oder 30 Zeichen):",
+      //"detaillabelprivb6": "Privater Schlüssel Base6 (99 Zeichen [0-5]):",
+      //"detaillabelprivbip38": "Privater Schlüssel BIP38 Format (58 Zeichen Base58):",
       "detaillabelq1": "Wie erstelle ich eine zufällige Geldbörse? Was ist Base6 (B6)?",
       "detaila1": "Voraussetzung für die sichere Erstellung eine Cryptowährungs-Geldbörse ist die Verwendung von zufälligen Zeichen, die verwendet werden, um eine sichere Geldbörse zu generieren. Physikalische Zufallsgeneratoren sind in der Regel hochwertiger, wie von Computern berechnete Pseudo-Zufallszahlen. Physikalischer Zufall lässt sich zum Beispiel mit einem Würfel erzeugen. Um einen privaten Schlüssel einer Kryptowährung zu generieren, müssen Sie einen Standardwürfel mit sechs Ziffern 99 Mal werfen. Notieren Sie hierbei jedes Würfelergebnis. Bei der Aufzeichnung verwenden Sie folgende Regel: 1=1, 2=2, 3=3, 4=4, 5=5, 6=0. Dadurch generieren Sie manuell eine lange, zufällige Zahl: Ihren privaten Schlüssel im B6 oder Base6 Format. Sie können anschließend die 99 Zeichen als Base6 privater Schlüssel in das obere Textfeld einfügen und anschließend auf \"Details darstellen\" klicken. Anschließend wird Ihnen die öffentliche Adresse zu Ihrem privaten Schlüssel dargestellt. Notieren Sie bitte Ihren privaten Schlüssel auch im WIF Format, da dieses häufig verwendet wird.",
       "donatetextfooter": "Um die Entwicklung von diesem Kryptogeldbörsen-Generator zu unterstützen, bitten wir Sie um eine Spende an eine der folgenden Adressen. Falls die Unterstützung für eine Kryptowährung von einem externen Programmierer beigetragen wurde, erhält dieser direkt Ihre Spende.",
@@ -11400,43 +11408,43 @@ ninja.wallets.detailwallet = {
   populateKeyDetails: function(btcKey) {
     if (btcKey.priv != null) {
       btcKey.setCompressed(false);
-      document.getElementById("detailprivhex").innerHTML = btcKey.toString().toUpperCase();
-      document.getElementById("detailprivb64").innerHTML = btcKey.toString("base64");
+      //document.getElementById("detailprivhex").innerHTML = btcKey.toString().toUpperCase();
+      //document.getElementById("detailprivb64").innerHTML = btcKey.toString("base64");
       var SHNDAddress = btcKey.getSHNDAddress();
       var wif = btcKey.getSHNDWalletImportFormat();
-      document.getElementById("detailpubkey").innerHTML = btcKey.getPubKeyHex();
+      //document.getElementById("detailpubkey").innerHTML = btcKey.getPubKeyHex();
       document.getElementById("detailaddress").innerHTML = SHNDAddress;
       document.getElementById("detailprivwif").innerHTML = wif;
-      btcKey.setCompressed(true);
-      var SHNDAddressComp = btcKey.getSHNDAddress();
-      var wifComp = btcKey.getSHNDWalletImportFormat();
-      document.getElementById("detailpubkeycomp").innerHTML = btcKey.getPubKeyHex();
-      document.getElementById("detailaddresscomp").innerHTML = SHNDAddressComp;
-      document.getElementById("detailprivwifcomp").innerHTML = wifComp;
+      //btcKey.setCompressed(true);
+      //var SHNDAddressComp = btcKey.getSHNDAddress();
+      //var wifComp = btcKey.getSHNDWalletImportFormat();
+      //document.getElementById("detailpubkeycomp").innerHTML = btcKey.getPubKeyHex();
+      //document.getElementById("detailaddresscomp").innerHTML = SHNDAddressComp;
+      //document.getElementById("detailprivwifcomp").innerHTML = wifComp;
       ninja.qrCode.showQrCode({
         "detailqrcodepublic": SHNDAddress,
-        "detailqrcodepubliccomp": SHNDAddressComp,
+        //"detailqrcodepubliccomp": SHNDAddressComp,
         "detailqrcodeprivate": wif,
-        "detailqrcodeprivatecomp": wifComp
+        //"detailqrcodeprivatecomp": wifComp
       }, 4);
     }
   },
   clear: function() {
     document.getElementById("detailpubkey").innerHTML = "";
-    document.getElementById("detailpubkeycomp").innerHTML = "";
+    //document.getElementById("detailpubkeycomp").innerHTML = "";
     document.getElementById("detailaddress").innerHTML = "";
-    document.getElementById("detailaddresscomp").innerHTML = "";
+    //document.getElementById("detailaddresscomp").innerHTML = "";
     document.getElementById("detailprivwif").innerHTML = "";
-    document.getElementById("detailprivwifcomp").innerHTML = "";
+    //document.getElementById("detailprivwifcomp").innerHTML = "";
     document.getElementById("detailprivhex").innerHTML = "";
     document.getElementById("detailprivb64").innerHTML = "";
     document.getElementById("detailprivb6").innerHTML = "";
     document.getElementById("detailprivmini").innerHTML = "";
     document.getElementById("detailprivbip38").innerHTML = "";
     document.getElementById("detailqrcodepublic").innerHTML = "";
-    document.getElementById("detailqrcodepubliccomp").innerHTML = "";
+    //document.getElementById("detailqrcodepubliccomp").innerHTML = "";
     document.getElementById("detailqrcodeprivate").innerHTML = "";
-    document.getElementById("detailqrcodeprivatecomp").innerHTML = "";
+    //document.getElementById("detailqrcodeprivatecomp").innerHTML = "";
     document.getElementById("detailb6").style.display = "none";
     document.getElementById("detailmini").style.display = "none";
     document.getElementById("detailbip38commands").style.display = "none";
@@ -12162,7 +12170,7 @@ function cleani18n(string) {
 ninja.envSecurityCheck();
 ninja.browserSecurityCheck();
 
-  </script>
+  </script> 
 </body>
 
 </html>
