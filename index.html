@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for SHND and SHMN cryptocurrencies. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
-  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, SHND, Stronghands, SHMN, Masternode, BTC, litecoin, dogecoin" />
+  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, SHND, SHMN, StrongHands, Stronghands, stronghands, Masternode, BTC, litecoin, dogecoin" />
   <link rel="shortcut icon" type="image/png" href="images/shndmn.png">
   <!--
+  
+  Updated by Fedda BootStrap on 12/2018.
 
 Notice of Copyrights and Licenses:
 ---------------------------------------
@@ -732,7 +734,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
     var reqd = blockSizeInBytes - message.length % blockSizeInBytes;
     return reqd;
   }
-  // Remove padding when the final byte gives the number of padding bytes.
+  // Remove padding when the final byte SHND the number of padding bytes.
   var _unpadLength = function(cipher, message, alg, padding) {
     var pad = message.pop();
     if (pad == 0) {
@@ -8027,6 +8029,14 @@ body {
   display: none;
 }
 
+.buttonsc {
+  background-color: #E5DF10;
+}
+
+.buttonsc:hover {
+  cursor: pointer;
+}
+
 #keyarea {
   display: none;
 }
@@ -8081,7 +8091,7 @@ body {
   height: 6px;
   display: block;
   border-radius: 3px;
-  background-color: #80CF80;
+  background-color: #FF2828;
   position: absolute;
   z-index: 10;
 }
@@ -8846,7 +8856,7 @@ h1 {
   margin: 20px;
   position: absolute;
   right: 0;
-  top: 60px;
+  top: 113px;
   width: 320px;
   font-size: 14px;
 }
@@ -8931,7 +8941,7 @@ h1 {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     display: inline-block;
-    background-color: #FFC3BB;
+    background-color: black;
     border: 2px solid #BFBFBF;
     padding: 5px;
     margin: 0 2px 0 0;
@@ -8939,14 +8949,16 @@ h1 {
     top: 1px;
     z-index: 110;
     cursor: pointer;
+	color: #CEC315;
   }
   .menu .tab:hover {
     color: white;
   }
   .menu .tab.selected {
-    background-color: #F5F98C;
+    background-color: white;
     border-bottom: 1px solid #FFF;
     cursor: default;
+	color: black;
   }
   .menu .tab.selected:hover {
     color: #000;
@@ -9080,7 +9092,8 @@ h1 {
 
 @media print {
   body {
-    -webkit-print-color-adjust: exact;
+    <!-- -webkit-print-color-adjust: exact; -->
+	-webkit-print-color-adjust: economy;
     width: 1000px;
     height: 450px;
   }
@@ -9163,26 +9176,35 @@ h1 {
   </style>
 </head>
 
-<body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);">
+<marquee style="font-size:24px; position:absolute; top:50px; left:385px; width:500px"><b><span style="color:#E51010">***</span> <span style="color:black">Only The Strongest Hands Will Prevail</span> <span style="color:#E51010">***</span></b></marquee>
+
+<p style="font-size:24px; position:absolute; left:325px; top:117px"><b>SHND <span style="color:#E51010">&</span> SHMN</b></p>
+<p style="font-size:24px; position:absolute; left:300px; top:143px"><b style="color:#E51010">Paper Wallet Generator</b></p>
+  
+<body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);" style="background-color:white">
   <div id="busyblock"></div>
+  
+  <center><div style="background-color:#E5DF10; width:1005px; border:10px solid black; border-radius:10px 10px 0px 0px; box-shadow:0 0 5px 5px rgba(0,0,0,0.40)">
+  
   <div id="main">
     <div id="culturemenu"> <span><a href="?culture=en" hreflang="en" id="cultureen" class="selected"></a></span><span><a href="?culture=fr" hreflang="fr" id="culturefr"></a></span><span><a href="?culture=de" hreflang="de" id="culturede"></a></span>      <span><a href="?culture=nl" hreflang="nl" id="culturenl"></a></span> <span><a href="?culture=pt" hreflang="pt" id="culturept"></a></span> <span><a href="?culture=ru" hreflang="ru" id="cultureru"></a></span> <span><a href="?culture=es" hreflang="es" id="culturees"></a></span>      <span><a href="?culture=it" hreflang="it" id="cultureit"></a></span>  <span><a href="?culture=ua" hreflang="ua" id="cultureua"></a></span> <span><a href="?culture=tr" hreflang="tr" id="culturetr"></a></span> <span><a href="?culture=pl" hreflang="pl" id="culturepl"></a></span>      <span><a href="?culture=zh" hreflang="zh" id="culturezh"></a></span> </div>
-	
+
     <div class="banner">
       <div id="coinLogo"> <img id="coinLogoImg" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
       <h1>
-        <img id="siteTitle" src="images/banner.png" alt="SHND and SHMN Paper Wallet Generator" />
+        <p id="siteTitle" src="images/banner.png"></p>
       </h1> </div>
-    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:black"><b>Choose currency</b></span> <span style="color:black"><b>:</b></span> <select id="currency" onchange="janin.currency.useCurrency(this.selectedIndex);"></select> </div>
+    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:black"><b>Choose Currency</b></span> <span style="color:black"><b>:</b></span> <select id="currency" onchange="janin.currency.useCurrency(this.selectedIndex);"></select> </div>
     <div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
     <div class="menu" id="menu">
-      <div class="tab i18n selected" id="singlewallet" onclick="ninja.tabSwitch(this);">Single Wallet</div>
+      <div class="tab i18n selected" id="singlewallet" onclick="ninja.tabSwitch(this);">Info Wallet</div>
       <div class="tab i18n" id="paperwallet" onclick="ninja.tabSwitch(this);">Paper Wallet</div>
       <div class="tab i18n" id="bulkwallet" onclick="ninja.tabSwitch(this);">Bulk Wallet</div>
       <div class="tab i18n" id="detailwallet" onclick="ninja.tabSwitch(this);">Wallet Details</div>
+	  <div class="tab i18n" id="brainwallet" onclick="ninja.tabSwitch(this);">Import Info</div>
       <div class="tab i18n" id="donate" onclick="ninja.tabSwitch(this);">Support</div>
     </div>
-    <div id="wallets" style="border:darkgray solid 1px">
+    <div id="wallets" style="border:darkgray solid 1px; box-shadow:0 0 5px 5px">
       <div id="singlearea" class="walletarea">
         <div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
           <span
@@ -9198,7 +9220,7 @@ h1 {
             </div>
         </div>
         <div id="walletCommands" class="commands">
-          <div id="singlecommands" class="row"> <span><input type="button" id="newaddress" value="Generate New Address" onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span> <span class="print"><input type="button" name="print" value="Print" id="singleprint" onclick="window.print();" /></span>            </div>
+          <div id="singlecommands" class="row"> <span><input type="button" id="newaddress" class="buttonsc" value="Generate New Address" onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span> <span class="print"></span>            </div>
         </div>
         <div id="keyarea" class="keyarea">
           <div class="public">
@@ -9216,10 +9238,10 @@ h1 {
         </div>
         <div id="singlesafety">
           <div class="firstHalfSingleSafety">
-            <h3 id="securitystep0title" class="i18n">Step 0. Follow the security checklist recommendation</h3>
+            <h3 id="securitystep0title" class="i18n">Step 0. Consider the security checklist recommendation</h3>
             <p id="securitystep0" class="i18n"> First step is to <strong>download</strong> this website from <a href="https://github.com/01Fedda/SHND-SHMNpaperwallet/archive/master.zip"><b>Github</b></a> and open the index.html file directly from your computer. For extra security, you can <strong>unplug your Internet access</strong>              while generating your wallet. </p>
             <h3 id="securitystep1title" class="i18n">Step 1. Generate new address</h3>
-            <p id="securitystep1" class="i18n"> Choose your currency and click on the "Generate new address" button. </p>
+            <p id="securitystep1" class="i18n"> Choose your Currency and click on the "Generate New Address" button. </p>
             <h3 id="securitystep2title" class="i18n">Step 2. Print the Paper Wallet</h3>
             <p id="securitystep2" class="i18n"> Click the Paper Wallet tab and print the page on high quality setting. <strong>Be careful when saving the page as a PDF file to print it later since a file is more likely to be hacked than a piece of paper.</strong> </p>
             <h3 id="securitystep3title" class="i18n">Step 3. Fold the Paper Wallet</h3>
@@ -9229,7 +9251,7 @@ h1 {
             <p id="securitystep4" class="i18n"> Use your public address to receive money from other crypto-currency users. You can share your public address as much as you want. </p>
             <h3 id="securitystep5title" class="i18n">Step 5. Keep your private key secret</h3>
             <p id="securitystep5" class="i18n"> The private key is literally the keys to your coins, if someone was to obtain it, they could withdraw the funds currently in the wallet, and any funds that might be deposited in that wallet. </p>
-            <p> <strong id="securitystep6" class="i18n">Please test spending a small amount before receiving any large payments.</strong><br /><br /> </p>
+            <p> <strong id="securitystep6" class="i18n" style="color:red">Please test spending a small amount before receiving any large payments.</strong><br /><br /> </p>
             <h3 id="securitystep7title" class="i18n">Consider supporting</h3>
             <p id="securitystep7" class="i18n"> This service is free and will stay free, without advertising or tracking of any sort. Please consider <a href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));"><b>making a donation</b></a> to support. </p>
           </div>
@@ -9258,46 +9280,171 @@ h1 {
           <p class="faqAnswer" id="faqQuestion2"> Advantages of a paper wallet are multiple:<br/><br/> <span class="faqListBullet">&#8658;</span> They are not subject to malwares and keyloggers<br/> <span class="faqListBullet">&#8658;</span> You don’t rely on a third party’s honesty or capacity
             to protect your coins<br/> <span class="faqListBullet">&#8658;</span> You won't lose your coins when your device break </p>
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion3');">&#8226; How to use a paper wallet ?</a></h3>
-          <p class="faqAnswer" id="faqQuestion3"> Once you have generated a wallet, copy and save both the <b><span style="color:red">Public Address and corresponding Private Key</span></b> or you can print the wallet.  You can send coins to the public address, like for any wallet. Store your paper wallet securely. It contains everything that is needed to spend your funds. </p>
+          <p class="faqAnswer" id="faqQuestion3"> Once you have chosen your selected Currency and generated a wallet, <b><span style="color:red">copy and save both the (Private Key) and the corresponding (Public Address)</span></b> or you can print a wallet at the <a href="#" onclick="ninja.tabSwitch(document.getElementById('paperwallet'));"><b>"Paper Wallet Section"</b></a>.  <b>You can send coins only to a Public Address.  Please remember that each SHND Public Address starts with a Capital "S" and each SHMN Public Address starts with a Capital "M".  <span style="color:red">Store your paper wallet securely. It contains everything that is needed to spend your funds.</span></b> </p>
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion4');">&#8226; How to spend the coins stored in a paper wallet ?</a></h3>
           <p class="faqAnswer" id="faqQuestion4"> You will need to import your private key in a real client, that you can download from the currency website. The exact method to do that will depend on the client. If there is no integrated method, you can usually fall back to the debug console
-            and use the command “importprivkey [yourprivatekey]“.  <a href="importinfo.html" target="new"><b>Click Here</b></a> for full instructions.</p>
+            and use the command “importprivkey [yourprivatekey]“.  <a href="#" onclick="ninja.tabSwitch(document.getElementById('brainwallet'));"><b>Click Here</b></a> for full instructions.</p>
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion11');">&#8226; How can I contribute ?</a></h3>
-          <p class="faqAnswer" id="faqQuestion11"> Donations are always welcome, and thanks for the support ! </p>
+          <p class="faqAnswer" id="faqQuestion11"> By going to the <a href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));"><b>"Support Section"</b></a>. Donations are always welcome, and thanks for the support ! </p>
         </div>
       </div>
 	 
       <div id="paperarea">
         <div class="commands">
-          <div id="papercommands" class="row"> <span><label id="paperlabelencrypt" for="paperencrypt" class="i18n"></label> <span id="paperencrypt" onchange="ninja.wallets.paperwallet.toggleEncrypt(this);"> </span></span> <span><label id="paperlabelBIPpassphrase" for="paperpassphrase" class="i18n"></label> <span id="paperpassphrase"> </span></span>            <input type="button" id="papergenerate" value="Randomly Generate" onclick="ninja.wallets.paperwallet.build(document.getElementById('paperpassphrase').value);" /> <span id="suppliedPrivateKey"></span> <span id="papergenerate" value="Apply &raquo;" onClick="ninja.wallets.paperwallet.testAndApplyVanityKey();"> </span> <span class="print"><input type="button" name="print" value="Print" id="paperprint" onclick="window.print();" /></span>            </div>
+          <div id="papercommands" class="row"> <span><label id="paperlabelencrypt" for="paperencrypt" class="i18n"></label> <span id="paperencrypt" onchange="ninja.wallets.paperwallet.toggleEncrypt(this);"> </span></span> <span><label id="paperlabelBIPpassphrase" for="paperpassphrase" class="i18n"></label> <span id="paperpassphrase"> </span></span>            <input type="button" id="papergenerate" class="buttonsc" value="Randomly Generate" onclick="ninja.wallets.paperwallet.build(document.getElementById('paperpassphrase').value);" /> <span id="suppliedPrivateKey"></span> <span id="papergenerate" value="Apply &raquo;" onClick="ninja.wallets.paperwallet.testAndApplyVanityKey();"> </span> <span class="print"><input type="button" class="buttonsc" name="print" value="Print" id="paperprint" onclick="window.print();" /></span>            </div>
         </div>
         <div id="paperkeyarea"></div>
       </div>
       <div id="bulkarea" class="walletarea">
         <div class="commands">
-          <div id="bulkcommands" class="row"> <span><label id="bulklabelstartindex" for="bulkstartindex" class="i18n">Starting index:</label> <input readonly type="text" id="bulkstartindex" value="1" /></span> <span><label id="bulklabelrowstogenerate" for="bulklimit" class="i18n">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>            <span><label id="bulklabelcompressed" for="bulkcompressed" class="i18n"></label> <span id="bulkcompressed"></span></span> <span><input type="button" id="bulkgenerate" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);" /> </span>            <span class="print"><input type="button" name="print" id="bulkprint" value="Print" onclick="window.print();" /></span> </div>
+          <div id="bulkcommands" class="row"> <span><label id="bulklabelstartindex" for="bulkstartindex" class="i18n">Starting index:</label> <input readonly type="text" id="bulkstartindex" value="1" /></span> <span><label id="bulklabelrowstogenerate" for="bulklimit" class="i18n">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>            <span><label id="bulklabelcompressed" for="bulkcompressed" class="i18n"></label> <span id="bulkcompressed"></span></span> <span><input type="button" id="bulkgenerate" class="buttonsc" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);" /> </span>            <span class="print"></span> </div>
         </div>
         <div class="body"> <span class="label i18n" id="bulklabelcsv">Comma Separated Values: Index,Address,Private Key (WIF)</span> <textarea readonly rows="20" cols="88" id="bulktextarea"></textarea> </div>
       </div>
       <div id="brainarea" class="walletarea">
         <div id="braincommands" class="commands">
-          <div class="row"> <span id="brainlabelenterpassphrase" class="label"><label id="brainlabelenterpassphraselbl" class="i18n" for="brainpassphrase">Enter Passphrase: </label></span> <input tabindex="1" type="password" id="brainpassphrase" value="" onfocus="this.select();"
-              onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" /> <span><label id="brainlabelshow" for="brainpassphraseshow">Show?</label> <input type="checkbox" id="brainpassphraseshow" onchange="ninja.wallets.brainwallet.showToggle(this);" /></span>            <span class="print"><input type="button" name="print" id="brainprint" value="Print" onclick="window.print();" /></span> </div>
-          <div class="row extra"> <span class="label" id="brainlabelconfirm"><label id="brainlabelconfirmlbl" class="i18n" for="brainpassphraseconfirm">Confirm Passphrase: </label></span> <input tabindex="2" type="password" id="brainpassphraseconfirm" value="" onfocus="this.select();"
-              onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" /> <span><input tabindex="3" type="button" id="brainview" value="View" onclick="ninja.wallets.brainwallet.view();" /></span> <span id="brainalgorithm" class="notes right i18n">Algorithm: SHA256(passphrase)</span>            </div>
-          <div class="row extra"><span id="brainwarning"></span></div>
-          <div class="row extra errorMsg"><span id="brainerror"></span></div>
+          <div class="row"> <span id="brainlabelenterpassphrase" class="label">
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+		  <style type="text/css">
+			#toptitle {
+				text-align: center;
+				position: relative;
+				top: 46px;
+				left: 128px;
+				width: 700px;
+				letter-spacing: 3px;
+			}
+			
+			#main1st {
+				border: #47BF16 solid 2px;
+				width: 953px;
+				padding: 10px;
+				left: 15px;
+				margin-left: auto;
+				margin-right: auto;
+				background-color: white;
+				-webkit-box-shadow: 0px 0px 5px 5px;
+				-moz-box-shadow: 0px 0px 5px 5px;
+				box-shadow: 0px 0px 5px 5px;
+			}
+			
+			#main2nd {
+				text-align: center;
+				text-decoration: underline;
+			}
+			
+			#popnote {
+				text-align: center;
+				padding: 20px;
+				position: relative;
+				top: 5px;
+				right: 45px;
+				width: 1000px;
+			}
+			
+			#click {
+				color: blue;
+				text-decoration: none;
+			}
+			
+			#coinLogo11 {
+				width: 55px;
+				height: 55px;
+				padding: 10px;
+				position: absolute;
+				top: 335px;
+				left: 69px;
+			}
+
+			#coinLogoImg11 {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#coinLogo22 {
+				width: 55px;
+				height: 55px;
+				padding: 10px;
+				position: absolute;
+				top: 795px;
+				left: 69px;
+			}
+
+			#coinLogoImg22 {
+				width: 100%;
+				height: 100%;
+			}
+			
+			#twolines {
+				width: 35px;
+				height: 40px;
+				display: block;
+				position: relative;
+				left: 465px;
+			}
+			
+			#moveover {
+				margin-left: 59px;
+			}
+			
+			#aligns {
+				text-align:left;
+			}
+			
+			#boxshad {
+				-webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.40);
+				-moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.40);
+				box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.40);
+			}
+		</style> 
+ 
+	<div id="">
+		<h1 id="toptitle"><b>StrongHands &nbspImport &nbspInstructions</b></h1>
+		<div id="main1st">
+			<div id="coinLogo11"> <img id="coinLogoImg11" src="logos/SHND2.png" /> </div>
+			
+			<span id="aligns"><h2 id="main2nd">How To Import A Private Key Into A <span style="color:#F3E50C">SHND</span> GUI</h2>
+			<p><b>Step 1:</b> &nbsp Make sure you have the latest wallet GUI.  If not, you can get the latest wallet GUI from here:  <a href="https://www.stronghands.info/" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a></p>
+			<p><b>Step 2:</b> &nbsp If this is the first time you're downloading and using a new wallet GUI, then you can speed up the syncing by using the <span id="moveover">BootStrap.  <a href="https://mega.nz/#!0zBywIAQ!jPIQ3oxVGRkKAAMRBb-ROWuu-J5nPZgp0ia_ydUmHhs" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to get the BootStrap.</span></p>
+			<p><b>Step 3:</b> &nbsp Your wallet GUI must be fully synced and blocks must be up-to-date.  You can check if your blocks are up-to-date at the <span id="moveover">explorer website.  <a href="https://www.coinexplorer.net/SHND" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.</span></p>
+			<p><b>Step 4:</b> &nbsp While you have your wallet GUI open; click Help, then click Debug window, then click the Console tab.</p>
+			<p><b>Step 5:</b> &nbsp Now type the info in the textbox.  Which is: "importprivkey Your_Private_Key" and should look exactly like the example in <span id="moveover">"Step 6".</span></p>
+			<p><b>Step 6:</b> &nbsp importprivkey 74udndkrid9939dnFej37nBeu488jabcdefGhiJ92</p>
+			<p><b>Step 7:</b> &nbsp Then press Enter on your keyboard.</p></span>
+		</div>
+		
+		<img id="twolines" src="images/twolines.png" />
+		
+		<div id="main1st">
+			<div id="coinLogo22"> <img id="coinLogoImg22" src="logos/SHMN2.png" /> </div>
+			
+			<span id="aligns"><h2 id="main2nd">How To Import A Private Key Into A <span style="color:#E51010">SHMN</span> GUI</h2>
+			<p><b>Step 1:</b> &nbsp Make sure you have the latest wallet GUI.  If not, you can get the latest wallet GUI from here:  <a href="https://github.com/bitcoinbabys/StrongHandsMasterNode/releases" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a></p>
+			<p><b>Step 2:</b> &nbsp If this is the first time you're downloading and using a new wallet GUI, then you can speed up the syncing by using the <span id="moveover">BootStrap.  <a href="https://mega.nz/#!47oFwSKC!CFEtmrV4YguRDbsgMfJSdY22gUfI5RvN-n4hJ_96pDg" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</span></p>
+			<p><b>Step 3:</b> &nbsp Your wallet GUI must be fully synced and blocks must be up-to-date.  You can check if your blocks are up-to-date at the <span id="moveover">explorer website.  <a href="https://www.coinexplorer.net/SHMN" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.</span></p>
+			<p><b>Step 4:</b> &nbsp While you have your wallet GUI open; click Tools, then click Debug console.</p>
+			<p><b>Step 5:</b> &nbsp Now type the info in the textbox.  Which is: "importprivkey Your_Private_Key" and should look exactly like the example in <span id="moveover">"Step 6".</span></p>
+			<p><b>Step 6:</b> &nbsp importprivkey 84udndkrid9939dnFej37nBeu488jabcdefGhiJ92</p>
+			<p><b>Step 7:</b> &nbsp Then press Enter on your keyboard.</p></span>
+		</div>
+		
+		<div id="popnote" style="color:black"><b><span style="color:#ECE20F">***</span>  After you've followed all the steps for SHND and/or SHMN, you may see a pop-up incoming transaction from the import; and check your wallet GUI's balance.  <span style="color:#ECE20F">***</span></b></div>
+	</div></span> <span id="brainpassphrase" onfocus="this.select();"
+              onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" /> <span> <span id="brainpassphraseshow" onchange="ninja.wallets.brainwallet.showToggle(this);" /></span>            <span class="print"><span id="brainprint" /></span> </div>
+          <div> <span></span> <span id="brainpassphraseconfirm" onfocus="this.select();"
+              onkeypress="if (event.keyCode == 13) ninja.wallets.brainwallet.view();" /> <span><span id="brainview" onclick="ninja.wallets.brainwallet.view();" /></span> <span id="brainalgorithm" class="notes right i18n"></span>            </div>
+          <div><span></span></div>
+          <div ><span></span></div>
         </div>
-        <div id="brainkeyarea" class="keyarea">
-          <div class="public">
-            <div id="brainqrcodepublic" class="qrcode_public"></div>
-            <div class="pubaddress"> <span class="label i18n" id="brainlabelSHNDaddress">Public Address:</span> <span class="output" id="brainbtcaddress"></span> </div>
-          </div>
-          <div class="private">
-            <div id="brainqrcodeprivate" class="qrcode_private"></div>
-            <div class="privwif"> <span class="label i18n" id="brainlabelprivatekey">Private Key (Wallet Import Format):</span> <span class="output" id="brainbtcprivwif"></span> </div>
-          </div>
-        </div>
+        
       </div>
       <div id="detailarea" class="walletarea">
         <div id="detailcommands" class="commands">
@@ -9307,8 +9454,7 @@ h1 {
               <span class="qrcodeinputwrapper">
                 <input type="text" id="detailprivkey" value="" placeholder="Enter a private key, or click the QR icon to scan" autocomplete="off" onFocus="this.select();" onKeyPress="if (event.keyCode == 13) ninja.wallets.detailwallet.viewDetails();" />
                 <img onClick="ninja.wallets.detailwallet.qrscanner.start()" />
-              </span> <input type="button" id="detailview" value="View Details" onclick="ninja.wallets.detailwallet.viewDetails();" /> </span> <span class="print">
-            <input type="button" name="print" id="detailprint" value="Print" onclick="window.print();" />
+              </span> <input type="button" id="detailview" class="buttonsc" value="View Details" onclick="ninja.wallets.detailwallet.viewDetails();" /> </span> <span class="print">
           </span> </div>
           <div id="paperqrscanner">
             <div class="background"></div>
@@ -9358,8 +9504,9 @@ h1 {
         <div id="changelog">
           <hr/>
           <h3>Release notes</h3>
-		  <p> 12.2018 -- </p>
+          <p> 12.2018 -- </p>
 			<ul>
+			  <li>Updated website design</li>
 			  <li>Changed numerous info</li>
 			  <li>Deleted unnecessary objects</li>
 			  <li>Updated Import instructions with more info</li>
@@ -9380,10 +9527,12 @@ h1 {
       </div>
     </div>
     <div id="footer" class="footer">
-      <div> <span class="item"><a id="footersupport" href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));" class="i18n">Support & Donations</a></span> <span class="item"><a href="https://github.com/01Fedda/SHND-SHMNpaperwallet" target="_blank" id="footerlabelgithub" class="i18n">Download (GitHub Repository)</a></span>        </div>
+      <div> <span class="item"><a style="color:#E51010" id="footersupport" href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));" class="i18n">Support & Donations</a></span> <span class="item"><a style="color:#E51010" href="https://github.com/01Fedda/SHND-SHMNpaperwallet" target="_blank" id="footerlabelgithub" class="i18n">Download (GitHub Repository)</a></span>        </div>
       <div class="copyright"> <span id="footerlabelcopyright1">Copyright StrongHandsWalletGenerator.</span> <span id="footerlabelcopyright2" class="i18n">JavaScript copyrights are included in the source.</span> <span id="footerlabelnowarranty" class="i18n">No warranty.</span> </div>
     </div>
   </div>
+  
+  </div></center>
   
   <script type="text/javascript">
 (function(window) {
@@ -12170,7 +12319,67 @@ function cleani18n(string) {
 ninja.envSecurityCheck();
 ninja.browserSecurityCheck();
 
-  </script> 
+  </script>
+
+<script type="text/javascript">
+ninja.wallets.brainwallet = {
+  open: function() {
+    document.getElementById("brainarea").style.display = "block";
+    document.getElementById("brainpassphrase").focus();
+    document.getElementById("brainwarning").innerHTML = ninja.translator.get("brainalertpassphrasewarning");
+  },
+  close: function() {
+    document.getElementById("brainarea").style.display = "none";
+  },
+  minPassphraseLength: 15,
+  view: function() {
+    document.getElementById("brainerror").innerHTML = "";
+    var key = document.getElementById("brainpassphrase").value.toString().replace(/^\s+|\s+$/g, ""); // trim white space
+    document.getElementById("brainpassphrase").value = key;
+    var keyConfirm = document.getElementById("brainpassphraseconfirm").value.toString().replace(/^\s+|\s+$/g, ""); // trim white space
+    document.getElementById("brainpassphraseconfirm").value = keyConfirm;
+    if (key == keyConfirm || document.getElementById("brainpassphraseshow").checked) {
+      // enforce a minimum passphrase length
+      if (key.length >= ninja.wallets.brainwallet.minPassphraseLength) {
+        var bytes = Crypto.SHA256(key, {
+          asBytes: true
+        });
+        var btcKey = new Bitcoin.ECKey(bytes);
+        var bitcoinAddress = btcKey.getBitcoinAddress();
+        var privWif = btcKey.getBitcoinWalletImportFormat();
+        document.getElementById("brainbtcaddress").innerHTML = bitcoinAddress;
+        document.getElementById("brainbtcprivwif").innerHTML = privWif;
+        ninja.qrCode.showQrCode({
+          "brainqrcodepublic": bitcoinAddress,
+          "brainqrcodeprivate": privWif
+        });
+        document.getElementById("brainkeyarea").style.visibility = "visible";
+      } else {
+        document.getElementById("brainerror").innerHTML = ninja.translator.get("brainalertpassphrasetooshort");
+        ninja.wallets.brainwallet.clear();
+      }
+    } else {
+      document.getElementById("brainerror").innerHTML = ninja.translator.get("brainalertpassphrasedoesnotmatch");
+      ninja.wallets.brainwallet.clear();
+    }
+  },
+  clear: function() {
+    document.getElementById("brainkeyarea").style.visibility = "hidden";
+  },
+  showToggle: function(element) {
+    if (element.checked) {
+      document.getElementById("brainpassphrase").setAttribute("type", "text");
+      document.getElementById("brainpassphraseconfirm").style.visibility = "hidden";
+      document.getElementById("brainlabelconfirm").style.visibility = "hidden";
+    } else {
+      document.getElementById("brainpassphrase").setAttribute("type", "password");
+      document.getElementById("brainpassphraseconfirm").style.visibility = "visible";
+      document.getElementById("brainlabelconfirm").style.visibility = "visible";
+    }
+  }
+};
+
+  </script>  
 </body>
 
 </html>
