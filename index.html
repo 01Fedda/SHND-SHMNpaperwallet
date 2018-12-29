@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for SHND and SHMN cryptocurrencies. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
-  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, SHND, SHMN, shnd, shmn, StrongHands, Stronghands, stronghands, Masternode, masternode, BTC, litecoin, dogecoin" />
+  <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, StrongHands, Stronghands, stronghands, SHND, SHMN, shnd, shmn, Masternode, masternode, BTC, litecoin, dogecoin" />
   <link rel="shortcut icon" type="image/png" href="images/shndmn.png">
   <!--
   
@@ -8091,7 +8091,7 @@ body {
   height: 6px;
   display: block;
   border-radius: 3px;
-  background-color: #FF2828;
+  background-color: #80CF80;
   position: absolute;
   z-index: 10;
 }
@@ -8861,7 +8861,7 @@ h1 {
   margin: 20px;
   position: absolute;
   right: 0;
-  top: 113px;
+  top: 71px;
   width: 320px;
   font-size: 14px;
 }
@@ -9005,8 +9005,8 @@ h1 {
   #culturemenu {
     text-align: right;
     padding: 0 20px;
-    font-size: 14px;
-    margin-bottom: 35px;
+    font-size: 10px;
+    margin-bottom: -37px;
 	font-weight: bold;
   }
   #culturemenu span {
@@ -9184,6 +9184,32 @@ h1 {
 	display: none;
   }
   
+  #marque {
+	display: none;
+  }
+  
+  #nameer123 {
+	display: none;
+  }
+  
+  #nameer124 {
+	display: none;
+  }
+  
+  #stayplace {
+	border: none !important;
+	-webkit-box-shadow: none;
+    -moz-box-shadow:    none;
+    box-shadow:         none;
+  }
+  
+  #wallets {
+	border: none !important;
+	-webkit-box-shadow: none;
+    -moz-box-shadow:    none;
+    box-shadow:         none;
+  }
+  
   #detaillabelprivwif {
 	margin-left: 1900px;
   }
@@ -9191,16 +9217,24 @@ h1 {
 }
 
 #homeLogoI {
-	position: absolute;
-	left: 462px;
-	top: 10px;
-	margin: 0;
-    padding: 0;
+	float: right;
+	margin-right: 142px;
+	margin-top: 10px;
+}
+
+#wallets {
+	border: 1px solid darkgray; 
+	box-shadow: 0 0 5px 5px;
+	-webkit-box-shadow: 0 0 5px 5px;
+    -moz-box-shadow: 0 0 5px 5px;
+	
 }
 
 #homeLogoI:active {
   background-color: black;
   box-shadow: 0 0.2px #666;
+  -webkit-box-shadow: 0 0.2px #666;
+  -moz-box-shadow: 0 0.2px #666;
   transform: translateY(2px);
 }
 
@@ -9223,25 +9257,60 @@ h1 {
 	background-color: #1E1B05;
 }
 
+#stayplace {
+	background-color: #E5DF10; 
+	width: 1005px;
+	border-top: 52px solid #1E1B05;
+	border-bottom: 10px solid #1E1B05;
+	border-left: 10px solid #1E1B05;
+	border-right: 10px solid #1E1B05;
+	border-radius: 10px 10px 0px 0px; 
+	box-shadow: 0 0 5px 5px rgba(0,0,0,0.40);
+	-webkit-box-shadow: 0 0 5px 5px rgba(0,0,0,0.40);
+    -moz-box-shadow: 0 0 5px 5px rgba(0,0,0,0.40);
+}
+
+#marque {
+	font-size: 24px; 
+	position: absolute; 
+	top: 24px; 
+	left: 385px; 
+	width: 500px;
+}
+
+#nameer123 {
+	font-size: 24px; 
+	position: absolute; 
+	left: 325px; 
+	top: 117px;
+}
+
+#nameer124 {
+	font-size: 24px; 
+	position: absolute; 
+	left: 300px; 
+	top: 143px;
+}
+
   </style>
 </head>
   
 <center><body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);" style="background-color:white">
 
-<a href="https://www.stronghands.info/"><img id="homeLogoI" src="images/shndmn2.png" title="Go to StrongHands Website" /></a>
+<a href="https://www.stronghands.info/"><img id="homeLogoI" src="images/shndmn.png" title="Go to StrongHands Website" /></a>
 
   <div id="busyblock"></div>
   
-  <hr id="hrline" />
+
   
   <h1 id="strnhnds">Strong Hands</h1>
 
-<marquee style="font-size:24px; position:absolute; top:25px; left:385px; width:500px"><b><span style="color:#E51010"></span> <span style="color:#E5DF10">"Only The Strongest Hands Will Prevail"</span> <span style="color:#E51010"></span></b></marquee>
+<marquee id="marque"><b><span style="color:#E51010"></span> <span style="color:#E5DF10">"Only The Strongest Hands Will Prevail"</span> <span style="color:#E51010"></span></b></marquee>
 
-<p style="font-size:24px; position:absolute; left:325px; top:117px"><b>SHND <span style="color:#E51010">&</span> SHMN</b></p>
-<p style="font-size:24px; position:absolute; left:300px; top:143px"><b style="color:#E51010">Paper Wallet Generator</b></p>
+<p id="nameer123"><b>SHND <span style="color:#E51010">&</span> SHMN</b></p>
+<p id="nameer124"><b style="color:#E51010">Paper Wallet Generator</b></p>
   
-  <center><div style="background-color:#E5DF10; width:1005px; border:10px solid #1E1B05; border-radius:10px 10px 0px 0px; box-shadow:0 0 5px 5px rgba(0,0,0,0.40)">
+  <center><div id="stayplace">
   
   <div id="main">
     <div id="culturemenu"> <span><a href="?culture=en" hreflang="en" id="cultureen" class="selected"></a></span><span><a href="?culture=fr" hreflang="fr" id="culturefr"></a></span><span><a href="?culture=de" hreflang="de" id="culturede"></a></span>      <span><a href="?culture=nl" hreflang="nl" id="culturenl"></a></span> <span><a href="?culture=pt" hreflang="pt" id="culturept"></a></span> <span><a href="?culture=ru" hreflang="ru" id="cultureru"></a></span> <span><a href="?culture=es" hreflang="es" id="culturees"></a></span>      <span><a href="?culture=it" hreflang="it" id="cultureit"></a></span>  <span><a href="?culture=ua" hreflang="ua" id="cultureua"></a></span> <span><a href="?culture=tr" hreflang="tr" id="culturetr"></a></span> <span><a href="?culture=pl" hreflang="pl" id="culturepl"></a></span>      <span><a href="?culture=zh" hreflang="zh" id="culturezh"></a></span> </div>
@@ -9261,7 +9330,7 @@ h1 {
 	  <div class="tab i18n" id="brainwallet" onclick="ninja.tabSwitch(this);">Import Wallet</div>
       <div class="tab i18n" id="donate" onclick="ninja.tabSwitch(this);">Support</div>
     </div>
-    <div id="wallets" style="border:darkgray solid 1px; box-shadow:0 0 5px 5px">
+    <div id="wallets">
       <div id="singlearea" class="walletarea">
         <div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
           <span
@@ -9375,13 +9444,13 @@ h1 {
 				text-align: center;
 				position: relative;
 				top: 46px;
-				left: 128px;
-				width: 700px;
+				left: 140px;
+				width: 750px;
 				letter-spacing: 3px;
 			}
 			
 			#main1st {
-				border: #FFE828 solid 2px;
+				border: #47BF16 solid 2px;
 				width: 953px;
 				padding: 10px;
 				left: 15px;
@@ -9417,7 +9486,7 @@ h1 {
 				height: 55px;
 				padding: 10px;
 				position: absolute;
-				top: 335px;
+				top: 305px;
 				left: 69px;
 			}
 
@@ -9431,7 +9500,7 @@ h1 {
 				height: 55px;
 				padding: 10px;
 				position: absolute;
-				top: 795px;
+				top: 765px;
 				left: 69px;
 			}
 
@@ -9527,7 +9596,7 @@ h1 {
           <div id="detailbip38commands"> <span><label id="detaillabelpassphrase" class="i18n">Enter BIP38 Passphrase</label> <input type="text" id="detailprivkeypassphrase" value="" onfocus="this.select();" onkeypress="if (event.keyCode == 13) ninja.wallets.detailwallet.viewDetails();" /></span>            <span><input type="button" id="detaildecrypt" value="Decrypt BIP38" onclick="ninja.wallets.detailwallet.viewDetails();" /></span> </div>
         </div>
         <div id="detailkeyarea">
-          <div class="notes"> <span id="detaillabelnote1" class="i18n">Your Private Key is a unique secret number that only you know. <b><span style="color:red">It should always be kept secretly</span></b>.  Below will show the Public Address that corresponds to your Private Key after you've entered a private key or clicked the QR icon to scan.  <b><i>If an invalid private key is entered, a pop-up message will appear.  If you choose OK; an example of a valid Private Key and its corresponding Public Address may or may not be given below for the chosen Currency.</i></b>  </span>            <br /><br /> </div>
+          <div class="notes"> <span id="detaillabelnote1" class="i18n">Your Private Key is a unique secret number that only you know. <b><span style="color:red">It should always be kept secretly</span></b>.  Below will show the Public Address that corresponds to your Private Key after you've entered a private key or clicked the QR icon to scan.  <b><i>If an invalid private key is entered, a pop-up message will appear.  If you choose OK; an example of a valid Private Key and its corresponding Public Address may or may not be given below for the chosen Currency.</i></b></span>            <br /><br /> </div>
 		  <hr/>
           <div class="pubqr">
             <div class="item"> <span class="label i18n" id="detaillabelSHNDaddress">Public Address</span>
@@ -10361,7 +10430,8 @@ ninja.translator = {
   staticID: ["defaultTitle", "title", "brainalertpassphrasewarning", "brainalertpassphrasetooshort", "brainalertpassphrasedoesnotmatch", "bulkgeneratingaddresses", "bip38alertincorrectpassphrase", "bip38alertpassphraserequired",
     "detailconfirmsha256", "detailalertnotvalidprivatekey", "securitychecklistrandomOK", "securitychecklistrandomNOK", "securitychecklistofflineNOK", "securitychecklistofflineOK", "paperwalletback",
   ],
-  translations: {﻿
+  
+translations: {﻿
     "en": {
       "defaultTitle": "SHND and SHMN Paper Wallet Generator",
       "title": "Paper Wallet Generator",
@@ -10510,16 +10580,16 @@ ninja.translator = {
       "detaillabelpassphrase": "BIP38 Passwort Phrase eingeben",
       "detaillabelnote1": "Ihr privater Schlüssel ist ein weltweit einmaliger Schlüssel, den nur Sie kennen. Dieser kann in verschiedenen Format encodiert werden. Unterhalb wird die öffentliche Adresse, der dazugehörige öffentliche Schlüssel und Ihr privater Schlüssel in den häufig verwendeten Formaten (WIF, WIFC, HEX, B64) dargestellt.",
       "detaillabelSHNDaddress": "Öffentliche Adresse",
-      //"detaillabelSHNDaddresscomp": "Öffentliche Adresse komprimiert",
-      //"detaillabelpublickey": "Öffentliche Adresse (130 Zeichen [0-9A-F]):",
-      //"detaillabelpublickeycomp": "Öffentliche Adresse komprimiert (66 Zeichen [0-9A-F]):",
+      "detaillabelSHNDaddresscomp": "Öffentliche Adresse komprimiert",
+      "detaillabelpublickey": "Öffentliche Adresse (130 Zeichen [0-9A-F]):",
+      "detaillabelpublickeycomp": "Öffentliche Adresse komprimiert (66 Zeichen [0-9A-F]):",
       "detaillabelprivwif": "Privater Schlüssel WIF<br>",
-      //"detaillabelprivwifcomp": "Privater Schlüssel WIF komprimiert<br>52 Zeichen Base58",
-      //"detaillabelprivhex": "Privater Schlüssel hexadezimal (64 Zeichen [0-9A-F]):",
-      //"detaillabelprivb64": "Privater Schlüssel Base64 (44 Zeichen):",
-      //"detaillabelprivmini": "Privater Schlüssel MINI Format (22, 26 oder 30 Zeichen):",
-      //"detaillabelprivb6": "Privater Schlüssel Base6 (99 Zeichen [0-5]):",
-      //"detaillabelprivbip38": "Privater Schlüssel BIP38 Format (58 Zeichen Base58):",
+      "detaillabelprivwifcomp": "Privater Schlüssel WIF komprimiert<br>52 Zeichen Base58",
+      "detaillabelprivhex": "Privater Schlüssel hexadezimal (64 Zeichen [0-9A-F]):",
+      "detaillabelprivb64": "Privater Schlüssel Base64 (44 Zeichen):",
+      "detaillabelprivmini": "Privater Schlüssel MINI Format (22, 26 oder 30 Zeichen):",
+      "detaillabelprivb6": "Privater Schlüssel Base6 (99 Zeichen [0-5]):",
+      "detaillabelprivbip38": "Privater Schlüssel BIP38 Format (58 Zeichen Base58):",
       "detaillabelq1": "Wie erstelle ich eine zufällige Geldbörse? Was ist Base6 (B6)?",
       "detaila1": "Voraussetzung für die sichere Erstellung eine Cryptowährungs-Geldbörse ist die Verwendung von zufälligen Zeichen, die verwendet werden, um eine sichere Geldbörse zu generieren. Physikalische Zufallsgeneratoren sind in der Regel hochwertiger, wie von Computern berechnete Pseudo-Zufallszahlen. Physikalischer Zufall lässt sich zum Beispiel mit einem Würfel erzeugen. Um einen privaten Schlüssel einer Kryptowährung zu generieren, müssen Sie einen Standardwürfel mit sechs Ziffern 99 Mal werfen. Notieren Sie hierbei jedes Würfelergebnis. Bei der Aufzeichnung verwenden Sie folgende Regel: 1=1, 2=2, 3=3, 4=4, 5=5, 6=0. Dadurch generieren Sie manuell eine lange, zufällige Zahl: Ihren privaten Schlüssel im B6 oder Base6 Format. Sie können anschließend die 99 Zeichen als Base6 privater Schlüssel in das obere Textfeld einfügen und anschließend auf \"Details darstellen\" klicken. Anschließend wird Ihnen die öffentliche Adresse zu Ihrem privaten Schlüssel dargestellt. Notieren Sie bitte Ihren privaten Schlüssel auch im WIF Format, da dieses häufig verwendet wird.",
       "donatetextfooter": "Um die Entwicklung von diesem Kryptogeldbörsen-Generator zu unterstützen, bitten wir Sie um eine Spende an eine der folgenden Adressen. Falls die Unterstützung für eine Kryptowährung von einem externen Programmierer beigetragen wurde, erhält dieser direkt Ihre Spende.",
