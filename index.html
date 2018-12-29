@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="description" content="Universal Open Source Client-Side Paper Wallet Generator for SHND and SHMN cryptocurrencies. Create your own paper wallet in a few easy steps : Generate, Print and Fold !">
   <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, StrongHands, Stronghands, stronghands, SHND, SHMN, shnd, shmn, Masternode, masternode, BTC, litecoin, dogecoin" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/png" href="images/shndmn.png">
   <!--
   
@@ -9218,8 +9219,13 @@ h1 {
 
 #homeLogoI {
 	float: right;
-	margin-right: 142px;
+	margin-right: 10px;
 	margin-top: 10px;
+}
+
+#everymove {
+	max-width: 1000px; 
+	min-width: 1000px;
 }
 
 #wallets {
@@ -9239,9 +9245,9 @@ h1 {
 }
 
 #strnhnds {
-	position: absolute;
-	left: 166px;
-	top: 19px;
+	float: left;
+	margin-left: 166px;
+	margin-top: 12px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-style: italic;
 	color: #E5DF10;
@@ -9272,9 +9278,9 @@ h1 {
 
 #marque {
 	font-size: 24px; 
-	position: absolute; 
-	top: 24px; 
-	left: 385px; 
+	float: left; 
+	margin-top: 16px; 
+	margin-left: 8px; 
 	width: 500px;
 }
 
@@ -9297,7 +9303,7 @@ h1 {
   
 <center><body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);" style="background-color:white">
 
-<a href="https://www.stronghands.info/"><img id="homeLogoI" src="images/shndmn.png" title="Go to StrongHands Website" /></a>
+<div id="everymove"><a href="https://www.stronghands.info/"><img id="homeLogoI" src="images/shndmn.png" title="Go to StrongHands Website" /></a></div>
 
   <div id="busyblock"></div>
   
@@ -9444,13 +9450,13 @@ h1 {
 				text-align: center;
 				position: relative;
 				top: 46px;
-				left: 140px;
+				left: 130px;
 				width: 750px;
 				letter-spacing: 3px;
 			}
 			
 			#main1st {
-				border: #47BF16 solid 2px;
+				border: #FFE828 solid 2px;
 				width: 953px;
 				padding: 10px;
 				left: 15px;
