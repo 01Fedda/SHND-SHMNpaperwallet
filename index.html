@@ -9106,6 +9106,11 @@ h1 {
   #main {
     width: auto;
   }
+  
+  #newprinty {
+	border: 0;
+  }
+  
   #singlearea {
     border: 0;
   }
@@ -9197,6 +9202,18 @@ h1 {
 	display: none;
   }
   
+  #choosecurrency {
+	display: none;
+  }
+  
+  #newaddress {
+	display: none;
+  }
+  
+  #twodotted {
+	display: none;
+  }
+  
   #stayplace {
 	border: none !important;
 	-webkit-box-shadow: none;
@@ -9220,7 +9237,7 @@ h1 {
 #homeLogoI {
 	float: right;
 	margin-right: 10px;
-	margin-top: 10px;
+	margin-top: 11px;
 }
 
 #everymove {
@@ -9246,7 +9263,7 @@ h1 {
 
 #strnhnds {
 	float: left;
-	margin-left: 166px;
+	margin-left: 126px;
 	margin-top: 12px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-style: italic;
@@ -9286,16 +9303,16 @@ h1 {
 
 #nameer123 {
 	font-size: 24px; 
-	position: absolute; 
-	left: 325px; 
-	top: 117px;
+	float: left; 
+	margin-left: -657px; 
+	margin-top: 130px;
 }
 
 #nameer124 {
 	font-size: 24px; 
-	position: absolute; 
-	left: 300px; 
-	top: 143px;
+	float: left; 
+	margin-left: -687px; 
+	margin-top: 156px;
 }
 
   </style>
@@ -9303,7 +9320,7 @@ h1 {
   
 <center><body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);" style="background-color:white">
 
-<div id="everymove"><a href="https://www.stronghands.info/"><img id="homeLogoI" src="images/shndmn.png" title="Go to StrongHands Website" /></a></div>
+<div id="everymove"><a href="https://www.stronghands.info/"><img id="homeLogoI" src="images/shndmn.png" title="Go to StrongHands Website" /></a>
 
   <div id="busyblock"></div>
   
@@ -9315,6 +9332,7 @@ h1 {
 
 <p id="nameer123"><b>SHND <span style="color:#E51010">&</span> SHMN</b></p>
 <p id="nameer124"><b style="color:#E51010">Paper Wallet Generator</b></p>
+</div>
   
   <center><div id="stayplace">
   
@@ -9326,7 +9344,7 @@ h1 {
       <h1>
         <p id="siteTitle" src="images/banner.png"></p>
       </h1> </div>
-    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:black"><b>Choose Currency</b></span> <span style="color:black"><b>:</b></span> <select id="currency" onchange="janin.currency.useCurrency(this.selectedIndex);"></select> </div>
+    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:black"><b>Choose Currency</b></span> <span style="color:black" id="twodotted"><b>:</b></span> <select id="currency" onchange="janin.currency.useCurrency(this.selectedIndex);"></select> </div>
     <div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
     <div class="menu" id="menu">
       <div class="tab i18n selected" id="singlewallet" onclick="ninja.tabSwitch(this);">Info Wallet</div>
@@ -9471,6 +9489,7 @@ h1 {
 			#main2nd {
 				text-align: center;
 				text-decoration: underline;
+				margin-right: 110px;
 			}
 			
 			#popnote {
@@ -9491,9 +9510,9 @@ h1 {
 				width: 55px;
 				height: 55px;
 				padding: 10px;
-				position: absolute;
-				top: 305px;
-				left: 69px;
+				float: left;
+				margin-top: 0px;
+				margin-left: 69px;
 			}
 
 			#coinLogoImg11 {
@@ -9505,9 +9524,9 @@ h1 {
 				width: 55px;
 				height: 55px;
 				padding: 10px;
-				position: absolute;
-				top: 765px;
-				left: 69px;
+				float: left;
+				margin-top: 0px;
+				margin-left: 69px;
 			}
 
 			#coinLogoImg22 {
@@ -9524,7 +9543,7 @@ h1 {
 			}
 			
 			#moveover {
-				margin-left: 59px;
+				margin-left: 57px;
 			}
 			
 			#aligns {
@@ -9538,7 +9557,7 @@ h1 {
 			}
 		</style> 
  
-	<div id="">
+	<div id="newprinty">
 		<h1 id="toptitle"><b>StrongHands &nbspImport &nbspInstructions</b></h1>
 		<div id="main1st">
 			<div id="coinLogo11"> <img id="coinLogoImg11" src="logos/SHND2.png" /> </div>
