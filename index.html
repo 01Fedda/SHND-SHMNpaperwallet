@@ -8032,6 +8032,7 @@ body {
 
 .buttonsc {
   background-color: #E5DF10;
+  color: #730A0A;
 }
 
 .buttonsc:hover {
@@ -8092,7 +8093,7 @@ body {
   height: 6px;
   display: block;
   border-radius: 3px;
-  background-color: #80CF80;
+  background-color: #9E0C12;
   position: absolute;
   z-index: 10;
 }
@@ -8121,7 +8122,7 @@ body {
 
 #progress-bar {
   width: 170px;
-  background: #80CF80;
+  background: #B4232A;
   position: relative;
   margin-bottom: 20px;
   -webkit-border-radius: 5px;
@@ -8130,7 +8131,7 @@ body {
 }
 
 #progress-bar-percentage {
-  background: #FFA247;
+  background: #E6D82C;
   padding: 3px 0px;
   text-align: center;
   height: 18px;
@@ -8335,7 +8336,7 @@ h1 {
 }
 
 .supportedCurrenciesChecklist {
-  background-color: #C2F2C3;
+  background-color: #F9F67F;
   margin-top: 10px;
   margin-bottom: 10px;
   padding: 20px;
@@ -8355,6 +8356,10 @@ h1 {
   line-height: 20px;
   padding: 12px 12px 0;
   text-align: justify;
+}
+
+#supportedcurrencies a {
+  color: #9E0C12;
 }
 
 .frontPageInstructions {
@@ -8447,7 +8452,7 @@ h1 {
 }
 
 #paperarea .artwallet .papersvg {
-  width: 1004px;
+  width: 1005px;
   height: 426px;
   border: 0;
   margin: 0;
@@ -8951,15 +8956,16 @@ h1 {
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     display: inline-block;
-    background-color: black;
-    border: 2px solid #BFBFBF;
+    background-color: #9E0C12;
+    border: 1px solid gray;
+	border-bottom: 0px;
     padding: 5px;
     margin: 0 2px 0 0;
     position: relative;
     top: 1px;
     z-index: 110;
     cursor: pointer;
-	color: #CEC315;
+	color: #C7B906;
   }
   .menu .tab:hover {
     color: white;
@@ -9250,15 +9256,13 @@ h1 {
 }
 
 #wallets {
-	border: 1px solid darkgray; 
-	box-shadow: 0 0 5px 5px;
-	-webkit-box-shadow: 0 0 5px 5px;
-    -moz-box-shadow: 0 0 5px 5px;
+	border: 0px solid black; 
+	
 	
 }
 
 #homeLogoI:active {
-  background-color: black;
+  background-color: #F5E740;
   box-shadow: 0 0.2px #666;
   -webkit-box-shadow: 0 0.2px #666;
   -moz-box-shadow: 0 0.2px #666;
@@ -9271,7 +9275,7 @@ h1 {
 	margin-top: 12px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-style: italic;
-	color: #E5DF10;
+	color: black;
 }
 
 #hrline {
@@ -9285,12 +9289,12 @@ h1 {
 }
 
 #stayplace {
-	background-color: #E5DF10; 
+	background-color: #E9D805; 
 	width: 1005px;
-	border-top: 52px solid #1E1B05;
-	border-bottom: 10px solid #1E1B05;
-	border-left: 10px solid #1E1B05;
-	border-right: 10px solid #1E1B05;
+	border-top: 52px solid #F5E740;
+	border-bottom: 10px solid #F5E740;
+	border-left: 10px solid #9E0C12;
+	border-right: 10px solid #9E0C12;
 	border-radius: 10px 10px 0px 0px; 
 	box-shadow: 0 0 5px 5px rgba(0,0,0,0.40);
 	-webkit-box-shadow: 0 0 5px 5px rgba(0,0,0,0.40);
@@ -9310,34 +9314,40 @@ h1 {
 #nameer123 {
 	font-size: 24px; 
 	float: left; 
-	margin-left: -657px; 
+	margin-left: -272px; 
 	margin-top: 130px;
 }
 
 #nameer124 {
 	font-size: 24px; 
 	float: left; 
-	margin-left: -687px; 
+	margin-left: -310px; 
 	margin-top: 156px;
 }
 
+#shrink {
+	font-size: 15px;
+	color: #9E0C12;
+}
+
   </style>
+
 </head>
   
-<center><body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);" style="background-color:white">
+<center><body onclick="SecureRandom.seedTime();" onmousemove="ninja.seeder.seed(event);" style="background-color:#2A2A28">
 
-<div id="everymove"><a href="https://www.stronghands.info/"><img id="homeLogoI" src="images/shndmn.png" title="Go to StrongHands Website" /></a>
+<div id="everymove"><a href="https://www.stronghands.info/" target="_blank"><img id="homeLogoI" src="images/shndmn.png" title="Go to StrongHands Website" /></a>
 
   <div id="busyblock"></div>
   
 
   
-  <h1 id="strnhnds">Strong Hands</h1>
+  <h1 id="strnhnds">Strong Hands <small id="shrink">and Masternode</small></h1>
 
-<marquee id="marque"><b><span style="color:#E51010"></span> <span style="color:#E5DF10">"Only The Strongest Hands Will Prevail"</span> <span style="color:#E51010"></span></b></marquee>
+<!--<marquee id="marque"><b><span style="color:black"></span> <span style="color:black">"Only The Strongest Hands Will Prevail"</span> <span style="color:black"></span></b></marquee>-->
 
-<p id="nameer123"><b>SHND <span style="color:#E51010">&</span> SHMN</b></p>
-<p id="nameer124"><b style="color:#E51010">Paper Wallet Generator</b></p>
+<p id="nameer123"><b><span style="color:yellow">SHND</span> <span style="color:black">&</span> <span style="color:#CB0808">SHMN</span></b></p>
+<p id="nameer124"><b style="color:black">Paper Wallet Generator</b></p>
 </div>
   
   <center><div id="stayplace">
@@ -9480,16 +9490,14 @@ h1 {
 			}
 			
 			#main1st {
-				border: #FFE828 solid 2px;
+				border: gray solid 1px;
 				width: 953px;
 				padding: 10px;
 				left: 15px;
 				margin-left: auto;
 				margin-right: auto;
 				background-color: white;
-				-webkit-box-shadow: 0px 0px 5px 5px;
-				-moz-box-shadow: 0px 0px 5px 5px;
-				box-shadow: 0px 0px 5px 5px;
+				
 			}
 			
 			#main2nd {
@@ -9707,6 +9715,11 @@ h1 {
         <div id="changelog">
           <hr/>
           <h3>Release notes</h3>
+		  <p> 2.2019 -- </p>
+			<ul>
+			  <!--<li>Changed SHND-keys to forked blockchain</li>-->
+			  <li>Updated website design plus signifying color coordination</li>
+			</ul>
           <p> 12.2018 -- </p>
 			<ul>
 			  <li>Updated website design</li>
