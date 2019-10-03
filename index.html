@@ -7,6 +7,13 @@
   <meta name="keywords" content="universal, paper, wallet, generator, cryptocurrencies, StrongHands, Stronghands, stronghands, SHND, SHMN, shnd, shmn, Masternode, masternode, BTC, litecoin, dogecoin" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/png" href="images/shndmn.png">
+  
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  
+  <link rel="stylesheet" type="text/css" href="css/styler.css" media="print" />
+  
+  <script src="src/jquery.min.js"></script>
+
   <!--
   
   Updated by Fedda BootStrap on 12/2018.
@@ -8033,6 +8040,7 @@ body {
 .buttonsc {
   background-color: #E5DF10;
   color: #730A0A;
+  outline: none;
 }
 
 .buttonsc:hover {
@@ -8073,6 +8081,17 @@ body {
 #detailprivwifcomp {
   font-family: monospace;
   font-size: 1.25em;
+}
+
+#detailaddress {
+	margin-top: 160px;
+	margin-left: 0px;
+}
+
+#detailprivwif {
+	position: relative;
+	width: 600px;
+	margin-left: -190px;
 }
 
 #seedpoolarea {
@@ -8170,6 +8189,10 @@ body {
 #generatekeyinput {
   position: relative;
   z-index: 20;
+}
+#generatekeyinput:focus {
+  outline: none;
+  border: 2px solid gray;
 }
 
 #generatelabelSHNDaddress,
@@ -8318,11 +8341,6 @@ h1 {
 
 .currencyNameColumn {
   min-width: 120px;
-}
-
-.currencyNameColumn:hover {
-  color: green;
-  font-weight: bold;
 }
 
 .securityChecklist {
@@ -8658,6 +8676,7 @@ h1 {
   font-size: 90%;
   width: 98%;
   margin: 4px 0 0 0;
+  outline: none;
 }
 
 #brainarea .keyarea {
@@ -8942,6 +8961,9 @@ h1 {
   height: 2px;
   background-color: #ffffff;
 }
+#currency:focus {
+	outline: none;
+}
 
 @media screen {
   #tagline {
@@ -9013,6 +9035,19 @@ h1 {
     visibility: hidden;
     font-size: 90%;
   }
+  #everymove {
+    visibility: hidden;
+  }
+  #coinLogoImg {
+    visibility: hidden;
+  }
+  #hidedurseed {
+    visibility: hidden;
+	display: none;
+  }
+  #footer {
+    visibility: hidden;
+  }
   #culturemenu {
     text-align: right;
     padding: 0 20px;
@@ -9052,6 +9087,10 @@ h1 {
   #detailprivkey {
     width: 300px;
   }
+  #detailprivkey:focus {
+    outline: none;
+	border: 2px solid gray;
+  }
   #detailprivkeypassphrase {
     width: 250px;
   }
@@ -9060,9 +9099,14 @@ h1 {
   }
   #bulkstartindex {
     width: 35px;
+	outline: none;
   }
   #bulklimit {
     width: 45px;
+  }
+  #bulklimit:focus {
+    outline: none;
+    border: 2px solid gray;
   }
   .footer {
     font-size: 90%;
@@ -9117,10 +9161,6 @@ h1 {
     width: auto;
   }
   
-  #newprinty {
-	border: 0;
-  }
-  
   #singlearea {
     border: 0;
   }
@@ -9129,6 +9169,9 @@ h1 {
   }
   #paperarea .keyarea:first-child {
     border-top: 1px solid #BFBFBF;
+  }
+  #keyarea {
+    border: 1px solid #BFBFBF;
   }
   #paperarea .keyarea.art:first-child {
     border: 0;
@@ -9162,8 +9205,13 @@ h1 {
   #detailarea .privqr .item {
     width: 285px;
   }
-  #detailarea .notes {
-    display: none;
+  #detailarea {
+    display: block;
+	padding-bottom: 0px;
+  }
+  .notes {
+    visibility: hidden;
+	height: 10px;
   }
   #seedpoolarea {
     display: none;
@@ -9242,6 +9290,9 @@ h1 {
 	margin-left: 1900px;
   }
   
+  #singleprint {
+	display: none;
+  }
 }
 
 #homeLogoI {
@@ -9276,6 +9327,7 @@ h1 {
 	font-family: Arial, Helvetica, sans-serif;
 	font-style: italic;
 	color: black;
+	visibility: visible;
 }
 
 #hrline {
@@ -9330,6 +9382,101 @@ h1 {
 	color: #9E0C12;
 }
 
+#welcomeyou {
+	font-size: 20px;
+}
+
+#seedpicyurrap {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	margin-top: -76px;
+	margin-left: 390px;
+}
+
+#seedpicyur {
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	margin-top: 31px;
+	margin-left: -70px;
+}
+
+#seedpicyur1 {
+	position: absolute;
+	width: 150px;
+	height: 146px;
+	margin-top: 33px;
+	margin-left: 102px;
+}
+
+.copyright {
+	visibility: visible;
+}
+
+#shndshow {
+	float: right;
+	margin-right: 190px;
+	margin-top: -35px;
+	font-weight: bold;
+}
+
+#shmnshow {
+	float: right;
+	margin-right: 190px;
+	margin-top: -15px;
+	font-weight: bold;
+}
+
+/* Media screen */
+@media screen and (max-width: 768px) {
+	#seedpicyur {
+		margin-left: -51px;
+	}
+	
+	#seedpicyur1 {
+		margin-left: 126px;
+	}
+}
+
+@media print {
+	body {
+    <!-- -webkit-print-color-adjust: exact; -->
+		-webkit-print-color-adjust: economy;
+		width: 1000px;
+		height: 450px;
+    }
+	
+	#main {
+		width: auto;
+	}
+	
+	#detaillabelnote1 {
+		display: block;
+	}
+	
+	#detaillabelprivwif {
+		margin-left: 0px;
+	}
+	
+	#detailprivwif {
+		width: 500px;
+		margin-left: -85px;
+		margin-top: 195px;
+	}
+	
+	#detailarea {
+		border: none;
+	}
+	
+	#printsogood {
+		border: 1px solid #BFBFBF;
+		padding-right: 10px;
+		padding-left: 10px;
+		padding-top: 10px;
+		padding-bottom: 40px;
+	}
+}
   </style>
 
 </head>
@@ -9356,11 +9503,12 @@ h1 {
     <div id="culturemenu"> <span><a href="?culture=en" hreflang="en" id="cultureen" class="selected"></a></span><span><a href="?culture=fr" hreflang="fr" id="culturefr"></a></span><span><a href="?culture=de" hreflang="de" id="culturede"></a></span>      <span><a href="?culture=nl" hreflang="nl" id="culturenl"></a></span> <span><a href="?culture=pt" hreflang="pt" id="culturept"></a></span> <span><a href="?culture=ru" hreflang="ru" id="cultureru"></a></span> <span><a href="?culture=es" hreflang="es" id="culturees"></a></span>      <span><a href="?culture=it" hreflang="it" id="cultureit"></a></span>  <span><a href="?culture=ua" hreflang="ua" id="cultureua"></a></span> <span><a href="?culture=tr" hreflang="tr" id="culturetr"></a></span> <span><a href="?culture=pl" hreflang="pl" id="culturepl"></a></span>      <span><a href="?culture=zh" hreflang="zh" id="culturezh"></a></span> </div>
 
     <div class="banner">
+	<div id="seedpicyurrap"><img src="images/shnd3.png" id="seedpicyur" /> <img src="images/shmn3.png" id="seedpicyur1" /></div>
       <div id="coinLogo"> <img id="coinLogoImg" title="Selected Currency" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
       <h1>
         <p id="siteTitle" src="images/banner.png"></p>
       </h1> </div>
-    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:black"><b>Choose Currency</b></span> <span style="color:black" id="twodotted"><b>:</b></span> <select id="currency" onchange="janin.currency.useCurrency(this.selectedIndex);"></select> </div>
+    <div id="currencyddl" class="hide"> <span id="choosecurrency" class="i18n" style="color:black"><b>Choose Currency</b></span> <span style="color:black" id="twodotted"><b>:</b></span> <select id="currency" onchange="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);janin.currency.useCurrency(this.selectedIndex);"></select> </div>
     <div id="seedpoolarea"><textarea rows="16" cols="62" id="seedpool"></textarea></div>
     <div class="menu" id="menu">
       <div class="tab i18n selected" id="singlewallet" onclick="ninja.tabSwitch(this);">Info Wallet</div>
@@ -9372,10 +9520,13 @@ h1 {
     </div>
     <div id="wallets">
       <div id="singlearea" class="walletarea">
-        <div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
+	  <!--<div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n">Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">MOVE your mouse around to add some extra randomness... </span><span id="mousemovelimit"></span><br />
           <span
-            id="generatelabelkeypress" class="i18n">OR type some random characters into this textbox</span> <input type="text" id="generatekeyinput" onkeypress="ninja.seeder.seedKeyPress(event);" /><br />
-            <div id="seedpooldisplay"></div>
+            id="generatelabelkeypress" class="i18n">OR type some random characters into this textbox</span> <input type="text" id="generatekeyinput" onkeypress="ninja.seeder.seedKeyPress(event);" /><br />-->
+        <div id="initBanner"> <span id="generatelabelSHNDaddress" class="i18n"><b id="welcomeyou">Welcome To Strong Hands Paper Wallet Generator</b><br />This Generator Is For Both (SHND) & (SHMN) Cryptocurrencies<br /><br /><b>All main content will appear after you've randomly<br />generated a new Address or chosen to Skip this step.</b><br /><br />Generating new Address...</span><br /> <span id="generatelabelmovemouse" class="i18n">For PC, MOVE your mouse around,<br />Or for Mobile, continually TOUCH your screen to add some extra randomness... </span><span id="mousemovelimit" style="color:#9E0C12"></span><br />
+          <span
+            id="generatelabelkeypress" class="i18n"><!--Or for Mobile, continually TOUCH your screen. OR type some random characters into this textbox--></span> <span id="generatekeyinput" onkeypress="ninja.seeder.seedKeyPress(event);"></span><!--<br />-->
+            <div id="seedpooldisplay" style="color:#9E0C12"></div>
             <div id="rightArea">
               <div id="progress-bar" class="fullyRounded">
                 <div id="progress-bar-percentage" class="fullyRounded 1percentwidth"></div>
@@ -9385,18 +9536,19 @@ h1 {
               </div>
             </div>
         </div>
+	<div id="hidedurseed">	
         <div id="walletCommands" class="commands">
-          <div id="singlecommands" class="row"> <span><input type="button" id="newaddress" class="buttonsc" value="Generate New Address" onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span> <span class="print"></span>            </div>
+          <div id="singlecommands" class="row"> <span><input type="button" id="newaddress" class="buttonsc" value="Generate New Address" onclick="ninja.wallets.singlewallet.generateNewAddressAndKey();" /></span> <span class="print"><input type="button" name="print" value="Print" class="buttonsc" id="singleprint" onclick="window.print();" /></span> <!--<span class="print"></span>-->            </div>
         </div>
         <div id="keyarea" class="keyarea">
           <div class="public">
-            <div class="pubaddress"> <span class="label i18n" id="singlelabelSHNDaddress">Public Address</span> </div>
+            <div class="pubaddress"> <span class="label i18n" id="singlelabelSHNDaddress"><span id="namchnge">(SHND)</span> Public Address</span> </div>
             <div id="qrcode_public" class="qrcode_public"></div>
             <div class="pubaddress"> <span class="output" id="btcaddress"></span> </div>
             <div id="singleshare" class="i18n">SHARE</div>
           </div>
           <div class="private">
-            <div class="privwif"> <span class="label i18n" id="singlelabelprivatekey">Private Key (Wallet Import Format)</span> </div>
+            <div class="privwif"> <span class="label i18n" id="singlelabelprivatekey"><span id="namchnge2">(SHND)</span> Private Key (Wallet Import Format)</span> </div>
             <div id="qrcode_private" class="qrcode_private"></div>
             <div class="privwif"> <span class="output" id="btcprivwif"></span> </div>
             <div id="singlesecret" class="i18n">SECRET</div>
@@ -9411,7 +9563,7 @@ h1 {
             <h3 id="securitystep2title" class="i18n">Step 2. Print the Paper Wallet</h3>
             <p id="securitystep2" class="i18n"> Click the Paper Wallet tab and print the page on high quality setting. <strong>Be careful when saving the page as a PDF file to print it later since a file is more likely to be hacked than a piece of paper.</strong> </p>
             <h3 id="securitystep3title" class="i18n">Step 3. Fold the Paper Wallet</h3>
-            <p id="securitystep3" class="i18n"> Fold your new Paper wallet following the lines. <img src="images/foldinginstructions.png" alt="Fold in half lengthwise, and then in three widthwise." /><br /> You can insert one side inside the other to lock the wallet. </p>
+            <p id="securitystep3" class="i18n"> Fold your new Paper wallet following the lines. <img src="images/foldinginstructions.png" id="foldinginstructions" alt="Fold in half lengthwise, and then in three widthwise." /><img src="images/foldinginstructions2.png" id="foldinginstructions2" alt="Fold in half lengthwise, and then in three widthwise." /><br /> You can insert one side inside the other to lock the wallet. <br /></p>
             <h3 id="securitystep4title"
               class="i18n">Step 4. Share your public address</h3>
             <p id="securitystep4" class="i18n"> Use your public address to receive money from other crypto-currency users. You can share your public address as much as you want. </p>
@@ -9421,7 +9573,7 @@ h1 {
             <h3 id="securitystep7title" class="i18n">Consider supporting</h3>
             <p id="securitystep7" class="i18n"> This service is free and will stay free, without advertising or tracking of any sort. Please consider <a href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));"><b>making a donation</b></a> to support. </p>
           </div>
-          <div class="secondHalfSingleSafety"> <img class="frontPageImage" src="images/overview.jpg" alt="Overview image of 4 paper wallet" />
+          <div class="secondHalfSingleSafety"> <img class="frontPageImage" src="images/overview.png" alt="Overview image of 4 paper wallet" />
             <div class="securityChecklist"> <b id="securitychecktitle" class="i18n">Security Checklist :</b>
               <ul>
                 <li id="envSecurityCheck"></li>
@@ -9446,14 +9598,15 @@ h1 {
           <p class="faqAnswer" id="faqQuestion2"> Advantages of a paper wallet are multiple:<br/><br/> <span class="faqListBullet">&#8658;</span> They are not subject to malwares and keyloggers<br/> <span class="faqListBullet">&#8658;</span> You don’t rely on a third party’s honesty or capacity
             to protect your coins<br/> <span class="faqListBullet">&#8658;</span> You won't lose your coins when your device break </p>
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion3');">&#8226; How to use a paper wallet ?</a></h3>
-          <p class="faqAnswer" id="faqQuestion3"> Once you have chosen your selected Currency and generated a wallet, <b><span style="color:red">copy and save both the (Private Key) and the corresponding (Public Address)</span></b> or you can print a wallet at the <a href="#" onclick="ninja.tabSwitch(document.getElementById('paperwallet'));"><b>"Paper Wallet Section"</b></a>.  <b>You can send coins only to a Public Address.  Please remember that each SHND Public Address starts with a Capital "S" and each SHMN Public Address starts with a Capital "M".  <span style="color:red">Store your paper wallet securely. It contains everything that is needed to spend your funds.</span></b> </p>
+          <p class="faqAnswer" id="faqQuestion3"> Once you have chosen your selected Currency and generated a wallet, <b><span style="color:red">copy and save both the (Private Key) and the corresponding (Public Address)</span></b> or you can print a wallet, preferably at the <a href="#" onclick="ninja.tabSwitch(document.getElementById('paperwallet'));"><b>"Paper Wallet Tab"</b></a>.  <b>You can send coins only to a Public Address.  Please remember that each SHND Public Address starts with a Capital "S" and each SHMN Public Address starts with a Capital "M".  <span style="color:red">Store your paper wallet securely. It contains everything that is needed to spend your funds.</span></b> </p>
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion4');">&#8226; How to spend the coins stored in a paper wallet ?</a></h3>
           <p class="faqAnswer" id="faqQuestion4"> You will need to import your private key in a real client, that you can download from the currency website. The exact method to do that will depend on the client. If there is no integrated method, you can usually fall back to the debug console
             and use the command “importprivkey [yourprivatekey]“.  <a href="#" onclick="ninja.tabSwitch(document.getElementById('brainwallet'));"><b>Click Here</b></a> for full instructions.</p>
           <h3 class="faqQuestion"><a class="faqLink" onclick="ninja.toggleFaqQuestion('faqQuestion11');">&#8226; How can I contribute ?</a></h3>
-          <p class="faqAnswer" id="faqQuestion11"> By going to the <a href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));"><b>"Support Section"</b></a>. Donations are always welcome, and thanks for the support ! </p>
+          <p class="faqAnswer" id="faqQuestion11"> By going to the <a href="#" onclick="ninja.tabSwitch(document.getElementById('donate'));"><b>"Support Tab"</b></a>. Donations are always welcome, and thanks for the support ! </p>
         </div>
       </div>
+	 </div>
 	 
       <div id="paperarea">
         <div class="commands">
@@ -9463,117 +9616,13 @@ h1 {
       </div>
       <div id="bulkarea" class="walletarea">
         <div class="commands">
-          <div id="bulkcommands" class="row"> <span><label id="bulklabelstartindex" for="bulkstartindex" class="i18n">Starting index:</label> <input readonly type="text" id="bulkstartindex" value="1" /></span> <span><label id="bulklabelrowstogenerate" for="bulklimit" class="i18n">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>            <span><label id="bulklabelcompressed" for="bulkcompressed" class="i18n"></label> <span id="bulkcompressed"></span></span> <span><input type="button" id="bulkgenerate" class="buttonsc" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);" /> </span>            <span class="print"></span> </div>
+          <div id="bulkcommands" class="row"> <span><label id="bulklabelstartindex" for="bulkstartindex" class="i18n">Starting index:</label> <input readonly type="text" id="bulkstartindex" value="1" /></span> <span><label id="bulklabelrowstogenerate" for="bulklimit" class="i18n">Rows to generate:</label> <input type="text" id="bulklimit" value="3" /></span>            <span><label id="bulklabelcompressed" for="bulkcompressed" class="i18n"></label> <span id="bulkcompressed"></span></span> <span><input type="button" id="bulkgenerate" class="buttonsc" value="Generate" onclick="ninja.wallets.bulkwallet.buildCSV(document.getElementById('bulklimit').value * 1, document.getElementById('bulkstartindex').value * 1, document.getElementById('bulkcompressed').checked);" /> </span>            <span class="print"><input type="button" name="print" class="buttonsc" id="bulkprint" value="Print" onclick="window.print();" /></span> <!--<span class="print"></span>--> </div>
         </div>
-        <div class="body"> <span class="label i18n" id="bulklabelcsv">Comma Separated Values: Index,Address,Private Key (WIF)</span> <textarea readonly rows="20" cols="88" id="bulktextarea"></textarea> </div>
+        <div class="body"> <span class="label i18n" id="bulklabelcsv">Comma Separated Values For <b><span id="bulkynmechnge">(SHND)</span></b>: Index,Address,Private Key (WIF)</span> <textarea readonly rows="20" cols="88" id="bulktextarea"></textarea> </div>
       </div>
       <div id="brainarea" class="walletarea">
         <div id="braincommands" class="commands">
-          <div class="row"> <span id="brainlabelenterpassphrase" class="label">
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  
-		  <style type="text/css">
-			#toptitle {
-				text-align: center;
-				position: relative;
-				top: 46px;
-				left: 0px;
-				width: 1000px;
-				letter-spacing: 3px;
-			}
-			
-			#main1st {
-				border: gray solid 1px;
-				width: 953px;
-				padding: 10px;
-				left: 15px;
-				margin-left: auto;
-				margin-right: auto;
-				background-color: white;
-				
-			}
-			
-			#main2nd {
-				text-align: center;
-				text-decoration: underline;
-				margin-right: 110px;
-			}
-			
-			#popnote {
-				text-align: center;
-				padding: 20px;
-				position: relative;
-				top: 5px;
-				right: 45px;
-				width: 1000px;
-			}
-			
-			#click {
-				color: blue;
-				text-decoration: none;
-			}
-			
-			#coinLogo11 {
-				width: 55px;
-				height: 55px;
-				padding: 10px;
-				float: left;
-				margin-top: 0px;
-				margin-left: 69px;
-			}
-
-			#coinLogoImg11 {
-				width: 100%;
-				height: 100%;
-			}
-			
-			#coinLogo22 {
-				width: 55px;
-				height: 55px;
-				padding: 10px;
-				float: left;
-				margin-top: 0px;
-				margin-left: 69px;
-			}
-
-			#coinLogoImg22 {
-				width: 100%;
-				height: 100%;
-			}
-			
-			#twolines {
-				width: 35px;
-				height: 40px;
-				display: block;
-				position: relative;
-				left: 465px;
-			}
-			
-			#moveovers {
-				margin-left: 57px;
-			}
-			
-			#alignss {
-				text-align:left;
-			}
-			
-			#boxshad {
-				-webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.40);
-				-moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.40);
-				box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.40);
-			}
-			
-			#okmove {
-				margin-left: -25px;
-			}
-		</style> 
+          <div class="row"> <span id="brainlabelenterpassphrase" class="label"> 
  
 	<div id="newprinty">
 		<h1 id="toptitle"><b>StrongHands &nbspImport &nbspInstructions</b></h1>
@@ -9588,22 +9637,22 @@ h1 {
 			<ol style="list-style-type:none"><b>Step 1:</b> 
 			<li>Make sure you have the latest wallet GUI.  If not, you can get the latest wallet GUI from here:  <a href="https://www.stronghands.info/" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a></li>
 			</ol>
+			<!--<ol style="list-style-type:none"><b>Step 2:</b> 
+			<li>If this is the first time you're downloading and using a new wallet GUI, you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/#!InpVGaQI!XF877WNeuODwOthHyAGQJszhnUrQjW-E4LLay8dn-0o" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
+			</ol>-->
 			<ol style="list-style-type:none"><b>Step 2:</b> 
-			<li>If this is the first time you're downloading and using a new wallet GUI, then you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/#!InpVGaQI!XF877WNeuODwOthHyAGQJszhnUrQjW-E4LLay8dn-0o" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
+			<li>Your wallet GUI must be fully synced and blocks must be up-to-date.  <!--You can check if your blocks are up-to-date with the explorer website.  <a href="https://www.coinexplorer.net/SHND" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.--></li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 3:</b> 
-			<li>Your wallet GUI must be fully synced and blocks must be up-to-date.  You can check if your blocks are up-to-date at the explorer website.  <a href="https://www.coinexplorer.net/SHND" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.</li>
+			<li>While you have your wallet GUI open; click Tools, then click Debug console.</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 4:</b> 
-			<li>While you have your wallet GUI open; click Help, then click Debug window, then click the Console tab.</li>
+			<li>Now type the info in the textbox.  Which is: "importprivkey Your_Private_Key" and should look exactly like the example in "Step 5".</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 5:</b> 
-			<li>Now type the info in the textbox.  Which is: "importprivkey Your_Private_Key" and should look exactly like the example in "Step 6".</li>
+			<li>importprivkey V4udndkrid9939dnFej37nBeu488jabcdefGhiJ92</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 6:</b> 
-			<li>importprivkey 74udndkrid9939dnFej37nBeu488jabcdefGhiJ92</li>
-			</ol>
-			<ol style="list-style-type:none"><b>Step 7:</b> 
 			<li>Then press Enter on your keyboard.</li>
 			</ol>
 			</div>
@@ -9625,10 +9674,10 @@ h1 {
 			<li>Make sure you have the latest wallet GUI.  If not, you can get the latest wallet GUI from here:  <a href="https://github.com/bitcoinbabys/StrongHandsMasterNode/releases" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a></li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 2:</b> 
-			<li>If this is the first time you're downloading and using a new wallet GUI, then you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/#!o3ZU2KRK!CzZbULh9TtPLteN15Nqfrnj9N6ZCN__gnb7Kb4eC6v0" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
+			<li>If this is the first time you're downloading and using a new wallet GUI, you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/#!9u4SwCxa!QmKIW-xcUQoWMLi2t-IIQu6CP-riaZgGbY5QG8Gb_1Q" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 3:</b> 
-			<li>Your wallet GUI must be fully synced and blocks must be up-to-date.  You can check if your blocks are up-to-date at the explorer website.  <a href="https://www.coinexplorer.net/SHMN" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.</li>
+			<li>Your wallet GUI must be fully synced and blocks must be up-to-date.  You can check if your blocks are up-to-date with the explorer website.  <a href="https://www.coinexplorer.net/SHMN" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 4:</b> 
 			<li>While you have your wallet GUI open; click Tools, then click Debug console.</li>
@@ -9637,7 +9686,7 @@ h1 {
 			<li>Now type the info in the textbox.  Which is: "importprivkey Your_Private_Key" and should look exactly like the example in "Step 6".</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 6:</b> 
-			<li>importprivkey 84udndkrid9939dnFej37nBeu488jabcdefGhiJ92</li>
+			<li>importprivkey Y4udndkrid9939dnFej37nBeu488jabcdefGhiJ92</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 7:</b> 
 			<li>Then press Enter on your keyboard.</li>
@@ -9666,7 +9715,9 @@ h1 {
                 <input type="text" id="detailprivkey" value="" placeholder="Enter a private key, or click the QR icon to scan" autocomplete="off" onFocus="this.select();" onKeyPress="if (event.keyCode == 13) ninja.wallets.detailwallet.viewDetails();" />
                 <img onClick="ninja.wallets.detailwallet.qrscanner.start()" />
               </span> <input type="button" id="detailview" class="buttonsc" value="View Details" onclick="ninja.wallets.detailwallet.viewDetails();" /> </span> <span class="print">
-          </span> </div>
+            <input type="button" name="print" class="buttonsc" id="detailprint" value="Print" onclick="window.print();" />
+          </span> <!--<span class="print">
+          </span>--> </div>
           <div id="paperqrscanner">
             <div class="background"></div>
             <div id="mainbody" class="dialog instructionsarea">
@@ -9681,12 +9732,13 @@ h1 {
           <div id="detailbip38commands"> <span><label id="detaillabelpassphrase" class="i18n">Enter BIP38 Passphrase</label> <input type="text" id="detailprivkeypassphrase" value="" onfocus="this.select();" onkeypress="if (event.keyCode == 13) ninja.wallets.detailwallet.viewDetails();" /></span>            <span><input type="button" id="detaildecrypt" value="Decrypt BIP38" onclick="ninja.wallets.detailwallet.viewDetails();" /></span> </div>
         </div>
         <div id="detailkeyarea">
-          <div class="notes"> <span id="detaillabelnote1" class="i18n">Your Private Key is a unique secret number that only you know. <b><span style="color:red">It should always be kept secretly</span></b>.  Below will show the Public Address that corresponds to your Private Key after you've entered a private key or clicked the QR icon to scan.  <b><i>If an invalid private key is entered, a pop-up message will appear.  If you choose OK; an example of a valid Private Key and its corresponding Public Address may or may not be given below for the chosen Currency.</i></b></span>            <br /><br /> </div>
+		<div id="printsogood"> <!--Fedda begin print-->
+          <div class="notes"> <span id="detaillabelnote1" class="i18n">Your Private Key is a unique secret number that only you know. <b><span style="color:red">It should always be kept secretly</span></b>.  <b>Please remember that each SHND Private Key starts with a Capital "V" and each SHMN Private Key starts with a Capital "Y".</b>  Below will show the Public Address that corresponds to your Private Key after you've entered a private key or clicked the QR icon to scan.  <b><i>If an invalid private key is entered, a pop-up message will appear.  If you choose OK; an example of a valid Private Key and its corresponding Public Address may or may not be given below for the chosen Currency.</i></b></span>            <br /><br /> </div>
 		  <hr/>
           <div class="pubqr">
-            <div class="item"> <span class="label i18n" id="detaillabelSHNDaddress">Public Address</span>
+            <div class="item"> <span class="label i18n" id="detaillabelSHNDaddress"><span id="namchnge3">(SHND)</span> Public Address</span>
               <div id="detailqrcodepublic" class="qrcode_public"></div> <span class="output" id="detailaddress"></span> </div>
-			  <div class="item right"> <span class="label"><span id="detaillabelprivwif" class="i18n">Private Key (WIF)<br /></span></span>
+			  <div class="item right"> <span class="label"><span id="detaillabelprivwif" class="i18n"><span id="namchnge4">(SHND)</span> Private Key (WIF)<br /></span></span>
               <div id="detailqrcodeprivate" class="qrcode_private"></div> <span class="output" id="detailprivwif"></span> </div>
             <div class="item right"> <span class="label i18n" id="detaillabelSHNDaddresscomp"></span>
               <div id="detailqrcodepubliccomp" class="qrcode_public"></div> <span class="output" id="detailaddresscomp"></span> </div>
@@ -9694,6 +9746,7 @@ h1 {
           <div class="item clear"> <span class="label i18n" id="detaillabelpublickey"></span> <span class="output pubkeyhex" id="detailpubkey"></span> </div>
           <div class="item"> <span class="label i18n" id="detaillabelpublickeycomp"></span> <span class="output" id="detailpubkeycomp"></span> </div>
           <hr/>
+		  </div> <!--Fedda end print-->
            <div class="privqr">
             <div class="item right"> <span class="label"><span id="detaillabelprivwif" class="i18n"></span></span>
               <div id="detailqrcodeprivate" class="qrcode_private"></div> <span class="output" id="detailprivwif"></span> </div>
@@ -9710,14 +9763,23 @@ h1 {
       <div id="donatearea" class="walletarea">
         <div id="donatetextfooter" class="i18n">To support, you can donate to the following addresses. When the support for a currency has been added by an external contributor, the donation is received directly. </div>
         <div id="donatelist"></div>
-        <div id="donateqrcode"></div>
+        <div id="donateqrcode"></div> <div id="shndshow"></div> <div id="shmnshow"></div>
         <div id="donateinfo"></div>
         <div id="changelog">
           <hr/>
           <h3>Release notes</h3>
+		  <p> 7.2019 -- </p>
+			<ul>
+			  <li>Numerous updates</li>
+			</ul>
+		  <p> 6.2019 -- </p>
+			<ul>
+			  <li>Compressed keys due to fork/swap</li>
+			  <li>Updated SHND's blockchain due to fork/swap</li>
+			  <li>Updated website</li>
+			</ul>
 		  <p> 2.2019 -- </p>
 			<ul>
-			  <!--<li>Changed SHND-keys to forked blockchain</li>-->
 			  <li>Updated website design plus signifying color coordination</li>
 			</ul>
           <p> 12.2018 -- </p>
@@ -9725,19 +9787,19 @@ h1 {
 			  <li>Updated website design</li>
 			  <li>Changed numerous info</li>
 			  <li>Deleted unnecessary objects</li>
-			  <li>Updated Import instructions with more info</li>
+			  <li>Updated Import Instructions with more info</li>
 			</ul>
 		  <p> 11.2018 -- </p>
 			<ul>
-			  <li>Import instructions for SHND and SHMN</li>
+			  <li>Import Instructions for SHND and SHMN</li>
 			</ul>
           <p> 09.2018 -- </p>
             <ul>
-              <li>Added support for StrongHands (SHND) and StrongHands Masternode (SHMN)</li>
+              <li>Supports StrongHands (SHND) and StrongHands Masternode (SHMN)</li>
 			  <li>Multi-currency support</li>
+			  <li>Security checklist and more user-friendly explanations</li>
+			  <li>Improved design of the website</li>
               <li>Original design for the paper wallet</li>
-              <li>Improved design of the website</li>
-              <li>Security checklist and more user-friendly explanations</li>
 			</ul>
         </div>
       </div>
@@ -9884,8 +9946,8 @@ janin.currency = {
 janin.currencies = [
   //                              name, networkVersion, privateKeyPrefix, WIF_Start, CWIF_Start, donate
   //janin.currency.createCurrency("Bitcoin", 0x00, 0x80, "5", "[LK]", "18kcrrfN9JXNGHqzaox5TWkpexnocHG9vM"),
-  janin.currency.createCurrency("SHMN", 0x32, 0xd4, "8", "Y", "MBCPbyoXPfRdgjp3QQRuCYJhNg6rEQzqyD"),
-  janin.currency.createCurrency("SHND", 0x3f, 0xbf, "7", "V", "SicY4b9xX5QqrF8yRWiN5aHsKsfg1JydFT"),
+  janin.currency.createCurrency("SHND", 0x3f, 0xbf, "7", "V", "SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN"),
+  janin.currency.createCurrency("SHMN", 0x32, 0xd4, "8", "Y", "MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb"),
 ];
 
   </script>
@@ -10232,6 +10294,13 @@ ninja.seeder = {
       ninja.seeder.seedCount++;
       ninja.wallets.singlewallet.open();
       document.getElementById("menu").style.visibility = "visible";
+	  document.getElementById("everymove").style.visibility = "visible";
+	  document.getElementById("seedpicyur").style.visibility = "hidden";
+	  document.getElementById("seedpicyur1").style.visibility = "hidden";
+	  document.getElementById("coinLogoImg").style.visibility = "visible";
+	  document.getElementById("hidedurseed").style.visibility = "visible";
+	  document.getElementById("hidedurseed").style.display = "block";
+	  document.getElementById("footer").style.visibility = "visible";
       ninja.seeder.removePoints();
     }
     // seed mouse position X and Y when mouse movements are greater than 40ms apart.
@@ -10253,6 +10322,13 @@ ninja.seeder = {
       ninja.wallets.singlewallet.open();
       document.getElementById("generate").style.display = "none";
       document.getElementById("menu").style.visibility = "visible";
+	  document.getElementById("everymove").style.visibility = "visible";
+	  document.getElementById("seedpicyur").style.visibility = "hidden";
+	  document.getElementById("seedpicyur1").style.visibility = "hidden";
+	  document.getElementById("coinLogoImg").style.visibility = "visible";
+	  document.getElementById("hidedurseed").style.visibility = "visible";
+	  document.getElementById("hidedurseed").style.display = "block";
+	  document.getElementById("footer").style.visibility = "visible";
       ninja.seeder.removePoints();
     }
     // seed key press character
@@ -11412,6 +11488,7 @@ ninja.wallets.singlewallet = {
   generateNewAddressAndKey: function() {
     try {
       var key = new SHND.ECKey(false);
+	  key.setCompressed(true); //Fedda
       var SHNDAddress = key.getSHNDAddress();
       var privateKeyWif = key.getSHNDWalletImportFormat();
       document.getElementById("btcaddress").innerHTML = SHNDAddress;
@@ -11512,6 +11589,7 @@ ninja.wallets.paperwallet = {
       });
     } else {
       var key = new SHND.ECKey(false);
+	  key.setCompressed(true); //Fedda
       var SHNDAddress = key.getSHNDAddress();
       var privateKeyWif = key.getSHNDWalletImportFormat();
       ninja.wallets.paperwallet.showArtisticWallet(idPostFix, SHNDAddress, privateKeyWif);
@@ -11613,7 +11691,8 @@ ninja.wallets.bulkwallet = {
     if (bulkWallet.csvRowsRemaining > 0) {
       bulkWallet.csvRowsRemaining--;
       var key = new SHND.ECKey(false);
-      key.setCompressed(bulkWallet.compressedAddrs);
+	  key.setCompressed(true); //Fedda
+      //key.setCompressed(bulkWallet.compressedAddrs); //Fedda
       bulkWallet.csv.push((bulkWallet.csvRowLimit - bulkWallet.csvRowsRemaining + bulkWallet.csvStartIndex) + ",\"" + key.getSHNDAddress() + "\",\"" + key.toString("wif")
         //+	"\",\"" + key.toString("wifcomp")    // uncomment these lines to add different private key formats to the CSV
         //+ "\",\"" + key.getSHNDHexFormat()
@@ -11773,7 +11852,8 @@ ninja.wallets.detailwallet = {
   },
   populateKeyDetails: function(btcKey) {
     if (btcKey.priv != null) {
-      btcKey.setCompressed(false);
+      //btcKey.setCompressed(false); //Fedda
+	  btcKey.setCompressed(true); //Fedda
       //document.getElementById("detailprivhex").innerHTML = btcKey.toString().toUpperCase();
       //document.getElementById("detailprivb64").innerHTML = btcKey.toString("base64");
       var SHNDAddress = btcKey.getSHNDAddress();
@@ -12447,6 +12527,107 @@ currency = currency.toLowerCase();
 for (i = 0; i < janin.currencies.length; i++) {
   if (janin.currencies[i].name.toLowerCase() == currency) janin.currency.useCurrency(i);
 }
+
+//Fedda: This changes name (SHND) or (SHMN) for Pub addr at Info Wallet tab
+document.getElementById("currency").addEventListener("change", myFunction);
+function myFunction() {
+  var socurry = document.getElementById("currency");
+  var namchnger = document.getElementById("namchnge");
+
+  if (socurry.selectedIndex == 0) {
+	namchnger.innerHTML = "(SHND)";
+  } else {
+	namchnger.innerHTML = "(SHMN)";
+  }
+}
+
+//Fedda: This changes name (SHND) or (SHMN) for Priv key at Info Wallet tab
+document.getElementById("currency").addEventListener("change", myiFunction);
+function myiFunction() {
+  var socurry2 = document.getElementById("currency");
+  var namchnger2 = document.getElementById("namchnge2");
+  
+  if (socurry2.selectedIndex == 0) {
+	namchnger2.innerHTML = "(SHND)";
+  } else {
+	namchnger2.innerHTML = "(SHMN)";
+  }
+}
+
+//Fedda: This changes name (SHND) or (SHMN) if chosen
+var namchnger11 = document.getElementById("namchnge");
+var namchnger22 = document.getElementById("namchnge2");
+var namchnger33 = document.getElementById("namchnge3");
+var namchnger44 = document.getElementById("namchnge4");
+if (ninja.getQueryString()["currency"] == "SHMN") {
+  namchnger11.innerHTML = "(SHMN)";
+  namchnger22.innerHTML = "(SHMN)";
+  namchnger33.innerHTML = "(SHMN)";
+  namchnger44.innerHTML = "(SHMN)";
+} else if (ninja.getQueryString()["currency"] == "SHND") {
+	namchnger11.innerHTML = "(SHND)";
+	namchnger22.innerHTML = "(SHND)";
+	namchnger33.innerHTML = "(SHND)";
+	namchnger44.innerHTML = "(SHND)";
+}
+
+//Fedda: This changes name (SHND) or (SHMN) at Bulk Wallet tab
+document.getElementById("currency").addEventListener("change", mybbFunction);
+function mybbFunction() {
+  var socurrybb = document.getElementById("currency");
+  var namchngerbb = document.getElementById("bulkynmechnge");
+
+  if (socurrybb.selectedIndex == 0) {
+	namchngerbb.innerHTML = "(SHND)";
+  } else {
+	namchngerbb.innerHTML = "(SHMN)";
+  }
+}
+
+//Fedda: This changes name (SHND) or (SHMN) if chosen for Bulk Wallet
+var socurrybb2 = document.getElementById("bulkynmechnge");
+if (ninja.getQueryString()["currency"] == "SHMN") {
+  socurrybb2.innerHTML = "(SHMN)";
+} else if (ninja.getQueryString()["currency"] == "SHND") {
+	socurrybb2.innerHTML = "(SHND)";
+}
+
+//Fedda: This changes name (SHND) or (SHMN) for Pub addr at Wallet Details tab
+document.getElementById("currency").addEventListener("change", mydFunction);
+function mydFunction() {
+  var socurry3 = document.getElementById("currency");
+  var namchnger3 = document.getElementById("namchnge3");
+  var cleary3 = document.getElementById("detailqrcodepublic");
+  var cleary33 = document.getElementById("detailaddress");
+
+  if (socurry3.selectedIndex == 0) {
+	namchnger3.innerHTML = "(SHND)";
+  } else {
+	namchnger3.innerHTML = "(SHMN)";
+  }
+//This clears results
+	cleary3.innerHTML = "";
+	cleary33.innerHTML = "";
+}
+
+//Fedda: This changes name (SHND) or (SHMN) for Priv key at Wallet Details tab
+document.getElementById("currency").addEventListener("change", mykFunction);
+function mykFunction() {
+  var socurry4 = document.getElementById("currency");
+  var namchnger4 = document.getElementById("namchnge4");
+  var cleary4 = document.getElementById("detailqrcodeprivate");
+  var cleary44 = document.getElementById("detailprivwif");
+  
+  if (socurry4.selectedIndex == 0) {
+	namchnger4.innerHTML = "(SHND)";
+  } else {
+	namchnger4.innerHTML = "(SHMN)";
+  }
+//This clears results
+	cleary4.innerHTML = "";
+	cleary44.innerHTML = "";
+}
+
 // Reset title if no currency is choosen
 if (ninja.getQueryString()["currency"] == null) {
   document.title = ninja.translator.get("defaultTitle");
@@ -12596,7 +12777,81 @@ ninja.wallets.brainwallet = {
   }
 };
 
-  </script>  
+  </script>
+
+<script>
+$(document).ready(function(){
+//Support Tab => Donate
+	$("#shndshow").html("...SHND");
+	$("#shmnshow").html("...SHMN");
+	$("#shndshow").hide();
+	$("#shmnshow").hide();
+	
+	$(".currencyNameColumn").mouseenter(function(){
+		if($(this).html().startsWith("SHN")){
+			$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('font-weight','bold');
+			$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('color','#d58424');
+			$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('font-weight','');
+			$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('color','');
+			$("#shmnshow").hide();
+			$("#shndshow").show();
+		};
+	});
+	
+	$(".currencyNameColumn").mouseenter(function(){
+		if($(this).html().startsWith("SHM")){
+			$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('font-weight','bold');
+			$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('color','#EB1E14');
+			$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('font-weight','');
+			$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('color','');
+			$("#shndshow").hide();
+			$("#shmnshow").show();
+		};
+	});
+	
+	$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").mouseenter(function(){
+		$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('font-weight','bold');
+		$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('color','#d58424');
+		$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('font-weight','');
+		$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('color','');
+		$("#shmnshow").hide();
+		$("#shndshow").show();
+	});
+	
+	$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").mouseenter(function(){
+		$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('font-weight','bold');
+		$("a[href$='shmn:MQyayxTXJZp1BpwLVvjyhqEPV8Khe4HHLb']").css('color','#EB1E14');
+		$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('font-weight','');
+		$("a[href$='shnd:SNN3xWfvAsm8vAhP2zvM6TtbXddhJW8nVN']").css('color','');
+		$("#shndshow").hide();
+		$("#shmnshow").show();
+	});
+	
+//This is for (SHND) or (SHMN) Folding-instruction pic at Info Wallet tab
+	$("#foldinginstructions").hide();
+	$("#foldinginstructions2").hide();
+
+	if($("#namchnge").html().startsWith("(SHN")){
+		$("#foldinginstructions").show();
+	};
+	
+	if($("#namchnge").html().startsWith("(SHM")){
+		$("#foldinginstructions2").show();
+	};
+	
+	$("#currency").change(function(){
+		if($("#namchnge").html().startsWith("(SHN")){
+			$("#foldinginstructions2").hide();
+			$("#foldinginstructions").show();
+		};
+		
+		if($("#namchnge").html().startsWith("(SHM")){
+			$("#foldinginstructions").hide();
+			$("#foldinginstructions2").show();
+		};
+	});
+});
+</script>  
 </body></center>
 
 </html>

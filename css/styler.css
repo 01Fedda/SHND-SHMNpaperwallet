@@ -1,0 +1,21 @@
+/*Media print*/
+
+/*Media print for Info Wallet tab*/
+#initBanner {
+	border: 1px solid #BFBFBF;
+}
+
+#singlesafety {
+	display: none;
+}
+
+#faqZone {
+	display: none;
+}
+
+/*Media print for Import Wallet tab*/
+#brainarea {
+	height: 500px;
+	border: 1px solid #BFBFBF;
+	margin-top: 0px;
+}
