@@ -9508,7 +9508,8 @@ h1 {
 
     <div class="banner">
 	<div id="seedpicyurrap"><img src="images/shnd3.png" id="seedpicyur" /> <img src="images/shmn3.png" id="seedpicyur1" /></div>
-      <div id="coinLogo"> <img id="coinLogoImg" title="Selected Currency" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
+      <!--<div id="coinLogo"> <img id="coinLogoImg" title="Selected Currency" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>-->
+	  <div id="coinLogo"> <img id="coinLogoImg" src="logos/SHND.png" alt="Universal Open Source Client-Side Wallet Generator" /> </div>
       <h1>
         <p id="siteTitle" src="images/banner.png"></p>
       </h1> </div>
@@ -9641,22 +9642,22 @@ h1 {
 			<ol style="list-style-type:none"><b>Step 1:</b> 
 			<li>Make sure you have the latest wallet GUI.  If not, you can get the latest wallet GUI from here:  <a href="https://www.stronghands.info/" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a></li>
 			</ol>
-			<!--<ol style="list-style-type:none"><b>Step 2:</b> 
-			<li>If this is the first time you're downloading and using a new wallet GUI, you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/#!InpVGaQI!XF877WNeuODwOthHyAGQJszhnUrQjW-E4LLay8dn-0o" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
-			</ol>-->
 			<ol style="list-style-type:none"><b>Step 2:</b> 
-			<li>Your wallet GUI must be fully synced and blocks must be up-to-date.  <!--You can check if your blocks are up-to-date with the explorer website.  <a href="https://www.coinexplorer.net/SHND" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.--></li>
+			<li>If this is the first time you're downloading and using a new wallet GUI, you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/file/EuBySKbS#zYJy9Ve_4oFu8np_fUBeaLIpc0Wrq9kSwRTLpUpYwr8" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 3:</b> 
-			<li>While you have your wallet GUI open; click Help, click Debug window, then click the Console tab.</li>
+			<li>Your wallet GUI must be fully synced and blocks must be up-to-date.  You can check if your blocks are up-to-date with the explorer website.  <a href="https://www.coinexplorer.net/SHND" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 4:</b> 
-			<li>Now type the info in the textbox.  Which is: "importprivkey Your_Private_Key" and should look exactly like the example in "Step 5".</li>
+			<li>While you have your wallet GUI open; click Help, click Debug window, then click the Console tab.</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 5:</b> 
-			<li>importprivkey V4udndkrid9939dnFej37nBeu488jabcdefGhiJ92</li>
+			<li>Now type the info in the textbox.  Which is: "importprivkey Your_Private_Key" and should look exactly like the example in "Step 6".</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 6:</b> 
+			<li>importprivkey V4udndkrid9939dnFej37nBeu488jabcdefGhiJ92</li>
+			</ol>
+			<ol style="list-style-type:none"><b>Step 7:</b> 
 			<li>Then press Enter on your keyboard.</li>
 			</ol>
 			</div>
@@ -9678,7 +9679,7 @@ h1 {
 			<li>Make sure you have the latest wallet GUI.  If not, you can get the latest wallet GUI from here:  <a href="https://github.com/bitcoinbabys/StrongHandsMasterNode/releases" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a></li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 2:</b> 
-			<li>If this is the first time you're downloading and using a new wallet GUI, you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/#!9u4SwCxa!QmKIW-xcUQoWMLi2t-IIQu6CP-riaZgGbY5QG8Gb_1Q" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
+			<li>If this is the first time you're downloading and using a new wallet GUI, you can speed up the syncing by using the BootStrap.  <a href="https://mega.nz/file/52Q0kCIR#lBn6eVU1b6GdlVEdOxtrHGpsThi6Smw7FYr4E69zX6Q" target="_blank" id="click"><b style="color:#E51010">Click Here</b></a> to get the BootStrap.</li>
 			</ol>
 			<ol style="list-style-type:none"><b>Step 3:</b> 
 			<li>Your wallet GUI must be fully synced and blocks must be up-to-date.  You can check if your blocks are up-to-date with the explorer website.  <a href="https://www.coinexplorer.net/SHMN" target="_blank" id="click" style="color:#E51010"><b>Click Here</b></a> to go to the explorer website.</li>
@@ -12831,27 +12832,31 @@ $(document).ready(function(){
 		$("#shmnshow").show();
 	});
 	
-//This is for (SHND) or (SHMN) Folding-instruction pic at Info Wallet tab
+//This is for (SHND) or (SHMN) Currency title and Folding-instruction pic at Info Wallet tab
 	$("#foldinginstructions").hide();
 	$("#foldinginstructions2").hide();
 
 	if($("#namchnge").html().startsWith("(SHN")){
 		$("#foldinginstructions").show();
+		$("#coinLogoImg").attr("title","SHND Currency");
 	};
 	
 	if($("#namchnge").html().startsWith("(SHM")){
 		$("#foldinginstructions2").show();
+		$("#coinLogoImg").attr("title","SHMN Currency");
 	};
 	
 	$("#currency").change(function(){
 		if($("#namchnge").html().startsWith("(SHN")){
 			$("#foldinginstructions2").hide();
 			$("#foldinginstructions").show();
+			$("#coinLogoImg").attr("title","SHND Currency");
 		};
 		
 		if($("#namchnge").html().startsWith("(SHM")){
 			$("#foldinginstructions").hide();
 			$("#foldinginstructions2").show();
+			$("#coinLogoImg").attr("title","SHMN Currency");
 		};
 	});
 });
